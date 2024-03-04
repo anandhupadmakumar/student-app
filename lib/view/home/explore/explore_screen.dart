@@ -26,9 +26,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize:  Size(120.w, 120.h),
+        preferredSize: Size(120.w, 120.h),
         child: Container(
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
                 color: Colors.pink,
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(50.r),
@@ -36,9 +36,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
-               
-                 Text(
+                Text(
                   'Student App',
                   style: TextStyle(
                     fontSize: 15.sp,
@@ -46,7 +44,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     color: Colors.white,
                   ),
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 20.h,
                 ),
                 Container(
@@ -56,7 +54,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(16.r),
                   ),
-                  child:  Center(
+                  child: Center(
                       child: Row(
                     children: [
                       Icon(
@@ -79,75 +77,72 @@ class _ExploreScreenState extends State<ExploreScreen> {
           physics: const PageScrollPhysics(),
           child: Column(
             children: [
-               SizedBox(
+              SizedBox(
                 height: 20.h,
               ),
               commonWidget(
                   icon: Icons.account_balance, title: 'Top Institutions'),
-               SizedBox(
+              SizedBox(
                 height: 15.h,
               ),
               commonListViewWidget(),
-               SizedBox(
+              SizedBox(
                 height: 15.h,
               ),
-              commonWidget(
-                  icon: Icons.school, title: 'Popular Courses'),
-               SizedBox(
+              commonWidget(icon: Icons.school, title: 'Popular Courses'),
+              SizedBox(
                 height: 15.h,
               ),
               commonListViewWidget(),
-               SizedBox(
+              SizedBox(
+                height: 15.h,
+              ),
+              commonWidget(icon: Icons.location_on, title: 'Popular Places'),
+              SizedBox(
+                height: 15.h,
+              ),
+              locationListViewWidget(countryNameList: [
+                'Australia',
+                'United Kingdom'
+              ], imgList: [
+                'assets/location/destination_canada.jpeg',
+                'assets/location/destination_usa2.jpg'
+              ], universityCountList: [
+                '10',
+                '97'
+              ]),
+
+              SizedBox(
                 height: 15.h,
               ),
               commonWidget(
-                  icon: Icons.location_on, title: 'Popular Places'),
-               SizedBox(
+                  icon: Icons.my_library_books_rounded,
+                  title: 'Trending Subjects'),
+              SizedBox(
                 height: 15.h,
               ),
-              locationListViewWidget(
-                countryNameList: ['Australia','United Kingdom'
-                ],
-                imgList: ['assets/location/destination_canada.jpeg','assets/location/destination_usa2.jpg'],
-                universityCountList: ['10','97']
-
-
-
-
-
-              ),
-             
-               SizedBox(
-                height: 15.h,
-              ),
-              commonWidget(
-                  icon: Icons.my_library_books_rounded, title: 'Trending Subjects'),
-               SizedBox(
-                height: 15.h,
-              ),
-             Align(
-              alignment: Alignment.centerLeft,
-               child: Wrap(
-                spacing: 20.w,
-                runSpacing: 20.h,
-                
-                children: List.generate(
-                
-                  5, (index) => Container(
-                    margin: EdgeInsets.only(left: 15.w),
-                    padding: EdgeInsets.all(15.sp),
-                  width: 180.w,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.r),color: Colors.white),
-
-                 
-                  child: Center(child: Text('Computer Science'),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Wrap(
+                  spacing: 20.w,
+                  runSpacing: 20.h,
+                  children: List.generate(
+                    5,
+                    (index) => Container(
+                      margin: EdgeInsets.only(left: 15.w),
+                      padding: EdgeInsets.all(15.sp),
+                      width: 180.w,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.r),
+                          color: Colors.white),
+                      child: Center(
+                        child: Text('Computer Science'),
+                      ),
+                    ),
                   ),
-                              
-                              
-                              
-                ),),),
-             ),
-               SizedBox(
+                ),
+              ),
+              SizedBox(
                 height: 15.h,
               ),
               // commonWidget(
@@ -193,39 +188,52 @@ class _ExploreScreenState extends State<ExploreScreen> {
     );
   }
 
-  SizedBox locationListViewWidget({required List<String> imgList,required List<String> countryNameList,required List<String>  universityCountList}) {
-    return 
-        SizedBox(
-          height: 250.h,
-          child: ListView(
-             scrollDirection: Axis.horizontal,
-            
-            children: List.generate(imgList.length, (index) => InkWell(
-              onTap: (){
-                print(countryNameList[index]);
+  SizedBox locationListViewWidget(
+      {required List<String> imgList,
+      required List<String> countryNameList,
+      required List<String> universityCountList}) {
+    return SizedBox(
+      height: 250.h,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: List.generate(
+            imgList.length,
+            (index) => InkWell(
+                  onTap: () {
+                    print(countryNameList[index]);
 
-                Get.to(()=>LocationScreen(title:countryNameList[index] ,imgUrl:imgList[index] ,universityCount: universityCountList[index],));
-
-
-
-              },
-              child: Container(
-                margin: EdgeInsets.only(left: 20.w),
-                
-                child: Column(
-                  children: [
-                    CircleAvatar(radius: 80.r,backgroundColor: Colors.amber,backgroundImage: AssetImage(imgList[index]),),
-                    SizedBox(height: 20.h,),
-              
-                    Text(countryNameList[index],style: TextStyle(fontWeight: FontWeight.w800,fontSize: 14.sp),),
-                    SizedBox(height: 15.h,),
-               Text('${universityCountList[index]} universities'),
-                  ],
+                    Get.to(() => LocationScreen(
+                          title: countryNameList[index],
+                          imgUrl: imgList[index],
+                          universityCount: universityCountList[index],
+                        ));
+                  },
+                  child: Container(
+                      margin: EdgeInsets.only(left: 20.w),
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            radius: 80.r,
+                            backgroundColor: Colors.amber,
+                            backgroundImage: AssetImage(imgList[index]),
+                          ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          Text(
+                            countryNameList[index],
+                            style: TextStyle(
+                                fontWeight: FontWeight.w800, fontSize: 14.sp),
+                          ),
+                          SizedBox(
+                            height: 15.h,
+                          ),
+                          Text('${universityCountList[index]} universities'),
+                        ],
+                      )),
                 )),
-            )),),
-        );
-            
-     
+      ),
+    );
   }
 
   Container commonListViewWidget() {
@@ -240,16 +248,16 @@ class _ExploreScreenState extends State<ExploreScreen> {
               homeController.universityListData.length,
               (index) => GetBuilder<HomeController>(builder: (universityData) {
                     return InkWell(
-                      onTap: (){  
-        Get.to(()=>UniversityResultScreen());
-      },
+                      onTap: () {
+                        Get.to(() =>const  UniversityResultScreen());
+                      },
                       child: Container(
                         margin: EdgeInsets.only(left: 15.w),
                         child: Card(
                           surfaceTintColor: Colors.white,
                           elevation: 5,
                           child: Container(
-                            margin:  EdgeInsets.only(left: 15.w),
+                            margin: EdgeInsets.only(left: 15.w),
                             width: 200.w,
                             // height: 120,
                             child: Column(
@@ -261,7 +269,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                     height: 20.h,
                                     image: AssetImage(universityData
                                         .universityListData[index].imgUrl!)),
-                                 SizedBox(
+                                SizedBox(
                                   height: 10.h,
                                 ),
                                 Text(
@@ -270,7 +278,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                       '',
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                 SizedBox(
+                                SizedBox(
                                   height: 15.h,
                                 ),
                                 Text(universityData
@@ -286,36 +294,34 @@ class _ExploreScreenState extends State<ExploreScreen> {
         ));
   }
 
-   commonWidget({required IconData icon, required String title}) {
+  commonWidget({required IconData icon, required String title}) {
     return Container(
-      margin:  EdgeInsets.symmetric(horizontal: 15.w),
+      margin: EdgeInsets.symmetric(horizontal: 15.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              Icon(icon,size: 18.sp,),
-               SizedBox(
+              Icon(
+                icon,
+                size: 18.sp,
+              ),
+              SizedBox(
                 width: 10.w,
               ),
               Text(title),
             ],
           ),
-          IconButton( onPressed: () async {
-    
-    
-      await homeController.   getUniversities() ;
-    
-    
-    
-    
-    
-            showSearch(context: context, delegate: CustomSearchDelegate());
-    
-    
-    
-    
-          },   icon:  Icon(Icons.arrow_forward_ios_outlined,size: 16.sp,))
+          IconButton(
+              onPressed: () async {
+                await homeController.getUniversities();
+
+                showSearch(context: context, delegate: CustomSearchDelegate());
+              },
+              icon: Icon(
+                Icons.arrow_forward_ios_outlined,
+                size: 16.sp,
+              ))
         ],
       ),
     );
