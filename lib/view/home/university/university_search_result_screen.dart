@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:student_app/controller/home_controller.dart';
+import 'package:student_app/controller/login_controller.dart';
+import 'package:student_app/core/sample_api_data/api_data.dart';
 
 import '../../../controller/location_controller.dart';
 
@@ -9,13 +12,25 @@ class UniversityResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Column(
-      children: [
-        Text('Bangor University',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w800),),
-
-         Text('United Kingdom',style: TextStyle(fontSize: 12.sp,fontWeight: FontWeight.w400)),
-      ],
-    ),centerTitle: true,),
+    return Scaffold(
+      
+      
+      
+      appBar: PreferredSize(
+        preferredSize: Size(80.w, 80.h),
+        child: AppBar(title: GetBuilder<HomeController>(
+        builder: (data) {
+          return Column(
+            children: [
+                SizedBox(height: 10.h,),
+              Text(data.courseDetails?.courseName??'',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w800),),
+          SizedBox(height: 10.h,),
+               Text(data.courseDetails?.universityName??'',style: TextStyle(fontSize: 12.sp,fontWeight: FontWeight.w400)),
+            ],
+          );
+        }
+            ),centerTitle: true,),
+      ),
     body: Container(child:SingleChildScrollView(
         child: Column(
         
@@ -101,350 +116,524 @@ class UniversityResultScreen extends StatelessWidget {
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.symmetric(horizontal: 15.w),
-                child: Column(
-
-                
-                
-                  
-                  children: [
-                
-                  Material(
+                child: GetBuilder<HomeController>(
+                  builder: (courseDetailsData) {
+                    return Column(
                     
-                    borderRadius: BorderRadius.circular(21.r),
-                    elevation: 5,
-                    child: Container(
+                    
+                    
+                      
+                      children: [
+                    
+                      Material(
+                        
+                        borderRadius: BorderRadius.circular(21.r),
+                        elevation: 5,
+                        child: Container(
+                    
+                          padding: EdgeInsets.all(8.sp),
+                                        
+                          height: 55.h,
+                          width: Get.width,
+                                        
+                                        
+                                
+                                
+                          decoration: BoxDecoration(
+                                color: Colors.white,
+                                
+                                
+                            borderRadius: BorderRadius.circular(21.r)
+                                
+                                
+                          ),
+                        
+                          child: Row(
+                           
+                            
+                            
+                            children: [
+                        
+                            Icon(Icons.star,color: Color(0xFF631BAF),),
+                            SizedBox(width: 10.w,),
+                        
+                            Text('Course Name: '),
+                             SizedBox(width: 10.w,),
+                             SizedBox(
 
-                      padding: EdgeInsets.all(8.sp),
-                                    
-                      height: 55.h,
-                      width: 305.w,
-                                    
-                                    
-                            
-                            
-                      decoration: BoxDecoration(
-                            color: Colors.white,
-                            
-                            
-                        borderRadius: BorderRadius.circular(21.r)
-                            
-                            
+                              width: 200.w,
+                              
+                              
+                              
+                              child: Text(courseDetailsData.courseDetails?.courseName??'',overflow: TextOverflow.ellipsis,)),
+                        
+                        
+                        
+                        
+                        
+                          ],),
+                                        
+                                        
+                                        
+                        ),
                       ),
                     
-                      child: Row(
-                       
+                        SizedBox(height: 15.h,),
+                         Material(
+                        
+                        borderRadius: BorderRadius.circular(21.r),
+                        elevation: 5,
+                        child: Container(
+                    
+                          padding: EdgeInsets.all(8.sp),
+                                        
+                          height: 55.h,
+                           width: Get.width,
+                                        
+                                        
+                                
+                                
+                          decoration: BoxDecoration(
+                                color: Colors.white,
+                                
+                                
+                            borderRadius: BorderRadius.circular(21.r)
+                                
+                                
+                          ),
+                        
+                          child: Row(
+                           
+                            
+                            
+                            children: [
+                        
+                            Icon(Icons.star,color: Color(0xFF631BAF),),
+                            SizedBox(width: 10.w,),
+                        
+                            Text('Country Name'),
+                             SizedBox(width: 10.w,),
+                             Text(courseDetailsData.courseDetails?.countryName??''),
                         
                         
-                        children: [
+                        
+                        
+                        
+                          ],),
+                                        
+                                        
+                                        
+                        ),
+                      ),
+                      SizedBox(height: 15.h,),
+                         Material(
+                        
+                        borderRadius: BorderRadius.circular(21.r),
+                        elevation: 5,
+                        child: Container(
                     
-                        Icon(Icons.star,color: Color(0xFF631BAF),),
-                        SizedBox(width: 100.w,),
-                    
-                        Text('data'),
-                         SizedBox(width: 100.w,),
-                         Text('data'),
-                    
-                    
-                    
-                    
-                    
-                      ],),
-                                    
-                                    
-                                    
-                    ),
-                  ),
-
-                    SizedBox(height: 15.h,),
-                     Material(
-                    
-                    borderRadius: BorderRadius.circular(21.r),
-                    elevation: 5,
-                    child: Container(
-
-                      padding: EdgeInsets.all(8.sp),
-                                    
-                      height: 55.h,
-                      width: 305.w,
-                                    
-                                    
+                          padding: EdgeInsets.all(8.sp),
+                                        
+                          height: 55.h,
+                          width: Get.width,
+                                        
+                                        
+                                
+                                
+                          decoration: BoxDecoration(
+                                color: Colors.white,
+                                
+                                
+                            borderRadius: BorderRadius.circular(21.r)
+                                
+                                
+                          ),
+                        
+                          child: Row(
+                           
                             
                             
-                      decoration: BoxDecoration(
-                            color: Colors.white,
-                            
-                            
-                        borderRadius: BorderRadius.circular(21.r)
-                            
-                            
+                            children: [
+                        
+                            Icon(Icons.star,color: Color(0xFF631BAF),),
+                            SizedBox(width: 10.w,),
+                        
+                            Text('University Name'),
+                             SizedBox(width: 10.w,),
+                             SizedBox(
+                              
+                               width: 180.w,child: Text(courseDetailsData.courseDetails?.universityName??'',overflow: TextOverflow.ellipsis,)),
+                        
+                        
+                        
+                        
+                        
+                          ],),
+                                        
+                                        
+                                        
+                        ),
                       ),
                     
-                      child: Row(
-                       
+                      SizedBox(height: 15.h,),
+                    
+                       Material(
+                        
+                        borderRadius: BorderRadius.circular(21.r),
+                        elevation: 5,
+                        child: Container(
+                    
+                          padding: EdgeInsets.all(8.sp),
+                                        
+                          height: 55.h,
+                           width: Get.width,
+                                        
+                                        
+                                
+                                
+                          decoration: BoxDecoration(
+                                color: Colors.white,
+                                
+                                
+                            borderRadius: BorderRadius.circular(21.r)
+                                
+                                
+                          ),
+                        
+                          child: Row(
+                           
+                            
+                            
+                            children: [
+                        
+                            Icon(Icons.star,color: Color(0xFF631BAF),),
+                            SizedBox(width: 10.w,),
+                        
+                            Text('Tution Fee'),
+                             SizedBox(width: 10.w,),
+                             Text(courseDetailsData.courseDetails?.tutionFees??''),
                         
                         
-                        children: [
-                    
-                        Icon(Icons.star,color: Color(0xFF631BAF),),
-                        SizedBox(width: 100.w,),
-                    
-                        Text('data'),
-                         SizedBox(width: 100.w,),
-                         Text('data'),
-                    
-                    
-                    
-                    
-                    
-                      ],),
-                                    
-                                    
-                                    
-                    ),
-                  ),
-                  SizedBox(height: 15.h,),
-                     Material(
-                    
-                    borderRadius: BorderRadius.circular(21.r),
-                    elevation: 5,
-                    child: Container(
-
-                      padding: EdgeInsets.all(8.sp),
-                                    
-                      height: 55.h,
-                      width: 305.w,
-                                    
-                                    
-                            
-                            
-                      decoration: BoxDecoration(
-                            color: Colors.white,
-                            
-                            
-                        borderRadius: BorderRadius.circular(21.r)
-                            
-                            
+                        
+                        
+                        
+                          ],),
+                                        
+                                        
+                                        
+                        ),
                       ),
                     
-                      child: Row(
-                       
+                        SizedBox(height: 15.h,),
+                         Material(
+                        
+                        borderRadius: BorderRadius.circular(21.r),
+                        elevation: 5,
+                        child: Container(
+                    
+                          padding: EdgeInsets.all(8.sp),
+                                        
+                          height: 55.h,
+                           width: Get.width,
+                                        
+                                        
+                                
+                                
+                          decoration: BoxDecoration(
+                                color: Colors.white,
+                                
+                                
+                            borderRadius: BorderRadius.circular(21.r)
+                                
+                                
+                          ),
+                        
+                          child: Row(
+                           
+                            
+                            
+                            children: [
+                        
+                            Icon(Icons.star,color: Color(0xFF631BAF),),
+                            SizedBox(width: 10.w,),
+                        
+                            Text('Duration'),
+                             SizedBox(width: 10.w,),
+                             Text(courseDetailsData.courseDetails?.duration??''),
                         
                         
-                        children: [
+                        
+                        
+                        
+                          ],),
+                                        
+                                        
+                                        
+                        ),
+                      ),
+                      SizedBox(height: 15.h,),
+                         Material(
+                        
+                        borderRadius: BorderRadius.circular(21.r),
+                        elevation: 5,
+                        child: Container(
                     
-                        Icon(Icons.star,color: Color(0xFF631BAF),),
-                        SizedBox(width: 100.w,),
-                    
-                        Text('data'),
-                         SizedBox(width: 100.w,),
-                         Text('data'),
-                    
-                    
-                    
-                    
-                    
-                      ],),
-                                    
-                                    
-                                    
-                    ),
-                  ),
-
-                  SizedBox(height: 15.h,),
-
-                   Material(
-                    
-                    borderRadius: BorderRadius.circular(21.r),
-                    elevation: 5,
-                    child: Container(
-
-                      padding: EdgeInsets.all(8.sp),
-                                    
-                      height: 55.h,
-                      width: 305.w,
-                                    
-                                    
+                          padding: EdgeInsets.all(8.sp),
+                                        
+                          height: 55.h,
+                          width: Get.width,
+                                        
+                                        
+                                
+                                
+                          decoration: BoxDecoration(
+                                color: Colors.white,
+                                
+                                
+                            borderRadius: BorderRadius.circular(21.r)
+                                
+                                
+                          ),
+                        
+                          child: Row(
+                           
                             
                             
-                      decoration: BoxDecoration(
-                            color: Colors.white,
-                            
-                            
-                        borderRadius: BorderRadius.circular(21.r)
-                            
-                            
+                            children: [
+                        
+                            Icon(Icons.star,color: Color(0xFF631BAF),),
+                            SizedBox(width: 10.w,),
+                        
+                            Text('IELTS'),
+                             SizedBox(width: 10.w,),
+                             Text(courseDetailsData.courseDetails?.ieltsMinimumScore??''),
+                        
+                        
+                        
+                        
+                        
+                          ],),
+                                        
+                                        
+                                        
+                        ),
                       ),
                     
-                      child: Row(
-                       
-                        
-                        
-                        children: [
-                    
-                        Icon(Icons.star,color: Color(0xFF631BAF),),
-                        SizedBox(width: 100.w,),
-                    
-                        Text('data'),
-                         SizedBox(width: 100.w,),
-                         Text('data'),
                     
                     
                     
-                    
-                    
-                      ],),
-                                    
-                                    
-                                    
-                    ),
-                  ),
-
-                    SizedBox(height: 15.h,),
-                     Material(
-                    
-                    borderRadius: BorderRadius.circular(21.r),
-                    elevation: 5,
-                    child: Container(
-
-                      padding: EdgeInsets.all(8.sp),
-                                    
-                      height: 55.h,
-                      width: 305.w,
-                                    
-                                    
-                            
-                            
-                      decoration: BoxDecoration(
-                            color: Colors.white,
-                            
-                            
-                        borderRadius: BorderRadius.circular(21.r)
-                            
-                            
-                      ),
-                    
-                      child: Row(
-                       
-                        
-                        
-                        children: [
-                    
-                        Icon(Icons.star,color: Color(0xFF631BAF),),
-                        SizedBox(width: 100.w,),
-                    
-                        Text('data'),
-                         SizedBox(width: 100.w,),
-                         Text('data'),
-                    
-                    
-                    
-                    
-                    
-                      ],),
-                                    
-                                    
-                                    
-                    ),
-                  ),
-                  SizedBox(height: 15.h,),
-                     Material(
-                    
-                    borderRadius: BorderRadius.circular(21.r),
-                    elevation: 5,
-                    child: Container(
-
-                      padding: EdgeInsets.all(8.sp),
-                                    
-                      height: 55.h,
-                      width: 305.w,
-                                    
-                                    
-                            
-                            
-                      decoration: BoxDecoration(
-                            color: Colors.white,
-                            
-                            
-                        borderRadius: BorderRadius.circular(21.r)
-                            
-                            
-                      ),
-                    
-                      child: Row(
-                       
-                        
-                        
-                        children: [
-                    
-                        Icon(Icons.star,color: Color(0xFF631BAF),),
-                        SizedBox(width: 100.w,),
-                    
-                        Text('data'),
-                         SizedBox(width: 100.w,),
-                         Text('data'),
-                    
-                    
-                    
-                    
-                    
-                      ],),
-                                    
-                                    
-                                    
-                    ),
-                  ),
-                
-                
-                
-                
-                ],),
+                    ],);
+                  }
+                ),
               ),
               SizedBox(height: 15.h,),
-        
-        
-              Container(
-        
-                margin: EdgeInsets.symmetric(horizontal: 15.w),
-                
-                
-                child: Text('Trending Subjects')),
-        
-        
-                SizedBox(
-        
-                  height: 60.h,
-                  child: ListView(
 
-                    scrollDirection: Axis.horizontal,
+              Align(
+                alignment: Alignment.centerRight,
+                child: Builder(
+                  builder: (context) {
+                    return Container(
+                      margin:EdgeInsets.only(right: 20.w),
+                      child: InkWell(
+                                        onTap: (){
+                      
+                                          if(loginController.isUserLogin.value==true){
+                                            //apply function
+                                          }else{
+                      
+                      
+                          showBottomSheet(                    
+                          context: context,
+                          builder: (ctx) => Container(
+                            padding: EdgeInsets.all(15.sp),
+                                height: 300.h,
+                                decoration:  BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20.r),
+                                        topRight: Radius.circular(20.r))),
+                                child: Column(
+                                
+                                  children: [
+                      
+                                    SizedBox(height: 20.h,),
+                                    Container(
+                                      width: 20.w,
+                                      height: 2.h,
+                                      color: Colors.grey,
+                                    ),
+                                    SizedBox(height: 15.h,),
+                      
+                                    Text('Login or SignUp',style: TextStyle(color: Colors.black,fontSize: 20.sp,fontWeight: FontWeight.w800),),
+                                    SizedBox(height: 15.h,),
+                                    TextFormField( 
+                                      controller: homeController.loginUserNameController,
+                                    
+                                     
+                                    
+                                      decoration: InputDecoration(
+                                        hintText: 'Email',
+                                      
+                      
+                                        
+                                        
+                                        
+                                        border: OutlineInputBorder(
+                      
+                                          borderRadius: BorderRadius.circular(20.r)
+                      
+                      
+                      
+                                        )),
+                                    
+                                    
+                                    
+                                    ),
+                                    SizedBox(height: 15.h,),
+                      
+                      
+                                      TextFormField( 
+                                      controller: homeController.loginMobController,
+                                    
+                                     
+                                    
+                                      decoration: InputDecoration(
+                                        hintText: 'Password',
+                                      
+                      
+                                        
+                                        
+                                        
+                                        border: OutlineInputBorder(
+                      
+                                          borderRadius: BorderRadius.circular(20.r)
+                      
+                      
+                      
+                                        )),
+                                    
+                                    
+                                    
+                                    ),
+                      
+                      
+                      
+                      
+                                    SizedBox(height: 15.h,),
+                                    InkWell(
+                                      onTap: (){
+                      
+                      
+                      
+                                         loginController.userLogin(username:  homeController.loginUserNameController.text, password: homeController.loginMobController.text);
+                      
+                                        // loginController.getOtp(mobileNumber:homeController.loginMobController.text,context: context);
+                      
+                      
+                      
+                                      },
+                                      child: Container(
+                                                      width: 200.w,
+                                                      height: 40.h,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius: BorderRadius.circular(20.r),
+                                                        color: Colors.purple,
+                                                      ),
+                                                      child:const  Center(
+                                                        child: Text(
+                                                          'Continue',
+                                                          style: TextStyle(color: Colors.white),
+                                                        ),
+                                                      ),
+                                                    ),
+                                    ),
+                      
+                                  ],
+                                ),
+                              ));
+                        
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                                          }
+                      
+                      
+                      
+                                          // loginController.getOtp(mobileNumber:homeController.loginMobController.text,context: context);
+                      
+                      
+                      
+                                        },
+                                        child: Container(
+                                                        width: 200.w,
+                                                        height: 40.h,
+                                                        decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(20.r),
+                                                          color: Colors.purple,
+                                                        ),
+                                                        child:const  Center(
+                                                          child: Text(
+                                                            'Apply Now',
+                                                            style: TextStyle(color: Colors.white),
+                                                          ),
+                                                        ),
+                                                      ),
+                                      ),
+                    );
+                  }
+                ),
+              ),
+        
+              // Container(
+        
+              //   margin: EdgeInsets.symmetric(horizontal: 15.w),
+                
+                
+              //   child: Text('Trending Subjects')),
+        
+        
+              //   SizedBox(
+        
+              //     height: 60.h,
+              //     child: ListView(
+
+              //       scrollDirection: Axis.horizontal,
                     
                     
-                    children: List.generate(10,(index)=>
+              //       children: List.generate(10,(index)=>
                       
                   
-                  Container(
-                    margin: EdgeInsets.only(left: 20.w),
+              //     Container(
+              //       margin: EdgeInsets.only(left: 20.w),
                   
-                    padding: EdgeInsets.all(12.sp),
+              //       padding: EdgeInsets.all(12.sp),
                   
-                    decoration: BoxDecoration(
+              //       decoration: BoxDecoration(
                   
-                      color: Colors.amber,
+              //         color: Colors.amber,
                       
                       
-                      borderRadius: BorderRadius.circular(20.r),),
+              //         borderRadius: BorderRadius.circular(20.r),),
                   
                   
-                  child: Center(child: Text('sdffffff')),
+              //     child: Center(child: Text('sdffffff')),
                   
-                  ),
-                  
-                  
-                  
+              //     ),
                   
                   
                   
-                  ),),
-                )
+                  
+                  
+                  
+                 // )
+                  
+                  
+                  //,),
+               // )
         
         
         

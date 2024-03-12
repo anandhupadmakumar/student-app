@@ -15,73 +15,13 @@ class ChatScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
+          const   Center(
               child: Icon(Icons.abc),
             ),
-            Text('Please login to start chat',),
+          const   Text('Please login to start chat',),
             InkWell(
               onTap: () {
-                showBottomSheet(
-                    context: context,
-                    builder: (ctx) => Container(
-                      padding: EdgeInsets.all(15.sp),
-                          height: 300.h,
-                          decoration:  BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20.r),
-                                  topRight: Radius.circular(20.r))),
-                          child: Column(
-                          
-                            children: [
-
-                              SizedBox(height: 20.h,),
-                              Container(
-                                width: 20.w,
-                                height: 2.h,
-                                color: Colors.grey,
-                              ),
-                              SizedBox(height: 15.h,),
-
-                              Text('Login or SignUp',style: TextStyle(color: Colors.black,fontSize: 20.sp,fontWeight: FontWeight.w800),),
-                              SizedBox(height: 15.h,),
-                              TextFormField( 
-                                controller: homeController.loginMobController,
-                               
-                              
-                                decoration: InputDecoration(border: OutlineInputBorder()),
-                              
-                              
-                              
-                              ),
-                              SizedBox(height: 15.h,),
-                              InkWell(
-                                onTap: (){
-
-                                  loginController.getOtp(mobileNumber:homeController.loginMobController.text,context: context);
-
-
-
-                                },
-                                child: Container(
-                                                width: 200.w,
-                                                height: 40.h,
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(20.r),
-                                                  color: Colors.purple,
-                                                ),
-                                                child:const  Center(
-                                                  child: Text(
-                                                    'Continue',
-                                                    style: TextStyle(color: Colors.white),
-                                                  ),
-                                                ),
-                                              ),
-                              ),
-
-                            ],
-                          ),
-                        ));
+                loginBottomSheetWidget(context);
               },
               child: Container(
                 width: 200.w,
@@ -90,7 +30,7 @@ class ChatScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20.r),
                   color: Colors.purple,
                 ),
-                child: Center(
+                child:const  Center(
                   child: Text(
                     'Login',
                     style: TextStyle(color: Colors.white),
@@ -103,4 +43,74 @@ class ChatScreen extends StatelessWidget {
       ),
     );
   }
+
+ 
 }
+
+
+ PersistentBottomSheetController<dynamic> loginBottomSheetWidget(BuildContext context) {
+    return showBottomSheet(
+                  context: context,
+                  builder: (ctx) => Container(
+                    padding: EdgeInsets.all(15.sp),
+                        height: 300.h,
+                        decoration:  BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20.r),
+                                topRight: Radius.circular(20.r))),
+                        child: Column(
+                        
+                          children: [
+
+                            SizedBox(height: 20.h,),
+                            Container(
+                              width: 20.w,
+                              height: 2.h,
+                              color: Colors.grey,
+                            ),
+                            SizedBox(height: 15.h,),
+
+                            Text('Login or SignUp',style: TextStyle(color: Colors.black,fontSize: 20.sp,fontWeight: FontWeight.w800),),
+                            SizedBox(height: 15.h,),
+                            TextFormField( 
+                              controller: homeController.loginMobController,
+                             
+                            
+                              decoration: InputDecoration(border: OutlineInputBorder()),
+                            
+                            
+                            
+                            ),
+                            SizedBox(height: 15.h,),
+                            InkWell(
+                              onTap: (){
+                               
+
+                                // loginController.getOtp(mobileNumber:homeController.loginMobController.text,context: context);
+
+                                
+
+
+
+                              },
+                              child: Container(
+                                              width: 200.w,
+                                              height: 40.h,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(20.r),
+                                                color: Colors.purple,
+                                              ),
+                                              child:const  Center(
+                                                child: Text(
+                                                  'Continue',
+                                                  style: TextStyle(color: Colors.white),
+                                                ),
+                                              ),
+                                            ),
+                            ),
+
+                          ],
+                        ),
+                      ));
+  }

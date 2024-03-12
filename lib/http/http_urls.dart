@@ -1,10 +1,10 @@
 class HttpUrls {
-  static String baseUrl = 'https://trinityapi.trackbox.in';
+  // static String baseUrl = 'https://trinityapi.trackbox.in';
   // static String baseUrl = 'http://DESKTOP-IK6ME8M:3515';https://de01-103-214-232-130.ngrok-free.app
 
   // static String baseUrl = 'https://puny-shoes-repeat.loca.lt';
   // static String baseUrl = 'https://nine-icons-joke.loca.lt';
-  // static String baseUrl = 'https://6e78-103-214-232-130.ngrok-free.app';
+  static String baseUrl = 'https://d722-103-214-232-130.ngrok-free.app';
 
   // static String baseUrl='http://DESKTOP-ST1542P:3509';
   // static String baseUrl='http://DESKTOP-RATELVD:3514';
@@ -12,23 +12,34 @@ class HttpUrls {
   // static String baseUrl = 'http://DESKTOP-CNJB3P7:3514';
   // static String baseUrl = 'https://smooth-socks-attend.loca.lt';
 
-  //endpoints
-  static String login = '/api/authaccount/login';
+  //endpoints Login/Student_Login_Check
+  static String login = '/Login/Student_Login_Check';
+
+  static String courseSearch = '/Public_Data/Public_Search_Course/';
+
+  static String getDashBoardData = '/Public_Data/Get_Dashboard_Data/';
+
+  static String saveStudentCourse = '/Public_Data/Save_Student_Course/';
+
+  static String getStudentProfileDetails = '/Student/Get_Student_Details/';
+  static String updateStudent = '/Public_Data/Update_Student/';
+   static String saveQualification = '/Student/Save_Qualification/';
+             
+   static String saveWorkExperience = '/Student/Save_work_experience/';
 
 
-    static String courseSearch = '/Public_Data/Public_Search_Course/';
-  
 
-  static String agentLogin = '/Login/Agent_Login/';
+      static String getQualificationDetails = '/Student/Get_QualificationDetails/';
 
-  static String getOtp = '/public_Data/Get_OTP/';
+
   static String checkOtp = '/public_Data/Check_OTP/';
   static String notificationUrl = '/Customer_Request_Notification';
   static String notificationUrlReschedule =
       '/Task_Reschedule_Request_Notification';
 
   static String saveCustomerRequest = '/Customer/Save_Customer_Request/';
-  static String getCustomerEquipments = '/Customer/Get_Customer_Location_Equipments/';
+  static String getCustomerEquipments =
+      '/Customer/Get_Customer_Location_Equipments/';
 
   static String getCustomerPlace = '/Customer/get_Customer_Place/';
   static String saveEnquiries = '/public_Data/Save_Enquiries/';

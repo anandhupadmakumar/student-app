@@ -18,7 +18,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
   final HomeController homeController = Get.put(HomeController());
   @override
   void initState() {
-    homeController.getUniversityList();
+    homeController.getDashBoardData();
     super.initState();
   }
 
@@ -93,7 +93,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
               SizedBox(
                 height: 15.h,
               ),
-              commonListViewWidget(),
+              commonListViewWidget(isCourse: true),
               SizedBox(
                 height: 15.h,
               ),
@@ -236,61 +236,91 @@ class _ExploreScreenState extends State<ExploreScreen> {
     );
   }
 
-  Container commonListViewWidget() {
+  Container commonListViewWidget({ bool isCourse=false}) {
     return Container(
         width: Get.width,
         height: 100.h,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          // shrinkWrap: true,
+        child: GetBuilder<HomeController>(
+          builder: (data) {
+            return ListView(
+              scrollDirection: Axis.horizontal,
+              // shrinkWrap: true,
+            
+              children: List.generate(
+                isCourse==true?data. universityCourseDataList.length: data.universityListData.length,
+                  (index) => GetBuilder<HomeController>(builder: (universityData) {
+                        return InkWell(
+                          onTap: ()async {
+                            universityData.courseDetails=null;
 
-          children: List.generate(
-              homeController.universityListData.length,
-              (index) => GetBuilder<HomeController>(builder: (universityData) {
-                    return InkWell(
-                      onTap: () {
-                        Get.to(() =>const  UniversityResultScreen());
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(left: 15.w),
-                        child: Card(
-                          surfaceTintColor: Colors.white,
-                          elevation: 5,
+
+                            if(isCourse==true){
+                           await   homeController.getCourseDetails(courseName:universityData.universityCourseDataList[index]
+                                              .courseName ??
+                                          '' );
+
+
+                                            Get.to(() =>const  UniversityResultScreen());
+                            }else{
+                              Get.to(() =>const  UniversityResultScreen());
+
+                            }
+
+
+
+                            
+                          },
                           child: Container(
                             margin: EdgeInsets.only(left: 15.w),
-                            width: 200.w,
-                            // height: 120,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Image(
-                                    width: 20.w,
-                                    height: 20.h,
-                                    image: AssetImage(universityData
-                                        .universityListData[index].imgUrl!)),
-                                SizedBox(
-                                  height: 10.h,
+                            child: Card(
+                              surfaceTintColor: Colors.white,
+                              elevation: 5,
+                              child: Container(
+                                margin: EdgeInsets.only(left: 15.w),
+                                width: 200.w,
+                                // height: 120,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // Image(
+                                    //     width: 20.w,
+                                    //     height: 20.h,
+                                    //     image: AssetImage(universityData
+                                    //         .universityListData[index].!)),
+                                    // SizedBox(
+                                    //   height: 10.h,
+                                    // ),
+                                    Text(isCourse==true?universityData.universityCourseDataList[index]
+                                              .courseName ??
+                                          '':
+                                      universityData.universityListData[index]
+                                              .universityName ??
+                                          '',
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    SizedBox(
+                                      height: 15.h,
+                                    ),
+            
+                                   
+                                    Text(
+                                      isCourse==true?universityData
+                                            .universityCourseDataList[index].universityName ??
+                                        '':
+                                      
+                                      universityData
+                                            .universityListData[index].countryName ??
+                                        ''),
+                                  ],
                                 ),
-                                Text(
-                                  universityData.universityListData[index]
-                                          .universityName ??
-                                      '',
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                SizedBox(
-                                  height: 15.h,
-                                ),
-                                Text(universityData
-                                        .universityListData[index].country ??
-                                    ''),
-                              ],
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    );
-                  })),
+                        );
+                      })),
+            );
+          }
         ));
   }
 
@@ -314,7 +344,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
           ),
           IconButton(
               onPressed: () async {
-                await homeController.getUniversities();
+                // await homeController.getUniversities();
 
                 showSearch(context: context, delegate: CustomSearchDelegate());
               },

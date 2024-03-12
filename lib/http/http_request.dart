@@ -15,7 +15,7 @@ class HttpRequest {
 
     final Dio dio = Dio();
     final prefs = await SharedPreferences.getInstance();
-    final String token = prefs.getString('token') ?? "";
+    final String token = prefs.getString('trinity_token') ?? "";
     final response = await dio.get(
       '${HttpUrls.baseUrl}$endPoint',
       options: Options(headers: {
@@ -38,7 +38,7 @@ class HttpRequest {
     }
     final Dio dio = Dio();
     final prefs = await SharedPreferences.getInstance();
-    final String token = prefs.getString('token') ?? "";
+    final String token = prefs.getString('trinity_token') ?? "";
     try {
       final Response response = await dio.post(
         '${HttpUrls.baseUrl}$endPoint',
@@ -47,7 +47,7 @@ class HttpRequest {
           "Content-Type": "application/json",
           "Authorization": "Bearer $token",
         }),
-        queryParameters: bodyData,
+        data: bodyData,
       );
       if (kDebugMode) {
         print('post result ====> ${response.data}  ');
