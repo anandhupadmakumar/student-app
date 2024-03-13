@@ -33,6 +33,9 @@ class ProfileController extends GetxController {
 
   RxBool isAddQualification = false.obs;
   RxBool isAddWorkExperience = false.obs;
+  List qualificationDataList = [];
+  List workExperienceDataList = [];
+
 
   void getStudentDetails() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -156,11 +159,6 @@ class ProfileController extends GetxController {
     });
   }
 
-
-
-
-
-  
   void saveWorkExperience() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     final studentId = preferences.getInt('trinity_student_id') ?? '';
@@ -177,7 +175,7 @@ class ProfileController extends GetxController {
         "Designation": workDesignationController.text,
         "Salary": workSalaryController.text,
         "country_6": 0,
-        "country6_name":'',
+        "country6_name": '',
         "Salary_Mode": '',
       },
       endPoint: '${HttpUrls.saveWorkExperience}',
@@ -187,13 +185,58 @@ class ProfileController extends GetxController {
 
         List data = value.data[0];
         if (data.isNotEmpty) {
-          workCompanyNameController .clear();
-   workDesignationController .clear();
-   workSalaryController .clear();
-   wrokFromYearcontroller .clear();
-   workToYearController .clear();
+          workCompanyNameController.clear();
+          workDesignationController.clear();
+          workSalaryController.clear();
+          wrokFromYearcontroller.clear();
+          workToYearController.clear();
         }
       }
     });
   }
+
+  void getQualificationDetails() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    final userId = preferences.getInt('trinity_student_id') ?? '';
+
+    await HttpRequest.httpGetRequest(
+      endPoint: '${HttpUrls.getQualificationDetails}$userId',
+    ).then((value) async {
+      if (value != null) {
+        // print('login ${value.data}');
+
+        List data = value.data[0];
+        if (data.isNotEmpty) {
+          print(data);
+          qualificationDataList = data;
+        }
+      }
+    });
+    update();
+  }
+
+
+  void getWorkExperienceDetails() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    final userId = preferences.getInt('trinity_student_id') ?? '';
+
+    await HttpRequest.httpGetRequest(
+      endPoint: '${HttpUrls.getWorkExperienceDetails}$userId',
+    ).then((value) async {
+      if (value != null) {
+        // print('login ${value.data}');
+
+        List data = value.data[0];
+        if (data.isNotEmpty) {
+          print(data);
+          workExperienceDataList = data;
+        }
+      }
+    });
+    update();
+  }
+
+
+
+
 }

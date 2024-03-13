@@ -4,7 +4,7 @@ class HttpUrls {
 
   // static String baseUrl = 'https://puny-shoes-repeat.loca.lt';
   // static String baseUrl = 'https://nine-icons-joke.loca.lt';
-  static String baseUrl = 'https://d722-103-214-232-130.ngrok-free.app';
+  static String baseUrl = 'https://trinityapi.ufstech.co.in';
 
   // static String baseUrl='http://DESKTOP-ST1542P:3509';
   // static String baseUrl='http://DESKTOP-RATELVD:3514';
@@ -23,14 +23,14 @@ class HttpUrls {
 
   static String getStudentProfileDetails = '/Student/Get_Student_Details/';
   static String updateStudent = '/Public_Data/Update_Student/';
-   static String saveQualification = '/Student/Save_Qualification/';
-             
-   static String saveWorkExperience = '/Student/Save_work_experience/';
+  static String saveQualification = '/Student/Save_Qualification/';
 
+  static String saveWorkExperience = '/Student/Save_work_experience/';
 
+  static String getQualificationDetails = '/Student/Get_QualificationDetails/';
 
-      static String getQualificationDetails = '/Student/Get_QualificationDetails/';
-
+  static String getWorkExperienceDetails =
+      '/Student/Get_WorkexperienceDetails/';
 
   static String checkOtp = '/public_Data/Check_OTP/';
   static String notificationUrl = '/Customer_Request_Notification';
