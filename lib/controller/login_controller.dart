@@ -44,6 +44,8 @@ class LoginController extends GetxController {
           preferences.setInt(
               'trinity_student_id', value.data['0'][0]['Student_Id']);
 
+              loginController.isUserLogin.value=true;
+
           Get.back();
         }
 
@@ -53,5 +55,20 @@ class LoginController extends GetxController {
         //
       }
     });
+  }
+
+
+
+   logout() async{
+
+
+     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    loginController.isUserLogin.value = false;
+
+    sharedPreferences.clear();
+    Get.back();
+
+  
+
   }
 }

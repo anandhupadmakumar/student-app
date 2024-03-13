@@ -2,15 +2,17 @@ class HttpUrls {
   // static String baseUrl = 'https://trinityapi.trackbox.in';
   // static String baseUrl = 'http://DESKTOP-IK6ME8M:3515';https://de01-103-214-232-130.ngrok-free.app
 
-  // static String baseUrl = 'https://puny-shoes-repeat.loca.lt';
+  static String baseUrl = 'https://f747-103-214-232-130.ngrok-free.app';
   // static String baseUrl = 'https://nine-icons-joke.loca.lt';
-  static String baseUrl = 'https://trinityapi.ufstech.co.in';
+  // static String baseUrl = 'https://trinityapi.ufstech.co.in';
 
   // static String baseUrl='http://DESKTOP-ST1542P:3509';
   // static String baseUrl='http://DESKTOP-RATELVD:3514';
   // static String baseUrl = 'http://DESKTOP-NLO2RMM:3514';
   // static String baseUrl = 'http://DESKTOP-CNJB3P7:3514';
   // static String baseUrl = 'https://smooth-socks-attend.loca.lt';
+  static String documentBaseUrl =
+      'https://ufsnabeelphotoalbum.s3.us-east-2.amazonaws.com/trinity/';
 
   //endpoints Login/Student_Login_Check
   static String login = '/Login/Student_Login_Check';
@@ -31,6 +33,21 @@ class HttpUrls {
 
   static String getWorkExperienceDetails =
       '/Student/Get_WorkexperienceDetails/';
+
+  
+
+
+      
+  static String saveIeltsDetails =
+      '/Student/Save_Ielts_Details/';
+
+      static String getIeltsDetails='/Internship/Get_Course_Load_Data/';
+
+ static String getStudentCourseApply='/Student/Get_Student_Course_Apply/';
+  static String saveDocument='/Student/Save_Document_App/';
+
+ static String getDocumentListDropDown='/Document/Search_Document/'; 
+     
 
   static String checkOtp = '/public_Data/Check_OTP/';
   static String notificationUrl = '/Customer_Request_Notification';

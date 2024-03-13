@@ -200,13 +200,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
             imgList.length,
             (index) => InkWell(
                   onTap: () {
-                    print(countryNameList[index]);
+                    // print(countryNameList[index]);
 
-                    Get.to(() => LocationScreen(
-                          title: countryNameList[index],
-                          imgUrl: imgList[index],
-                          universityCount: universityCountList[index],
-                        ));
+                    // Get.to(() => LocationScreen(
+                    //       title: countryNameList[index],
+                    //       imgUrl: imgList[index],
+                    //       universityCount: universityCountList[index],
+                    //     ));
                   },
                   child: Container(
                       margin: EdgeInsets.only(left: 20.w),
@@ -260,9 +260,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                           '' );
 
 
-                                            Get.to(() =>const  UniversityResultScreen());
+                                           
                             }else{
-                              Get.to(() =>const  UniversityResultScreen());
+                              // Get.to(() =>const  UniversityResultScreen());
 
                             }
 

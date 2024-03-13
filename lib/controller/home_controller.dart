@@ -1,9 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:student_app/http/http_request.dart';
 import 'package:student_app/http/http_urls.dart';
 import 'package:student_app/model/dashboard_data_model.dart';
+import 'package:student_app/view/home/university/university_search_result_screen.dart';
 
 import '../model/course_details_data_model.dart';
 import '../model/course_list_model.dart';
@@ -81,6 +83,7 @@ class HomeController extends GetxController {
 
 
         courseDetails=CourseDetailsModel.fromJson(value.data[0][0]);
+         Get.to(() =>const  UniversityResultScreen());
 
         print(courseDetails);
         }
@@ -95,13 +98,26 @@ class HomeController extends GetxController {
 
 
 
-  courseApply({required String courseName}) async {
+  courseApply({required CourseDetailsModel? courseName}) async {
+
+    print(courseName);
+
+
+     SharedPreferences preferences = await SharedPreferences.getInstance();
+    final studentId = preferences.getInt('trinity_student_id') ?? '';
+
+  //  List universityIdList=universityCourseDataList.where((element) {
+  //   print(element.courseName);
+  //   print(courseName);
+  //   return element.courseName==courseName;
+
+  //  } ).toList();
 
     Map<String,dynamic> mapData={
- "Student_Id": 19,
+ "Student_Id": studentId,
     "Course_Apply": [
         {
-            "Course_Id": 7525
+            "Course_Id": courseName?.courseId??0,
         }
     ]
 
@@ -115,8 +131,10 @@ class HomeController extends GetxController {
         if (value.data.isNotEmpty) {
         print('courseDetails   ${value.data}');
 
+        ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(content: Text('Applied Successfully')));
 
-        courseDetails=CourseDetailsModel.fromJson(value.data[0][0]);
+
+        // courseDetails=CourseDetailsModel.fromJson(value.data[0][0]);
 
         print(courseDetails);
         }

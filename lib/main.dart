@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:student_app/controller/login_controller.dart';
 import 'package:student_app/view/home/widgets/bottom_navigation.dart';
 import 'package:student_app/view/login/login_screen.dart';
 
-void main() {
+Future<void> main() async {
   runApp(const MyApp());
+
+  SharedPreferences sharedPreferences= await SharedPreferences.getInstance();
+  if(sharedPreferences.getString('trinity_token')!=null){
+    loginController.isUserLogin.value=true;
+  }
 }
 
 class MyApp extends StatelessWidget {

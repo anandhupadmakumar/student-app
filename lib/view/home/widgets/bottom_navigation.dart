@@ -17,16 +17,22 @@ class BottomNavigationScreen extends StatefulWidget {
 
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
 
+  @override
+  void initState() {
+    
+    super.initState();
+  }
+
   final pages= [
 
     //explore screen
     ExploreScreen(),
     // chat screen
-   const ChatScreen(),
-    // meet screen
-   const MeetScreen(),
-    // applications screen
-  const  ApplicationsScreen(),
+  //  const ChatScreen(),
+  //   // meet screen
+  //  const MeetScreen(),
+  //   // applications screen
+  // const  ApplicationsScreen(),
 
     //profile screen
   const  ProfileScreen()
@@ -56,10 +62,10 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
           
           items:const  [
             
-            BottomNavigationBarItem(icon: Icon(Icons.search,color: Colors.black,),label: 'Explore'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outline_outlined,color: Colors.black,),label: 'Chat'),
-          BottomNavigationBarItem(icon: Icon(Icons.video_chat_outlined,color: Colors.black,),label: 'Meet'),
-          BottomNavigationBarItem(icon: Icon(Icons.sticky_note_2_outlined,color: Colors.black,),label: 'Applications'),
+            BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.black,),label: 'Home'),
+          // BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outline_outlined,color: Colors.black,),label: 'Chat'),
+          // BottomNavigationBarItem(icon: Icon(Icons.video_chat_outlined,color: Colors.black,),label: 'Meet'),
+          // BottomNavigationBarItem(icon: Icon(Icons.sticky_note_2_outlined,color: Colors.black,),label: 'Applications'),
           BottomNavigationBarItem(icon: Icon(Icons.person,color: Colors.black,),label: 'Profile'),
           
           

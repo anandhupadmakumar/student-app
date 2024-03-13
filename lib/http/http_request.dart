@@ -32,7 +32,7 @@ class HttpRequest {
   }
 
   static Future<Response?> httpPostRequest(
-      {Map<String, dynamic>? bodyData, String endPoint = ''}) async {
+      {Map<String, dynamic>? bodyData, String endPoint = '',bool?isQuery=false}) async {
     if (kDebugMode) {
       print('post request ====> $endPoint $bodyData ');
     }
@@ -47,6 +47,7 @@ class HttpRequest {
           "Content-Type": "application/json",
           "Authorization": "Bearer $token",
         }),
+        queryParameters:isQuery==true?bodyData:null ,
         data: bodyData,
       );
       if (kDebugMode) {
