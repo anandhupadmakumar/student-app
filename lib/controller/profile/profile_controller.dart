@@ -36,9 +36,7 @@ class ProfileController extends GetxController {
   TextEditingController wrokFromYearcontroller = TextEditingController();
   TextEditingController workToYearController = TextEditingController();
 
-
-
-  //add Language 
+  //add Language
   TextEditingController gMatScroreController = TextEditingController();
   TextEditingController listeningScoreController = TextEditingController();
   TextEditingController neetScroreController = TextEditingController();
@@ -48,18 +46,22 @@ class ProfileController extends GetxController {
   TextEditingController speakingScroreController = TextEditingController();
   TextEditingController examDateController = TextEditingController();
 
-
-
-  TextEditingController documentSelectedFileController = TextEditingController();
-
-
-
+  TextEditingController documentSelectedFileController =
+      TextEditingController();
 
   RxBool isAddQualification = false.obs;
   RxBool isAddWorkExperience = false.obs;
 
-  RxString examDropDownValue=''.obs;
-   RxString documentDropDownValue=''.obs;
+  RxInt qualificationId = 0.obs;
+  RxInt qualificationSlno = 0.obs;
+  RxInt workExperienceId = 0.obs;
+  RxInt workExperienceSlno = 0.obs;
+  RxInt languageId = 0.obs;
+  RxInt languageSlno = 0.obs;
+
+  RxString examDropDownValue = ''.obs;
+  RxString documentDropDownValue = ''.obs;
+   RxString profileGenderDropDownValue = ''.obs;
 
   RxBool isAddLanguage = false.obs;
   List qualificationDataList = [];
@@ -68,11 +70,28 @@ class ProfileController extends GetxController {
   List ieltsDropDownList = [];
   List documentTypeDropDownList = [];
   List courseApplyApplicationList = [];
+
+  List studentDocumentDetailsList = [];
+
+  List languageDetailsList = [];
   Uint8List? fileBytes;
- FilePickerResult? sendSelectedFile;
+  FilePickerResult? sendSelectedFile;
 
+  profileInitFunctions() async {
+    await profileController.getStudentDetails();
+    await profileController.getQualificationDetails();
 
-  void getStudentDetails() async {
+    await profileController.getWorkExperienceDetails();
+    await profileController.getIeltsDropDownList();
+
+    await profileController.getApplication();
+    await profileController.getDocumentDropDownList();
+    await profileController.getDocumentDetails();
+
+    await profileController.getLanguageDetails();
+  }
+
+  getStudentDetails() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     final userId = preferences.getInt('trinity_student_id') ?? '';
 
@@ -85,7 +104,7 @@ class ProfileController extends GetxController {
       endPoint: '${HttpUrls.getStudentProfileDetails}$userId',
     ).then((value) async {
       if (value != null) {
-        // print('login ${value.data}');
+        print('login ${value.data}');
 
         List data = value.data[0];
         if (data.isNotEmpty) {
@@ -117,9 +136,7 @@ class ProfileController extends GetxController {
     });
   }
 
-
-
-   pickfile() async {
+  pickfile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['jpg', 'pdf', 'doc'],
@@ -129,15 +146,13 @@ class ProfileController extends GetxController {
     }
     print(result);
     print('a.......................');
-if(result!=null){
-   AwsUpload.uploadToAws(result);
-
-}
-   sendSelectedFile = result;
+    if (result != null) {
+      AwsUpload.uploadToAws(result);
+    }
+    sendSelectedFile = result;
 
     // final data=  await   AwsUpload.uploadToAws(result!);
 
-   
     // purchaseController.update();
 
 //  String base64String = purchaseController. bytesToBase64(fileBytes!);
@@ -194,8 +209,8 @@ if(result!=null){
 
     await HttpRequest.httpPostRequest(
       bodyData: {
-        "Qualification_Id": 0,
-        "slno": 0,
+        "Qualification_Id": qualificationId.value,
+        "slno": qualificationSlno.value,
         "Student_id": studentId,
         "Credential": studentClasscontroller.text,
         "MarkPer": studentPercentageController.text,
@@ -221,6 +236,10 @@ if(result!=null){
           studentToYearController.clear();
           studentFieldcontroller.clear();
           studentSpecificationController.clear();
+
+
+           await profileController.getQualificationDetails();
+
         }
       }
     });
@@ -232,8 +251,8 @@ if(result!=null){
 
     await HttpRequest.httpPostRequest(
       bodyData: {
-        "Work_Experience_Id": 0,
-        "Slno": 0,
+        "Work_Experience_Id": workExperienceId.value,
+        "Slno": workExperienceId.value,
         "Student_Id": studentId,
         "Ex_From": wrokFromYearcontroller.text,
         "Ex_To": workToYearController.text,
@@ -257,12 +276,15 @@ if(result!=null){
           workSalaryController.clear();
           wrokFromYearcontroller.clear();
           workToYearController.clear();
+
+
+           await profileController.getWorkExperienceDetails();
         }
       }
     });
   }
 
-  void getQualificationDetails() async {
+  getQualificationDetails() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     final userId = preferences.getInt('trinity_student_id') ?? '';
 
@@ -282,8 +304,7 @@ if(result!=null){
     update();
   }
 
-
-  void getWorkExperienceDetails() async {
+  getWorkExperienceDetails() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     final userId = preferences.getInt('trinity_student_id') ?? '';
 
@@ -303,32 +324,31 @@ if(result!=null){
     update();
   }
 
-
   void saveIeltsDetails() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     final studentId = preferences.getInt('trinity_student_id') ?? '';
 
-
-
-  //    gMatScroreController 
-  //  listeningScoreController 
-  //  neetScroreController 
-  //  readingScroreController 
-  //  ieltsScrorecontroller 
-  //  writingScroreController 
-  //  speakingScroreController 
+    //    gMatScroreController
+    //  listeningScoreController
+    //  neetScroreController
+    //  readingScroreController
+    //  ieltsScrorecontroller
+    //  writingScroreController
+    //  speakingScroreController
 
     await HttpRequest.httpPostRequest(
       bodyData: {
         "Ielts_Details_Id": 0,
         "Slno": 0,
         "Student_Id": studentId,
-        "Ielts_Type":ieltsDropDownList.where((element) => element['Ielts_Type_Name']==examDropDownValue.value).toList()[0]['Ielts_Type'],
+        "Ielts_Type": ieltsDropDownList
+            .where((element) =>
+                element['Ielts_Type_Name'] == examDropDownValue.value)
+            .toList()[0]['Ielts_Type'],
         "Ielts_Type_Name": examDropDownValue.value,
-        "Exam_Check":1,
-        "Exam_Date": DateFormat('yyyy-MM-dd').format(
-                              DateFormat('dd-MM-yyyy').parse((
-                                  examDateController.text))),
+        "Exam_Check": 1,
+        "Exam_Date": DateFormat('yyyy-MM-dd')
+            .format(DateFormat('dd-MM-yyyy').parse((examDateController.text))),
         "Description": '',
         "Listening": listeningScoreController.text,
         "Reading": readingScroreController.text,
@@ -337,9 +357,6 @@ if(result!=null){
         "Overall": '',
         "gre_score": gMatScroreController.text,
         "neet_score": neetScroreController.text,
-
-
-
       },
       endPoint: '${HttpUrls.saveIeltsDetails}',
     ).then((value) async {
@@ -348,24 +365,24 @@ if(result!=null){
 
         List data = value.data[0];
         if (data.isNotEmpty) {
-          
-     gMatScroreController .clear();
-   listeningScoreController .clear();
-   neetScroreController .clear();
-   readingScroreController .clear();
-   ieltsScrorecontroller .clear();
-   writingScroreController .clear();
-   speakingScroreController .clear();
-   examDateController.clear();
+          gMatScroreController.clear();
+          listeningScoreController.clear();
+          neetScroreController.clear();
+          readingScroreController.clear();
+          ieltsScrorecontroller.clear();
+          writingScroreController.clear();
+          speakingScroreController.clear();
+          examDateController.clear();
+
+
+
+           await profileController.getLanguageDetails();
         }
       }
     });
   }
 
-
-
-
-  void getIeltsDropDownList() async {
+  getIeltsDropDownList() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     final userId = preferences.getInt('trinity_student_id') ?? '';
 
@@ -378,52 +395,41 @@ if(result!=null){
         List data = value.data;
         if (data.isNotEmpty) {
           print(data);
-    
 
-          ieltsDropDownList   = data[11];
-          ieltsDropDownList.insert(0,{"Ielts_Type": 0, "Ielts_Type_Name": "Select"});
+          ieltsDropDownList = data[11];
+          ieltsDropDownList
+              .insert(0, {"Ielts_Type": 0, "Ielts_Type_Name": "Select"});
 
-            
           print('dropdown item  document${documentTypeDropDownList}');
         }
       }
     });
     update();
   }
-void getDocumentDropDownList() async {
+
+  getDocumentDropDownList() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     final userId = preferences.getInt('trinity_student_id') ?? '';
 
     await HttpRequest.httpGetRequest(
-      bodyData: {
-
-
-        'Document_Name':''
-
-
-
-      },
+      bodyData: {'Document_Name': ''},
       endPoint: '${HttpUrls.getDocumentListDropDown}',
     ).then((value) async {
       if (value != null) {
         print('login ${value.data}');
 
-documentTypeDropDownList=value.data[0];
- documentTypeDropDownList.insert(0,{"Document_Id": 0, "Document_Name": "Select","Category_Id":'null'});
-
-       
-        
+        documentTypeDropDownList = value.data[0];
+        documentTypeDropDownList.insert(0, {
+          "Document_Id": 0,
+          "Document_Name": "Select",
+          "Category_Id": 'null'
+        });
       }
     });
     update();
   }
 
-
-
-
-
-
-  void getApplication() async {
+  getApplication() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     final userId = preferences.getInt('trinity_student_id') ?? '';
 
@@ -433,42 +439,35 @@ documentTypeDropDownList=value.data[0];
       if (value != null) {
         print('login ${value.data}');
 
-
-        courseApplyApplicationList=value.data[0];
-
-       
-        
+        courseApplyApplicationList = value.data[0];
       }
     });
     update();
   }
 
-
-
-   saveDocument() async {
+  saveDocument() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     final studentId = preferences.getInt('trinity_student_id') ?? '';
 
-dynamic data;
+    dynamic data;
 
- if (documentSelectedFileController.text.isNotEmpty &&
+    if (documentSelectedFileController.text.isNotEmpty &&
         documentSelectedFileController.text != '') {
       data = await AwsUpload.uploadToAws(sendSelectedFile!);
     }
 
     print(data);
 
-
-    await HttpRequest.httpPostRequest(isQuery: true,
+    await HttpRequest.httpPostRequest(
+      isQuery: true,
       bodyData: {
-
-        "Student_Id":studentId,
-        "Document_Id":documentTypeDropDownList.where((element) => element['Document_Name']==documentDropDownValue.value).toList()[0]['Document_Id'],
-        "File_Name":documentSelectedFileController.text,
-        "Image_Detail":data,
-
-
-       
+        "Student_Id": studentId,
+        "Document_Id": documentTypeDropDownList
+            .where((element) =>
+                element['Document_Name'] == documentDropDownValue.value)
+            .toList()[0]['Document_Id'],
+        "File_Name": documentSelectedFileController.text,
+        "Image_Detail": data,
       },
       endPoint: '${HttpUrls.saveDocument}',
     ).then((value) async {
@@ -477,23 +476,100 @@ dynamic data;
 
         List data = value.data;
         if (data.isNotEmpty) {
-         documentDropDownValue.value='';
-         documentSelectedFileController.clear();
+          documentDropDownValue.value = '';
+          documentSelectedFileController.clear();
         }
       }
     });
     update();
   }
 
+  getDocumentDetails() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    final userId = preferences.getInt('trinity_student_id') ?? '';
 
+    await HttpRequest.httpGetRequest(
+      endPoint: '${HttpUrls.getStudentDocument}$userId',
+    ).then((value) async {
+      if (value != null) {
+        print('student document data ${value.data}');
 
+        studentDocumentDetailsList = value.data[0];
+      }
+    });
+    update();
+  }
 
+  getLanguageDetails() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    final userId = preferences.getInt('trinity_student_id') ?? '';
 
+    await HttpRequest.httpGetRequest(
+      endPoint: '${HttpUrls.getLanguageDetails}$userId',
+    ).then((value) async {
+      if (value != null) {
+        print('student language data ${value.data}');
 
+        languageDetailsList = value.data[0];
+      }
+    });
+    update();
+  }
 
+  //delete section
 
+  deleteQualification({required qualificationId, required int dltIndex}) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    final userId = preferences.getInt('trinity_student_id') ?? '';
 
+    await HttpRequest.httpGetRequest(
+      endPoint: '${HttpUrls.deleteQualfication}$qualificationId',
+    ).then((value) async {
+      if (value != null) {
+        if (value.data[0].isNotEmpty) {
+          qualificationDataList.removeAt(dltIndex);
+        }
 
+        print('delete qualification ${value.data}');
+      }
+    });
+    update();
+  }
 
+  deleteWorkExperience(
+      {required workExperienceId, required int dltIndex}) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    final userId = preferences.getInt('trinity_student_id') ?? '';
 
+    await HttpRequest.httpGetRequest(
+      endPoint: '${HttpUrls.deleteWorkExperience}$workExperienceId',
+    ).then((value) async {
+      if (value != null) {
+        if (value.data[0].isNotEmpty) {
+          workExperienceDataList.removeAt(dltIndex);
+        }
+
+        print('delete qualification ${value.data}');
+      }
+    });
+    update();
+  }
+
+  deleteLanguage({required languageId, required int dltIndex}) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    final userId = preferences.getInt('trinity_student_id') ?? '';
+
+    await HttpRequest.httpGetRequest(
+      endPoint: '${HttpUrls.deleteLanguage}$languageId',
+    ).then((value) async {
+      if (value != null) {
+        if (value.data[0].isNotEmpty) {
+          languageDetailsList.removeAt(dltIndex);
+        }
+
+        print('delete qualification ${value.data}');
+      }
+    });
+    update();
+  }
 }

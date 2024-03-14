@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:student_app/http/http_request.dart';
 import 'package:student_app/http/http_urls.dart';
@@ -23,6 +24,65 @@ class HomeController extends GetxController {
   TextEditingController loginMobController = TextEditingController();
   TextEditingController loginUserNameController = TextEditingController();
   TextEditingController pinPutOtpController = TextEditingController();
+
+  List<Map<String,dynamic>> locationDataList=[
+    
+    
+    {
+      "country_name":"AUSTRALIA",
+      "img_url":"assets/location/australia.png",
+
+      "description":"World class academic recognition and up to 4-7 year stay back as well as easy part time availability. Australia provides students the opportunity to work part-time while studying, which would help you offset some of your living costs. International students are allowed to work for up to 20 hours/ 40 Hours per fortnight a week during semesters and full-time during the university holidays.",
+"in_take":"INTAKE: September, November.",
+
+  },
+   {
+      "country_name":"UK",
+      "img_url":"assets/location/uk.png",
+      "description":"High quality of education from world and recognized universities and affordable fees structure With or without IELTS and Availability of scholarships. Two year stay-back and Instalment wise fee Payment and Spouse can work full time.",
+      "in_take":"INTAKE: September, November.",
+
+
+
+  },
+   {
+      "country_name":"CANADA",
+      "img_url":"assets/location/canada.png",
+      "description":"Less expensive (Tuition fees and living cost) than US, UK or Australia and possibility of permanent residency while Post study work visa and good job opportunities after completion of studies. Canadian’s quality of life rank 1 in the world.",
+      "in_take":"INTAKE: September, November.",
+
+
+
+  },
+   {
+      "country_name":"NEW ZEALAND",
+      "img_url":"assets/location/newsland.png",
+      "description":"New Zealand is a popular study abroad and destination with many programs. New Zealand is undoubtedly the safest country to study in. With globally ranked university and a responsive education system, it has the right mix of opportunities, culture, economy and climate to thrive for an Indian student. Not to miss, its unspoiled scenery will make your experience worth every penny.",
+      "in_take":"INTAKE: September, November.",
+
+
+
+  },
+   {
+      "country_name":"GERMANY",
+      "img_url":"assets/location/germany.png",
+      "description":"Free Education at Public Universities and top-Ranked Universities as well as low cost of Living. Study in Germany: Germany has over the years become one of the top destinations for Indian students wanting to study abroad. As per data available from the Ministry of External Affairs, Government of India, about 20,810 Indian students are currently enrolled in German universities (2021). Germany is home to world-class education complete with modern amenities and a major part of the country’s GDP is diverted towards the maintenance of the education system of the country.",
+      "in_take":"INTAKE: September, November.",
+
+
+
+  },
+   {
+      "country_name":"SWEDEN",
+      "img_url":"assets/location/sweden.jpg",
+      "description":"The quality and international standing of the Swedish education system needs no explanation, with Universities consistently ranked among the best in the world. Sweden, one of the most modern countries in the world is popularly known as “a land of innovations.” The country is also well-known for providing high quality and unconventional education. Universities in Sweden have a unique student-centric education system. The programs are crafted in a way that promotes group and independent study among students. Studying in Sweden prepares students for a successful future by inculcating in them the true spirit of innovation and group work, the traits highly valued in the job market.",
+      "in_take":"INTAKE: September, November.",
+
+
+
+  },
+  
+  ];
 
  
   getDashBoardData() async {

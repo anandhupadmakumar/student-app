@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:student_app/controller/home_controller.dart';
+import 'package:student_app/controller/profile/profile_controller.dart';
 import 'package:student_app/http/http_request.dart';
 
 import '../http/http_urls.dart';
@@ -26,7 +27,7 @@ class LoginController extends GetxController {
         'Email': username,
         'Password': password,
       },
-      endPoint: '${HttpUrls.login}/$username/$password',
+      endPoint: '${HttpUrls.login}',
     ).then((value) async {
       if (value != null) {
         print('login ${value.data}');
@@ -45,6 +46,8 @@ class LoginController extends GetxController {
               'trinity_student_id', value.data['0'][0]['Student_Id']);
 
               loginController.isUserLogin.value=true;
+
+           profileController.   profileInitFunctions();
 
           Get.back();
         }

@@ -1,8 +1,8 @@
 class HttpUrls {
-  // static String baseUrl = 'https://trinityapi.trackbox.in';
+  static String baseUrl = 'https://trinityapi.trackbox.in';
   // static String baseUrl = 'http://DESKTOP-IK6ME8M:3515';https://de01-103-214-232-130.ngrok-free.app
 
-  static String baseUrl = 'https://f747-103-214-232-130.ngrok-free.app';
+  // static String baseUrl = 'https://f747-103-214-232-130.ngrok-free.app';
   // static String baseUrl = 'https://nine-icons-joke.loca.lt';
   // static String baseUrl = 'https://trinityapi.ufstech.co.in';
 
@@ -34,6 +34,21 @@ class HttpUrls {
   static String getWorkExperienceDetails =
       '/Student/Get_WorkexperienceDetails/';
 
+ static String deleteQualfication =
+      '/Student/Delete_Qualificationdetails/';
+
+     
+
+
+      static String deleteWorkExperience =
+      '/Student/Delete_Workexperiencedetails/';
+
+       static String deleteLanguage =
+      '/Student/Delete_Ielts_Details/';
+
+
+     
+
   
 
 
@@ -47,12 +62,26 @@ class HttpUrls {
   static String saveDocument='/Student/Save_Document_App/';
 
  static String getDocumentListDropDown='/Document/Search_Document/'; 
+
+ static String getStudentDocument='/Student_Document/Get_Student_Document/'; 
+
+
      
 
   static String checkOtp = '/public_Data/Check_OTP/';
   static String notificationUrl = '/Customer_Request_Notification';
   static String notificationUrlReschedule =
       '/Task_Reschedule_Request_Notification';
+       static String getLanguageDetails =
+      '/Student/Get_Ielts_Details/';
+
+
+      
+
+
+
+
+      //darlsco
 
   static String saveCustomerRequest = '/Customer/Save_Customer_Request/';
   static String getCustomerEquipments =

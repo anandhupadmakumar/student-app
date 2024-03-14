@@ -47,27 +47,39 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 SizedBox(
                   height: 20.h,
                 ),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  width: 300,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(16.r),
+                InkWell(
+
+                  onTap: (){
+
+
+                     showSearch(context: context, delegate: CustomSearchDelegate());
+
+
+
+
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    width: 300,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16.r),
+                    ),
+                    child: Center(
+                        child: Row(
+                      children: [
+                        Icon(
+                          Icons.search,
+                          color: Colors.grey,
+                          size: 18.sp,
+                        ),
+                        SizedBox(
+                          width: 15.w,
+                        ),
+                        Text('find courses'),
+                      ],
+                    )),
                   ),
-                  child: Center(
-                      child: Row(
-                    children: [
-                      Icon(
-                        Icons.search,
-                        color: Colors.grey,
-                        size: 18.sp,
-                      ),
-                      SizedBox(
-                        width: 15.w,
-                      ),
-                      Text('find courses and institutions'),
-                    ],
-                  )),
                 )
               ],
             )),
@@ -101,47 +113,41 @@ class _ExploreScreenState extends State<ExploreScreen> {
               SizedBox(
                 height: 15.h,
               ),
-              locationListViewWidget(countryNameList: [
-                'Australia',
-                'United Kingdom'
-              ], imgList: [
-                'assets/location/destination_canada.jpeg',
-                'assets/location/destination_usa2.jpg'
-              ], universityCountList: [
-                '10',
-                '97'
-              ]),
+              locationListViewWidget(
+                
+                
+               ),
 
               SizedBox(
                 height: 15.h,
               ),
-              commonWidget(
-                  icon: Icons.my_library_books_rounded,
-                  title: 'Trending Subjects'),
-              SizedBox(
-                height: 15.h,
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Wrap(
-                  spacing: 20.w,
-                  runSpacing: 20.h,
-                  children: List.generate(
-                    5,
-                    (index) => Container(
-                      margin: EdgeInsets.only(left: 15.w),
-                      padding: EdgeInsets.all(15.sp),
-                      width: 180.w,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.r),
-                          color: Colors.white),
-                      child: Center(
-                        child: Text('Computer Science'),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              // commonWidget(
+              //     icon: Icons.my_library_books_rounded,
+              //     title: 'Trending Subjects'),
+              // SizedBox(
+              //   height: 15.h,
+              // ),
+              // Align(
+              //   alignment: Alignment.centerLeft,
+              //   child: Wrap(
+              //     spacing: 20.w,
+              //     runSpacing: 20.h,
+              //     children: List.generate(
+              //       5,
+              //       (index) => Container(
+              //         margin: EdgeInsets.only(left: 15.w),
+              //         padding: EdgeInsets.all(15.sp),
+              //         width: 180.w,
+              //         decoration: BoxDecoration(
+              //             borderRadius: BorderRadius.circular(20.r),
+              //             color: Colors.white),
+              //         child: Center(
+              //           child: Text('Computer Science'),
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
               SizedBox(
                 height: 15.h,
               ),
@@ -189,24 +195,23 @@ class _ExploreScreenState extends State<ExploreScreen> {
   }
 
   SizedBox locationListViewWidget(
-      {required List<String> imgList,
-      required List<String> countryNameList,
-      required List<String> universityCountList}) {
+     ) {
     return SizedBox(
       height: 250.h,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: List.generate(
-            imgList.length,
+             homeController.  locationDataList.length,
             (index) => InkWell(
                   onTap: () {
                     // print(countryNameList[index]);
 
-                    // Get.to(() => LocationScreen(
-                    //       title: countryNameList[index],
-                    //       imgUrl: imgList[index],
-                    //       universityCount: universityCountList[index],
-                    //     ));
+                    Get.to(() => LocationScreen(
+                      description: homeController. locationDataList[index]['description'],
+                          title: homeController. locationDataList[index]['country_name'],
+                          imgUrl:  homeController. locationDataList[index]['img_url'],
+                          // universityCount: universityCountList[index],
+                        ));
                   },
                   child: Container(
                       margin: EdgeInsets.only(left: 20.w),
@@ -215,20 +220,20 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           CircleAvatar(
                             radius: 80.r,
                             backgroundColor: Colors.amber,
-                            backgroundImage: AssetImage(imgList[index]),
+                            backgroundImage: AssetImage( homeController.  locationDataList[index]['img_url']),
                           ),
                           SizedBox(
                             height: 20.h,
                           ),
                           Text(
-                            countryNameList[index],
+                            homeController.  locationDataList[index]['country_name'],
                             style: TextStyle(
                                 fontWeight: FontWeight.w800, fontSize: 14.sp),
                           ),
                           SizedBox(
                             height: 15.h,
                           ),
-                          Text('${universityCountList[index]} universities'),
+                          // Text('${universityCountList[index]} universities'),
                         ],
                       )),
                 )),
