@@ -45,9 +45,12 @@ class HttpUrls {
 
        static String deleteLanguage =
       '/Student/Delete_Ielts_Details/';
-
-
+static String getHomePageSearchDropDownValues =
+      '/Public_Data/Get_site_Pageload/';
      
+
+
+    
 
   
 

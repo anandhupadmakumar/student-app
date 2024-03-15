@@ -1,4 +1,4 @@
-import 'dart:math';
+
 
 import 'package:flutter/material.dart';
 
@@ -220,70 +220,52 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: 10.h,
                                 ),
 
-                                 Container(
-
-                                   margin:
+                                Container(
+                                  margin:
                                       EdgeInsets.symmetric(horizontal: 15.w),
-                                   child: DropdownButtonFormField(
-                                                            iconDisabledColor:
-                                                                Colors.grey,
-                                                            iconEnabledColor:
-                                                                Colors.black,
-                                                            value: profileController
-                                                                        .profileGenderDropDownValue
-                                                                        .value ==
-                                                                    ''
-                                                                ? 'Select'
-                                                                : profileController
-                                                                    .profileGenderDropDownValue
-                                                                    .value,
-                                                            style: TextStyle(
-                                                                fontSize: 12.sp,
-                                                                height: 1),
-                                                            decoration:
-                                                                InputDecoration(
-                                                                    isDense: true,
-                                                                    //  contentPadding: EdgeInsets.all(13),
-                                                                    // hintText: data.inspectionDropdownValue.value
-                                                                    //     .isEmpty? 'Location':'',
-                                                                    border: OutlineInputBorder(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(5
-                                                                                .r))),
-                                                            onChanged: (value) {
-                                                              if(value!=null){
-                                                                 profileController
-                                                                        .profileGenderDropDownValue
-                                                                        .value=value;
-                                   
-                                                              }
-                                   
-                                   
-                                                              
-                                                             
-                                                            },
-                                                            hint: Text(
-                                                              'Select',
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      12.sp),
-                                                            ),
-                                                            items:['Select','Male','Female']
-                                                                .map((e) =>
-                                                                    DropdownMenuItem(
-                                                                      value: e,
-                                                                      child: Text(
-                                                                        e
-                                                                            .toString(),
-                                                                        style: TextStyle(
-                                                                            fontSize: 12
-                                                                                .sp,
-                                                                            color:
-                                                                                Colors.black),
-                                                                      ),
-                                                                    ))
-                                                                .toList()),
-                                 ),
+                                  child: DropdownButtonFormField(
+                                      iconDisabledColor: Colors.grey,
+                                      iconEnabledColor: Colors.black,
+                                      value: profileController
+                                                  .profileGenderDropDownValue
+                                                  .value ==
+                                              ''
+                                          ? 'Select'
+                                          : profileController
+                                              .profileGenderDropDownValue.value,
+                                      style:
+                                          TextStyle(fontSize: 12.sp, height: 1),
+                                      decoration: InputDecoration(
+                                          isDense: true,
+                                          //  contentPadding: EdgeInsets.all(13),
+                                          // hintText: data.inspectionDropdownValue.value
+                                          //     .isEmpty? 'Location':'',
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.r))),
+                                      onChanged: (value) {
+                                        if (value != null) {
+                                          profileController
+                                              .profileGenderDropDownValue
+                                              .value = value;
+                                        }
+                                      },
+                                      hint: Text(
+                                        'Select',
+                                        style: TextStyle(fontSize: 12.sp),
+                                      ),
+                                      items: ['Select', 'Male', 'Female']
+                                          .map((e) => DropdownMenuItem(
+                                                value: e,
+                                                child: Text(
+                                                  e.toString(),
+                                                  style: TextStyle(
+                                                      fontSize: 12.sp,
+                                                      color: Colors.black),
+                                                ),
+                                              ))
+                                          .toList()),
+                                ),
                                 // Container(
                                 //   margin:
                                 //       EdgeInsets.symmetric(horizontal: 15.w),
@@ -328,7 +310,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   child: TextField(
                                     controller: profileController
                                         .studentContactNoController,
-                                        keyboardType: TextInputType.number,
+                                    keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                         border: OutlineInputBorder(
                                             borderRadius:
@@ -362,17 +344,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: 10.h,
                                 ),
 
-
-
-                                 Container(
-                                                  margin: EdgeInsets.symmetric(
-                                                      horizontal: 15.w),
-                                                  child: datepickerWidget(
-                                                      context: context,
-                                                      datePickController:
-                                                           profileController.studentDobController,
-                                                      labelText: 'Select DOB',
-                                                      titleText: '')),
+                                Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 15.w),
+                                    child: datepickerWidget(
+                                        context: context,
+                                        datePickController: profileController
+                                            .studentDobController,
+                                        labelText: 'Select DOB',
+                                        titleText: '')),
                                 // Container(
                                 //   margin:
                                 //       EdgeInsets.symmetric(horizontal: 15.w),
@@ -390,7 +370,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    profileController.updateStudent();
+                                    if (profileController.studentNameController.text.isNotEmpty &&
+                                        profileController
+                                            .studentGenderController
+                                            .text
+                                            .isNotEmpty &&
+                                        profileController
+                                            .studentAddressController
+                                            .text
+                                            .isNotEmpty &&
+                                        profileController
+                                            .studentContactNoController
+                                            .text
+                                            .isNotEmpty &&
+                                        profileController.studentEmailController
+                                            .text.isNotEmpty &&
+                                        profileController.studentDobController
+                                            .text.isNotEmpty) {
+                                      profileController.updateStudent();
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content: Text(
+                                                  'Please fill all the fields')));
+                                    }
                                   },
                                   child: Container(
                                     width: 200.w,
@@ -622,8 +625,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 children: [
                                                   InkWell(
                                                     onTap: () {
-                                                      profileController
+                                                      if (profileController.studentNameController.text.isNotEmpty &&
+                                                          profileController
+                                                              .studentClasscontroller
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .studentPercentageController
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .studentCollegecontroller
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .studentFromYearcontroller
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .studentFieldcontroller
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .studentFieldcontroller
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .studentSpecificationController
+                                                              .text
+                                                              .isNotEmpty) {
+                                                                  profileController
                                                           .saveQualificationDetails();
+                                                        //  profileController.updateStudent();
+                                                      } else {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                                const SnackBar(
+                                                                    content: Text(
+                                                                        'Please fill all the fields')));
+                                                      }
+
+                                                    
                                                     },
                                                     child: Container(
                                                       width: 150.w,
@@ -839,8 +882,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 children: [
                                                   InkWell(
                                                     onTap: () {
-                                                      profileController
+
+
+                                                      if (profileController.workCompanyNameController.text.isNotEmpty &&
+                                                          profileController
+                                                              .workDesignationController
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .workSalaryController
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .wrokFromYearcontroller
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .workToYearController
+                                                              .text
+                                                              .isNotEmpty){
+                                                                 profileController
                                                           .saveWorkExperience();
+
+                                                              }else{
+
+
+                                                                 ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content: Text(
+                                                  'Please fill all the fields')));
+
+                                                              }
+
+
+
+
+                                                     
                                                     },
                                                     child: Container(
                                                       width: 150.w,
@@ -992,42 +1069,58 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                     .value = true;
                                                               } else if (index1 ==
                                                                   2) {
-
-
-
-
-                                                                     showDialog(
-      barrierDismissible: false,
-      context: Get.context!,
-      builder: (ctx) => AlertDialog(
-        title: const Text(
-          'Warning',
-          style: TextStyle(fontWeight: FontWeight.w800),
-        ),
-        content: const SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text("Do you want to delete?"),
-          ]),
-        ),
-        actions: [
-          TextButton(
-            child: const Text('Yes',style: TextStyle(fontWeight: FontWeight.w700),),
-            onPressed: () async {
-             profileController.deleteWorkExperience(workExperienceId:  workData.workExperienceDataList[index]['Work_Experience_Id'] ?? 0,dltIndex: index );
-              Get.back();
-            },
-          ),
-          TextButton(
-            child: const Text('Cancel',style: TextStyle(fontWeight: FontWeight.w700)),
-            onPressed: () {
-              Get.back();
-            },
-          ),
-        ],
-      ),
-    );
-                                                              
+                                                                showDialog(
+                                                                  barrierDismissible:
+                                                                      false,
+                                                                  context: Get
+                                                                      .context!,
+                                                                  builder: (ctx) =>
+                                                                      AlertDialog(
+                                                                    title:
+                                                                        const Text(
+                                                                      'Warning',
+                                                                      style: TextStyle(
+                                                                          fontWeight:
+                                                                              FontWeight.w800),
+                                                                    ),
+                                                                    content:
+                                                                        const SingleChildScrollView(
+                                                                      child: Column(
+                                                                          crossAxisAlignment:
+                                                                              CrossAxisAlignment.start,
+                                                                          children: [
+                                                                            Text("Do you want to delete?"),
+                                                                          ]),
+                                                                    ),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        child:
+                                                                            const Text(
+                                                                          'Yes',
+                                                                          style:
+                                                                              TextStyle(fontWeight: FontWeight.w700),
+                                                                        ),
+                                                                        onPressed:
+                                                                            () async {
+                                                                          profileController.deleteWorkExperience(
+                                                                              workExperienceId: workData.workExperienceDataList[index]['Work_Experience_Id'] ?? 0,
+                                                                              dltIndex: index);
+                                                                          Get.back();
+                                                                        },
+                                                                      ),
+                                                                      TextButton(
+                                                                        child: const Text(
+                                                                            'Cancel',
+                                                                            style:
+                                                                                TextStyle(fontWeight: FontWeight.w700)),
+                                                                        onPressed:
+                                                                            () {
+                                                                          Get.back();
+                                                                        },
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                );
                                                               }
                                                             },
                                                             itemBuilder:
@@ -1382,8 +1475,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 children: [
                                                   InkWell(
                                                     onTap: () {
-                                                      profileController
+
+
+
+                                                      if(
+                                           profileController.examDropDownValue.value!=""  &&     
+
+   profileController. gMatScroreController .text.isNotEmpty&&
+   profileController.listeningScoreController .text.isNotEmpty&&
+  profileController. neetScroreController .text.isNotEmpty&&
+  profileController. readingScroreController .text.isNotEmpty&&
+  profileController. ieltsScrorecontroller .text.isNotEmpty&&
+  profileController. writingScroreController .text.isNotEmpty&&
+  profileController. speakingScroreController .text.isNotEmpty&&
+  profileController. examDateController .text.isNotEmpty
+
+
+
+
+                                                      ){
+                                                         profileController
                                                           .saveIeltsDetails();
+
+
+
+                                                      }else{
+
+                                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(
+                                                          'Please fill all the fields'
+                                                        )));
+
+                                                      }
+
+
+
+
+
+
+                                                     
                                                     },
                                                     child: Container(
                                                       width: 150.w,
@@ -1552,62 +1681,67 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                         [
                                                                         'Slno'] ??
                                                                     0;
-                                                                 profileController.   examDropDownValue.value=workData
+                                                                profileController
+                                                                    .examDropDownValue
+                                                                    .value = workData
                                                                             .languageDetailsList[index]
                                                                         [
                                                                         'Ielts_Type_Name'] ??
                                                                     '';
                                                               } else if (index1 ==
                                                                   2) {
-
-
-
-
-                                                                    showDialog(
-      barrierDismissible: false,
-      context: Get.context!,
-      builder: (ctx) => AlertDialog(
-        title: const Text(
-          'Warning',
-          style: TextStyle(fontWeight: FontWeight.w800),
-        ),
-        content: const SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text("Do you want to delete?"),
-          ]),
-        ),
-        actions: [
-          TextButton(
-            child: const Text('Yes',style: TextStyle(fontWeight: FontWeight.w700),),
-            onPressed: () async {
-             profileController.deleteLanguage(languageId: workData
-                                                                            .languageDetailsList[index]
-                                                                        [
-                                                                        'Ielts_Details_Id'] ??
-                                                                    0,dltIndex: index );
-              Get.back();
-            },
-          ),
-          TextButton(
-            child: const Text('Cancel',style: TextStyle(fontWeight: FontWeight.w700)),
-            onPressed: () {
-              Get.back();
-            },
-          ),
-        ],
-      ),
-    );
-
-
-
-
-
-
-
-
-
-
+                                                                showDialog(
+                                                                  barrierDismissible:
+                                                                      false,
+                                                                  context: Get
+                                                                      .context!,
+                                                                  builder: (ctx) =>
+                                                                      AlertDialog(
+                                                                    title:
+                                                                        const Text(
+                                                                      'Warning',
+                                                                      style: TextStyle(
+                                                                          fontWeight:
+                                                                              FontWeight.w800),
+                                                                    ),
+                                                                    content:
+                                                                        const SingleChildScrollView(
+                                                                      child: Column(
+                                                                          crossAxisAlignment:
+                                                                              CrossAxisAlignment.start,
+                                                                          children: [
+                                                                            Text("Do you want to delete?"),
+                                                                          ]),
+                                                                    ),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        child:
+                                                                            const Text(
+                                                                          'Yes',
+                                                                          style:
+                                                                              TextStyle(fontWeight: FontWeight.w700),
+                                                                        ),
+                                                                        onPressed:
+                                                                            () async {
+                                                                          profileController.deleteLanguage(
+                                                                              languageId: workData.languageDetailsList[index]['Ielts_Details_Id'] ?? 0,
+                                                                              dltIndex: index);
+                                                                          Get.back();
+                                                                        },
+                                                                      ),
+                                                                      TextButton(
+                                                                        child: const Text(
+                                                                            'Cancel',
+                                                                            style:
+                                                                                TextStyle(fontWeight: FontWeight.w700)),
+                                                                        onPressed:
+                                                                            () {
+                                                                          Get.back();
+                                                                        },
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                );
                                                               }
                                                             },
                                                             itemBuilder:
@@ -1700,7 +1834,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 20.h,),
+                                SizedBox(
+                                  height: 20.h,
+                                ),
                                 SizedBox(
                                   width: Get.width,
                                   height: 230.h,
@@ -1867,7 +2003,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 InkWell(
                                   onTap: () async {
-                                    await profileController.saveDocument();
+
+                                    if(profileController.documentSelectedFileController.text.isNotEmpty&&profileController.documentDropDownValue.value!=''){
+ await profileController.saveDocument();
+                                    }else{
+                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Please fill all the fields')));
+                                    }
+
+
+
+
+
+                                   
 
                                     // homeController.pageIndex.value=0;
 
@@ -2112,43 +2259,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 profileController.qualificationSlno.value =
                                     listData[index]['slno'] ?? 0;
                               } else if (index1 == 2) {
-
-
-
                                 showDialog(
-      barrierDismissible: false,
-      context: Get.context!,
-      builder: (ctx) => AlertDialog(
-        title: const Text(
-          'Warning',
-          style: TextStyle(fontWeight: FontWeight.w800),
-        ),
-        content: const SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text("Do you want to delete?"),
-          ]),
-        ),
-        actions: [
-          TextButton(
-            child: const Text('Yes',style: TextStyle(fontWeight: FontWeight.w700),),
-            onPressed: () async {
-             profileController.deleteQualification(qualificationId:  listData[index]['Qualification_Id'] ?? 0,dltIndex: index );
-              Get.back();
-            },
-          ),
-          TextButton(
-            child: const Text('Cancel',style: TextStyle(fontWeight: FontWeight.w700)),
-            onPressed: () {
-              Get.back();
-            },
-          ),
-        ],
-      ),
-    );
-                               
-                               
-                             
+                                  barrierDismissible: false,
+                                  context: Get.context!,
+                                  builder: (ctx) => AlertDialog(
+                                    title: const Text(
+                                      'Warning',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w800),
+                                    ),
+                                    content: const SingleChildScrollView(
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text("Do you want to delete?"),
+                                          ]),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        child: const Text(
+                                          'Yes',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w700),
+                                        ),
+                                        onPressed: () async {
+                                          profileController.deleteQualification(
+                                              qualificationId: listData[index]
+                                                      ['Qualification_Id'] ??
+                                                  0,
+                                              dltIndex: index);
+                                          Get.back();
+                                        },
+                                      ),
+                                      TextButton(
+                                        child: const Text('Cancel',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w700)),
+                                        onPressed: () {
+                                          Get.back();
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                );
                               }
                             },
                             itemBuilder: (context) {

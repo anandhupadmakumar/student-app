@@ -10,8 +10,11 @@ import '../../../controller/location_controller.dart';
 class UniversityResultScreen extends StatelessWidget {
   const UniversityResultScreen({super.key});
 
+  
+
   @override
   Widget build(BuildContext context) {
+  
     return Scaffold(
       
       

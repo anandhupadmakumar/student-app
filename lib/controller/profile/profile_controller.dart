@@ -58,6 +58,9 @@ class ProfileController extends GetxController {
   RxInt workExperienceSlno = 0.obs;
   RxInt languageId = 0.obs;
   RxInt languageSlno = 0.obs;
+  RxDouble appbarWidth=180.00.obs;
+  RxDouble appbarHeight=180.00.obs;
+
 
   RxString examDropDownValue = ''.obs;
   RxString documentDropDownValue = ''.obs;
