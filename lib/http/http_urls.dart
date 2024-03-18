@@ -47,6 +47,9 @@ class HttpUrls {
       '/Student/Delete_Ielts_Details/';
 static String getHomePageSearchDropDownValues =
       '/Public_Data/Get_site_Pageload/';
+
+      static String checkIfCourseIsSelected =
+      '/Public_Data/CheckIfCourseIsSelected/';
      
 
 

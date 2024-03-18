@@ -9,11 +9,14 @@ import '../view/common_widgets/loader.dart';
 class HttpRequest {
   static Future<Response> httpGetRequest(
       {Map<String, dynamic>? bodyData, String endPoint = ''}) async {
+        Loader.showLoader();
+      
     if (kDebugMode) {
       print('get request ====> $endPoint $bodyData ');
     }
 
     final Dio dio = Dio();
+ 
     final prefs = await SharedPreferences.getInstance();
     final String token = prefs.getString('trinity_token') ?? "";
     final response = await dio.get(
@@ -28,11 +31,15 @@ class HttpRequest {
     if (kDebugMode) {
       print('get result ====> $response  ');
     }
+    if(response.data !=null ){
+      Loader.stopLoader();
+    }
     return response;
   }
 
   static Future<Response?> httpPostRequest(
       {Map<String, dynamic>? bodyData, String endPoint = '',bool?isQuery=false}) async {
+        // 
     if (kDebugMode) {
       print('post request ====> $endPoint $bodyData ');
     }
@@ -40,6 +47,7 @@ class HttpRequest {
     final prefs = await SharedPreferences.getInstance();
     final String token = prefs.getString('trinity_token') ?? "";
     try {
+      Loader.showLoader();
       final Response response = await dio.post(
         '${HttpUrls.baseUrl}$endPoint',
         options: Options(headers: {
@@ -52,6 +60,9 @@ class HttpRequest {
       );
       if (kDebugMode) {
         print('post result ====> ${response.data}  ');
+      }
+      if(response.data!=null){
+        // Loader.stopLoader();
       }
       return response;
     } catch (e) {

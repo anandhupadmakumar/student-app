@@ -528,7 +528,7 @@ class UniversityResultScreen extends StatelessWidget {
                       
                       
                       
-                                         loginController.userLogin(username:  homeController.loginUserNameController.text, password: homeController.loginMobController.text);
+                                         loginController.userLogin(username:  homeController.loginUserNameController.text, password: homeController.loginMobController.text,courseDetails: homeController.courseDetails);
                       
                                         // loginController.getOtp(mobileNumber:homeController.loginMobController.text,context: context);
                       
@@ -578,10 +578,12 @@ class UniversityResultScreen extends StatelessWidget {
                                                           borderRadius: BorderRadius.circular(20.r),
                                                           color: Colors.purple,
                                                         ),
-                                                        child:const  Center(
-                                                          child: Text(
-                                                            'Apply Now',
-                                                            style: TextStyle(color: Colors.white),
+                                                        child:  Center(
+                                                          child: Obx(
+                                                      ()=>Text(
+                                                        homeController.    checkIsCourseSelected.value==false?  'Apply Now':'Applied',
+                                                              style: TextStyle(color: Colors.white),
+                                                            ),
                                                           ),
                                                         ),
                                                       ),

@@ -20,8 +20,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
   final HomeController homeController = Get.put(HomeController());
   @override
   void initState() {
-    homeController.getDashBoardData();
-    homeController. getHomeDropDownData();
+   
+   
     super.initState();
   }
 
@@ -32,9 +32,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
         appBar: PreferredSize(
           preferredSize: Size(profileController.appbarWidth.value.h,
               profileController.appbarHeight.value.h),
-          child: AnimatedContainer(
+          child: Container(
             height: profileController.appbarHeight.value,
-            duration: Duration(milliseconds: 1000),
+            // duration: Duration(milliseconds: 1000),
 
 
               decoration: BoxDecoration(
@@ -95,7 +95,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                               
                                     IconButton(
                                       onPressed: () async{
-                                  await homeController.getCourseSearchData();
+                                  await homeController.getCourseSearchData(pageStart: 0,pageEnd: 10);
                               
                                      showSearch(
                               context: context,
@@ -131,149 +131,161 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       child:   profileController.appbarHeight.value==350?Column(children: [
 
                         SizedBox(height: 15.h,),
-                       Container(
-                                margin:
-                                    EdgeInsets.symmetric(horizontal: 15.w),
-                                child: DropdownButtonFormField(
-                                    iconDisabledColor: Colors.grey,
-                                    iconEnabledColor: Colors.black,
-                                    menuMaxHeight: 400.h,
-                                    value: homeController
+                       GetBuilder<HomeController>(
+                         builder: (countryData) {
+                           return Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 15.w),
+                                    child: DropdownButtonFormField(
+                                        iconDisabledColor: Colors.grey,
+                                        iconEnabledColor: Colors.black,
+                                        menuMaxHeight: 400.h,
+                                        value: countryData
+                                                    .dropDownCountryValue
+                                                    .value ==
+                                                ''
+                                            ? 'Select'
+                                            : countryData
+                                                .dropDownCountryValue.value,
+                                        style:
+                                            TextStyle(fontSize: 12.sp, height: 1),
+                                        decoration: InputDecoration(
+                                            isDense: true,
+                                            //  contentPadding: EdgeInsets.all(13),
+                                            // hintText: data.inspectionDropdownValue.value
+                                            //     .isEmpty? 'Location':'',
+                                            border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5.r))),
+                                        onChanged: (value) {
+                                          if (value != null) {
+                                             countryData
                                                 .dropDownCountryValue
-                                                .value ==
-                                            ''
-                                        ? 'Select'
-                                        : homeController
-                                            .dropDownCountryValue.value,
-                                    style:
-                                        TextStyle(fontSize: 12.sp, height: 1),
-                                    decoration: InputDecoration(
-                                        isDense: true,
-                                        //  contentPadding: EdgeInsets.all(13),
-                                        // hintText: data.inspectionDropdownValue.value
-                                        //     .isEmpty? 'Location':'',
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(5.r))),
-                                    onChanged: (value) {
-                                      if (value != null) {
-                                         homeController
-                                            .dropDownCountryValue
-                                            .value = value;
-                                      }
-                                    },
-                                    hint: Text(
-                                      'Select',
-                                      style: TextStyle(fontSize: 12.sp),
-                                    ),
-                                    items: homeController.dropDownCountryList
-                                        .map((e) => DropdownMenuItem(
-                                              value: e['Country_Name'].toString(),
-                                              child: Text(
-                                                e['Country_Name'].toString(),
-                                                style: TextStyle(
-                                                    fontSize: 12.sp,
-                                                    color: Colors.black),
-                                              ),
-                                            ))
-                                        .toList()),
-                              ),
+                                                .value = value;
+                                          }
+                                        },
+                                        hint: Text(
+                                          'Select',
+                                          style: TextStyle(fontSize: 12.sp),
+                                        ),
+                                        items: countryData.dropDownCountryList
+                                            .map((e) => DropdownMenuItem(
+                                                  value: e['Country_Name'].toString(),
+                                                  child: Text(
+                                                    e['Country_Name'].toString(),
+                                                    style: TextStyle(
+                                                        fontSize: 12.sp,
+                                                        color: Colors.black),
+                                                  ),
+                                                ))
+                                            .toList()),
+                                  );
+                         }
+                       ),
                         SizedBox(height: 15.h,),
-                       Container(
-                                margin:
-                                    EdgeInsets.symmetric(horizontal: 15.w),
-                                child: DropdownButtonFormField(
-                                    iconDisabledColor: Colors.grey,
-                                    iconEnabledColor: Colors.black,
-                                      menuMaxHeight: 400.h,
-                                    value: homeController
+                       GetBuilder<HomeController>(
+                         builder: (levelData) {
+                           return Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 15.w),
+                                    child: DropdownButtonFormField(
+                                        iconDisabledColor: Colors.grey,
+                                        iconEnabledColor: Colors.black,
+                                          menuMaxHeight: 400.h,
+                                        value: levelData
+                                                    .dropDownLevelValue
+                                                    .value ==
+                                                ''
+                                            ? 'Select'
+                                            : levelData
+                                                .dropDownLevelValue.value,
+                                        style:
+                                            TextStyle(fontSize: 12.sp, height: 1),
+                                        decoration: InputDecoration(
+                                            isDense: true,
+                                            //  contentPadding: EdgeInsets.all(13),
+                                            // hintText: data.inspectionDropdownValue.value
+                                            //     .isEmpty? 'Location':'',
+                                            border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5.r))),
+                                        onChanged: (value) {
+                                          if (value != null) {
+                                            levelData
                                                 .dropDownLevelValue
-                                                .value ==
-                                            ''
-                                        ? 'Select'
-                                        : homeController
-                                            .dropDownLevelValue.value,
-                                    style:
-                                        TextStyle(fontSize: 12.sp, height: 1),
-                                    decoration: InputDecoration(
-                                        isDense: true,
-                                        //  contentPadding: EdgeInsets.all(13),
-                                        // hintText: data.inspectionDropdownValue.value
-                                        //     .isEmpty? 'Location':'',
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(5.r))),
-                                    onChanged: (value) {
-                                      if (value != null) {
-                                        homeController
-                                            .dropDownLevelValue
-                                            .value = value;
-                                      }
-                                    },
-                                    hint: Text(
-                                      'Select',
-                                      style: TextStyle(fontSize: 12.sp),
-                                    ),
-                                    items: homeController.dropDownLevelList
-                                        .map((e) => DropdownMenuItem(
-                                              value: e['Level_Detail_Name'].toString(),
-                                              child: Text(
-                                                e['Level_Detail_Name'].toString(),
-                                                style: TextStyle(
-                                                    fontSize: 12.sp,
-                                                    color: Colors.black),
-                                              ),
-                                            ))
-                                        .toList()),
-                              ),
+                                                .value = value;
+                                          }
+                                        },
+                                        hint: Text(
+                                          'Select',
+                                          style: TextStyle(fontSize: 12.sp),
+                                        ),
+                                        items: levelData.dropDownLevelList
+                                            .map((e) => DropdownMenuItem(
+                                                  value: e['Level_Detail_Name'].toString(),
+                                                  child: Text(
+                                                    e['Level_Detail_Name'].toString(),
+                                                    style: TextStyle(
+                                                        fontSize: 12.sp,
+                                                        color: Colors.black),
+                                                  ),
+                                                ))
+                                            .toList()),
+                                  );
+                         }
+                       ),
                         SizedBox(height: 15.h,),
-                   Container(
-                                margin:
-                                    EdgeInsets.symmetric(horizontal: 15.w),
-                                child: DropdownButtonFormField(
-                                    iconDisabledColor: Colors.grey,
-                                    iconEnabledColor: Colors.black,
-                                      menuMaxHeight: 400.h,
-                                    value: homeController
+                   GetBuilder<HomeController>(
+                     builder: (intakeData) {
+                       return Container(
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 15.w),
+                                    child: DropdownButtonFormField(
+                                        iconDisabledColor: Colors.grey,
+                                        iconEnabledColor: Colors.black,
+                                          menuMaxHeight: 400.h,
+                                        value: intakeData
+                                                    .dropDownIntakeValue
+                                                    .value ==
+                                                ''
+                                            ? 'Select'
+                                            : intakeData
+                                                .dropDownIntakeValue.value,
+                                        style:
+                                            TextStyle(fontSize: 12.sp, height: 1),
+                                        decoration: InputDecoration(
+                                            isDense: true,
+                                            //  contentPadding: EdgeInsets.all(13),
+                                            // hintText: data.inspectionDropdownValue.value
+                                            //     .isEmpty? 'Location':'',
+                                            border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(5.r))),
+                                        onChanged: (value) {
+                                          if (value != null) {
+                                            intakeData
                                                 .dropDownIntakeValue
-                                                .value ==
-                                            ''
-                                        ? 'Select'
-                                        : homeController
-                                            .dropDownIntakeValue.value,
-                                    style:
-                                        TextStyle(fontSize: 12.sp, height: 1),
-                                    decoration: InputDecoration(
-                                        isDense: true,
-                                        //  contentPadding: EdgeInsets.all(13),
-                                        // hintText: data.inspectionDropdownValue.value
-                                        //     .isEmpty? 'Location':'',
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(5.r))),
-                                    onChanged: (value) {
-                                      if (value != null) {
-                                        homeController
-                                            .dropDownIntakeValue
-                                            .value = value;
-                                      }
-                                    },
-                                    hint: Text(
-                                      'Select',
-                                      style: TextStyle(fontSize: 12.sp),
-                                    ),
-                                    items: homeController.dropDownIntakeList
-                                        .map((e) => DropdownMenuItem(
-                                              value: e['Intake_Name'].toString(),
-                                              child: Text(
-                                                e['Intake_Name'].toString(),
-                                                style: TextStyle(
-                                                    fontSize: 12.sp,
-                                                    color: Colors.black),
-                                              ),
-                                            ))
-                                        .toList()),
-                              ),
+                                                .value = value;
+                                          }
+                                        },
+                                        hint: Text(
+                                          'Select',
+                                          style: TextStyle(fontSize: 12.sp),
+                                        ),
+                                        items: intakeData.dropDownIntakeList
+                                            .map((e) => DropdownMenuItem(
+                                                  value: e['Intake_Name'].toString(),
+                                                  child: Text(
+                                                    e['Intake_Name'].toString(),
+                                                    style: TextStyle(
+                                                        fontSize: 12.sp,
+                                                        color: Colors.black),
+                                                  ),
+                                                ))
+                                            .toList()),
+                                  );
+                     }
+                   ),
                         SizedBox(height: 15.h,),
                         
                      
@@ -525,7 +537,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                 courseName: universityData
                                         .universityCourseDataList[index]
                                         .courseName ??
-                                    '');
+                                    '',courseId: universityData
+                                        .universityCourseDataList[index]
+                                        .courseId ??
+                                    0
+                                    
+                                    );
                           } else {
                             // Get.to(() =>const  UniversityResultScreen());
                           }

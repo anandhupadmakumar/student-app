@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:student_app/controller/login_controller.dart';
 import 'package:student_app/http/http_request.dart';
 import 'package:student_app/http/http_urls.dart';
 import 'package:student_app/model/dashboard_data_model.dart';
@@ -13,14 +14,27 @@ import '../model/course_list_model.dart';
 final HomeController homeController = Get.put(HomeController());
 
 class HomeController extends GetxController {
+
+ @override
+  void onReady() {
+   homeController.initFunction();
+    super.onReady();
+  }
+
+
+
   RxInt pageIndex = 0.obs;
   List<DashBoardDataModel> universityListData = [];
   List<CourseListDataModel> universityCourseDataList = [];
   CourseDetailsModel? courseDetails;
+  RxBool checkIsCourseSelected=false.obs;
+
 
   TextEditingController loginMobController = TextEditingController();
   TextEditingController loginUserNameController = TextEditingController();
   TextEditingController pinPutOtpController = TextEditingController();
+
+  ScrollController searchScrollController=ScrollController();
 
   List dropDownCountryList = [];
   List dropDownLevelList = [];
@@ -29,6 +43,7 @@ class HomeController extends GetxController {
   RxString dropDownCountryValue = ''.obs;
   RxString dropDownLevelValue = ''.obs;
   RxString dropDownIntakeValue = ''.obs;
+  RxInt pageNumber=1.obs;
 
   List<Map<String, dynamic>> locationDataList = [
     {
@@ -75,6 +90,15 @@ class HomeController extends GetxController {
     },
   ];
 
+
+initFunction()async{
+ await homeController.getDashBoardData();
+   await  homeController. getHomeDropDownData();
+}
+
+
+
+
   getDashBoardData() async {
     await HttpRequest.httpGetRequest(
       // bodyData: mapData,
@@ -118,7 +142,8 @@ class HomeController extends GetxController {
     return searchList;
   }
 
-  getCourseDetails({required String courseName}) async {
+  getCourseDetails({required String courseName,required int courseId}) async {
+    print('course id $courseId');
 
     //
     Map<String, dynamic> mapData = {
@@ -145,6 +170,11 @@ class HomeController extends GetxController {
           print('courseDetails   ${value.data}');
 
           courseDetails = CourseDetailsModel.fromJson(value.data[0][0]);
+          if(loginController.isUserLogin.value==true){
+             await checkIsCourseIsSelected(courseId);
+
+          }
+         
           Get.to(() => const UniversityResultScreen());
 
           print(courseDetails);
@@ -183,6 +213,7 @@ class HomeController extends GetxController {
       if (value != null) {
         if (value.data.isNotEmpty) {
           print('courseDetails   ${value.data}');
+          checkIsCourseIsSelected(courseName?.courseId);
 
           ScaffoldMessenger.of(Get.context!)
               .showSnackBar(SnackBar(content: Text('Applied Successfully')));
@@ -222,9 +253,10 @@ class HomeController extends GetxController {
         }
       }
     });
+    update();
   }
 
-  getCourseSearchData() async {
+  getCourseSearchData({required int pageStart,required int pageEnd}) async {
 
     print("level dropdown value  ${dropDownLevelValue.value}");
 
@@ -242,8 +274,8 @@ if(levelIdList.isNotEmpty){
       "Sub_Section_Id": 0,
       "Course_Name": '0',
       "Ielts_": '0',
-      "Page_Start": 0,
-      "Page_End": 10,
+      "Page_Start": pageStart,
+      "Page_End": pageEnd,
       "Page_Length": 10,
       "University": 0,
       "Subject_1": 0,
@@ -263,4 +295,45 @@ if(levelIdList.isNotEmpty){
     });
     update();
   }
+
+
+
+   checkIsCourseIsSelected(courseId) async {
+
+
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    final userId = preferences.getInt('trinity_student_id') ?? '';
+
+
+   
+
+
+    List searchList = [];
+    await HttpRequest.httpGetRequest(
+      // bodyData: mapData,
+
+      endPoint: '${HttpUrls.checkIfCourseIsSelected}$userId/$courseId',
+    ).then((value) async {
+      if (value != null) {
+        if (value.data.isNotEmpty) {
+          searchList = value.data;
+          print('search result ${value.data}');
+          if(value.data[0][0]['result'].toString()=='0'){
+            checkIsCourseSelected.value=false;
+
+          }else{
+            checkIsCourseSelected.value=true;
+          }
+
+
+        }
+      }
+    });
+
+   
+  }
+
+
+
+
 }

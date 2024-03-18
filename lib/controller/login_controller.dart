@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:student_app/controller/home_controller.dart';
 import 'package:student_app/controller/profile/profile_controller.dart';
 import 'package:student_app/http/http_request.dart';
+import 'package:student_app/model/course_details_data_model.dart';
 
 import '../http/http_urls.dart';
 import '../model/login_model.dart';
@@ -21,7 +22,7 @@ class LoginController extends GetxController {
   LoginOtpModel? userData;
   RxBool isUserLogin = false.obs;
 
-  void userLogin({required String username, required String password}) async {
+  void userLogin({required String username, required String password,CourseDetailsModel? courseDetails}) async {
     await HttpRequest.httpGetRequest(
       bodyData: {
         'Email': username,
@@ -46,6 +47,9 @@ class LoginController extends GetxController {
               'trinity_student_id', value.data['0'][0]['Student_Id']);
 
               loginController.isUserLogin.value=true;
+              if(courseDetails!=null){
+                homeController.checkIsCourseIsSelected(courseDetails.courseId);
+              }
 
            profileController.   profileInitFunctions();
 
