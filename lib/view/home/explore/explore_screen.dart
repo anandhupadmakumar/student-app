@@ -138,7 +138,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                         EdgeInsets.symmetric(horizontal: 15.w),
                                     child: DropdownButtonFormField(
                                         iconDisabledColor: Colors.grey,
-                                        iconEnabledColor: Colors.black,
+                                        iconEnabledColor: Colors.white,
                                         menuMaxHeight: 400.h,
                                         value: countryData
                                                     .dropDownCountryValue
@@ -148,7 +148,11 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                             : countryData
                                                 .dropDownCountryValue.value,
                                         style:
-                                            TextStyle(fontSize: 12.sp, height: 1),
+                                            TextStyle(fontSize: 12.sp, height: 1,color: Colors.white),
+                                       
+                                       
+                                        dropdownColor: Colors.pink,
+                                       
                                         decoration: InputDecoration(
                                             isDense: true,
                                             //  contentPadding: EdgeInsets.all(13),
@@ -166,7 +170,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                         },
                                         hint: Text(
                                           'Select',
-                                          style: TextStyle(fontSize: 12.sp),
+                                          style: TextStyle(fontSize: 12.sp,color: Colors.white),
                                         ),
                                         items: countryData.dropDownCountryList
                                             .map((e) => DropdownMenuItem(
@@ -175,7 +179,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                                     e['Country_Name'].toString(),
                                                     style: TextStyle(
                                                         fontSize: 12.sp,
-                                                        color: Colors.black),
+                                                        color: Colors.white),
                                                   ),
                                                 ))
                                             .toList()),
@@ -190,7 +194,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                         EdgeInsets.symmetric(horizontal: 15.w),
                                     child: DropdownButtonFormField(
                                         iconDisabledColor: Colors.grey,
-                                        iconEnabledColor: Colors.black,
+                                        iconEnabledColor: Colors.white,
                                           menuMaxHeight: 400.h,
                                         value: levelData
                                                     .dropDownLevelValue
@@ -200,7 +204,10 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                             : levelData
                                                 .dropDownLevelValue.value,
                                         style:
-                                            TextStyle(fontSize: 12.sp, height: 1),
+                                            TextStyle(fontSize: 12.sp, height: 1,color: Colors.white),
+                                        
+                                         dropdownColor: Colors.pink,
+                                        
                                         decoration: InputDecoration(
                                             isDense: true,
                                             //  contentPadding: EdgeInsets.all(13),
@@ -218,7 +225,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                         },
                                         hint: Text(
                                           'Select',
-                                          style: TextStyle(fontSize: 12.sp),
+                                          style: TextStyle(fontSize: 12.sp,color: Colors.white),
                                         ),
                                         items: levelData.dropDownLevelList
                                             .map((e) => DropdownMenuItem(
@@ -227,7 +234,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                                     e['Level_Detail_Name'].toString(),
                                                     style: TextStyle(
                                                         fontSize: 12.sp,
-                                                        color: Colors.black),
+                                                        color: Colors.white),
                                                   ),
                                                 ))
                                             .toList()),
@@ -242,7 +249,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                         EdgeInsets.symmetric(horizontal: 15.w),
                                     child: DropdownButtonFormField(
                                         iconDisabledColor: Colors.grey,
-                                        iconEnabledColor: Colors.black,
+                                        iconEnabledColor: Colors.white,
                                           menuMaxHeight: 400.h,
                                         value: intakeData
                                                     .dropDownIntakeValue
@@ -252,7 +259,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                             : intakeData
                                                 .dropDownIntakeValue.value,
                                         style:
-                                            TextStyle(fontSize: 12.sp, height: 1),
+                                            TextStyle(fontSize: 12.sp, height: 1,color: Colors.white),
+                                       
+                                       dropdownColor: Colors.pink,
                                         decoration: InputDecoration(
                                             isDense: true,
                                             //  contentPadding: EdgeInsets.all(13),
@@ -270,7 +279,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                         },
                                         hint: Text(
                                           'Select',
-                                          style: TextStyle(fontSize: 12.sp),
+                                          style: TextStyle(fontSize: 12.sp,color: Colors.white),
                                         ),
                                         items: intakeData.dropDownIntakeList
                                             .map((e) => DropdownMenuItem(
@@ -279,7 +288,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                                     e['Intake_Name'].toString(),
                                                     style: TextStyle(
                                                         fontSize: 12.sp,
-                                                        color: Colors.black),
+                                                        color: Colors.white),
                                                   ),
                                                 ))
                                             .toList()),

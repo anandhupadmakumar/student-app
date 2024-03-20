@@ -495,29 +495,48 @@ class UniversityResultScreen extends StatelessWidget {
                                     SizedBox(height: 15.h,),
                       
                       
-                                      TextFormField( 
-                                      controller: homeController.loginMobController,
-                                    
-                                     
-                                    
-                                      decoration: InputDecoration(
-                                        hintText: 'Password',
-                                      
-                      
+                                      Obx(
+                                      ()=> TextFormField( 
+                                          obscureText: loginController.obsecureText.value,
+                                        controller: homeController.loginMobController,
+                                                                            
+                                                                            
+                                                                             
+                                                                            
+                                        decoration: InputDecoration(
+                                          hintText: 'Password',
+                                        
+                                          suffixIcon: IconButton(onPressed: (){
+
+                                            if(loginController.obsecureText.value==false){
+ loginController.obsecureText.value=true;
+                                            }else{
+                                            loginController.obsecureText.value=false;
+
+
+                                            }
                                         
                                         
                                         
-                                        border: OutlineInputBorder(
-                      
-                                          borderRadius: BorderRadius.circular(20.r)
-                      
-                      
-                      
-                                        )),
-                                    
-                                    
-                                    
-                                    ),
+                                            
+                                          }, icon:    loginController.obsecureText.value==false? Icon(Icons.visibility,size: 18.sp,):Icon(Icons.visibility_off,size: 18.sp,)),
+                                        
+                                                              
+                                          
+                                          
+                                          
+                                          border: OutlineInputBorder(
+                                                              
+                                            borderRadius: BorderRadius.circular(20.r)
+                                                              
+                                                              
+                                                              
+                                          )),
+                                                                            
+                                                                            
+                                                                            
+                                                                            ),
+                                      ),
                       
                       
                       

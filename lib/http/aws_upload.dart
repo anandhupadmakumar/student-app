@@ -7,9 +7,15 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 import 'package:path/path.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AwsUpload {
-  static uploadToAws(FilePickerResult result) async {
+
+  static uploadToAws(FilePickerResult result,int documentId) async {
+
+
+     SharedPreferences preferences = await SharedPreferences.getInstance();
+    final userId = preferences.getInt('trinity_student_id') ?? '';
     var s;
     FormData formData = FormData();
 
@@ -48,7 +54,7 @@ class AwsUpload {
         file: File(s),
         bucket: "ufsnabeelphotoalbum",
         region: "us-east-2",
-        key: 'trinity/${DateTime.now().millisecondsSinceEpoch}${result.files.first.name}',
+        key: 'trinity/student/$userId/$documentId',
         metadata: {"test": "test"} // optional
         );
 

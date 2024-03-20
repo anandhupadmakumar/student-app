@@ -21,6 +21,7 @@ class LoginController extends GetxController {
   LoginModel? loginData;
   LoginOtpModel? userData;
   RxBool isUserLogin = false.obs;
+  RxBool obsecureText= true.obs;
 
   void userLogin({required String username, required String password,CourseDetailsModel? courseDetails}) async {
     await HttpRequest.httpGetRequest(
@@ -28,7 +29,7 @@ class LoginController extends GetxController {
         'Email': username,
         'Password': password,
       },
-      endPoint: '${HttpUrls.login}',
+      endPoint: '${HttpUrls.login}/',
     ).then((value) async {
       if (value != null) {
         print('login ${value.data}');

@@ -213,7 +213,7 @@ initFunction()async{
       if (value != null) {
         if (value.data.isNotEmpty) {
           print('courseDetails   ${value.data}');
-          checkIsCourseIsSelected(courseName?.courseId);
+         await checkIsCourseIsSelected(courseName?.courseId);
 
           ScaffoldMessenger.of(Get.context!)
               .showSnackBar(SnackBar(content: Text('Applied Successfully')));

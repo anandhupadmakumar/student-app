@@ -149,9 +149,9 @@ class ProfileController extends GetxController {
     }
     print(result);
     print('a.......................');
-    if (result != null) {
-      AwsUpload.uploadToAws(result);
-    }
+    // if (result != null) {
+    //   AwsUpload.uploadToAws(result);
+    // }
     sendSelectedFile = result;
 
     // final data=  await   AwsUpload.uploadToAws(result!);
@@ -200,7 +200,7 @@ class ProfileController extends GetxController {
           studentEmailController.clear();
           studentDobController.clear();
 
-          getStudentDetails();
+         await getStudentDetails();
         }
       }
     });
@@ -454,9 +454,14 @@ class ProfileController extends GetxController {
 
     dynamic data;
 
+    int documentId= documentTypeDropDownList
+            .where((element) =>
+                element['Document_Name'] == documentDropDownValue.value)
+            .toList()[0]['Document_Id'];
+
     if (documentSelectedFileController.text.isNotEmpty &&
         documentSelectedFileController.text != '') {
-      data = await AwsUpload.uploadToAws(sendSelectedFile!);
+      data = await AwsUpload.uploadToAws(sendSelectedFile!,documentId);
     }
 
     print(data);
@@ -465,10 +470,7 @@ class ProfileController extends GetxController {
       isQuery: true,
       bodyData: {
         "Student_Id": studentId,
-        "Document_Id": documentTypeDropDownList
-            .where((element) =>
-                element['Document_Name'] == documentDropDownValue.value)
-            .toList()[0]['Document_Id'],
+        "Document_Id":documentId,
         "File_Name": documentSelectedFileController.text,
         "Image_Detail": data,
       },
