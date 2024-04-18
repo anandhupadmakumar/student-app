@@ -1,10 +1,8 @@
-
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:student_app/http/http_urls.dart';
+import 'package:trinity/http/http_urls.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../controller/home_controller.dart';
@@ -106,47 +104,49 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               height: 15.h,
                                             ),
                                             Obx(
-                                      ()=> TextFormField( 
-                                          obscureText: loginController.obsecureText.value,
-                                        controller: homeController.loginMobController,
-                                                                            
-                                                                            
-                                                                             
-                                                                            
-                                        decoration: InputDecoration(
-                                          hintText: 'Password',
-                                        
-                                          suffixIcon: IconButton(onPressed: (){
-
-                                            if(loginController.obsecureText.value==false){
- loginController.obsecureText.value=true;
-                                            }else{
-                                            loginController.obsecureText.value=false;
-
-
-                                            }
-                                        
-                                        
-                                        
-                                            
-                                          }, icon:    loginController.obsecureText.value==false? Icon(Icons.visibility,size: 18.sp,):Icon(Icons.visibility_off,size: 18.sp,)),
-                                        
-                                                              
-                                          
-                                          
-                                          
-                                          border: OutlineInputBorder(
-                                                              
-                                            borderRadius: BorderRadius.circular(20.r)
-                                                              
-                                                              
-                                                              
-                                          )),
-                                                                            
-                                                                            
-                                                                            
-                                                                            ),
-                                      ),
+                                              () => TextFormField(
+                                                obscureText: loginController
+                                                    .obsecureText.value,
+                                                controller: homeController
+                                                    .loginMobController,
+                                                decoration: InputDecoration(
+                                                    hintText: 'Password',
+                                                    suffixIcon: IconButton(
+                                                        onPressed: () {
+                                                          if (loginController
+                                                                  .obsecureText
+                                                                  .value ==
+                                                              false) {
+                                                            loginController
+                                                                .obsecureText
+                                                                .value = true;
+                                                          } else {
+                                                            loginController
+                                                                .obsecureText
+                                                                .value = false;
+                                                          }
+                                                        },
+                                                        icon: loginController
+                                                                    .obsecureText
+                                                                    .value ==
+                                                                false
+                                                            ? Icon(
+                                                                Icons
+                                                                    .visibility,
+                                                                size: 18.sp,
+                                                              )
+                                                            : Icon(
+                                                                Icons
+                                                                    .visibility_off,
+                                                                size: 18.sp,
+                                                              )),
+                                                    border: OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                    20.r))),
+                                              ),
+                                            ),
                                             SizedBox(
                                               height: 15.h,
                                             ),
@@ -686,8 +686,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                               .studentSpecificationController
                                                               .text
                                                               .isNotEmpty) {
-                                                                  profileController
-                                                          .saveQualificationDetails();
+                                                        profileController
+                                                            .saveQualificationDetails();
                                                         //  profileController.updateStudent();
                                                       } else {
                                                         ScaffoldMessenger.of(
@@ -697,8 +697,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                     content: Text(
                                                                         'Please fill all the fields')));
                                                       }
-
-                                                    
                                                     },
                                                     child: Container(
                                                       width: 150.w,
@@ -914,8 +912,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 children: [
                                                   InkWell(
                                                     onTap: () {
-
-
                                                       if (profileController.workCompanyNameController.text.isNotEmpty &&
                                                           profileController
                                                               .workDesignationController
@@ -932,24 +928,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                           profileController
                                                               .workToYearController
                                                               .text
-                                                              .isNotEmpty){
-                                                                 profileController
-                                                          .saveWorkExperience();
-
-                                                              }else{
-
-
-                                                                 ScaffoldMessenger.of(context)
-                                          .showSnackBar(const SnackBar(
-                                              content: Text(
-                                                  'Please fill all the fields')));
-
-                                                              }
-
-
-
-
-                                                     
+                                                              .isNotEmpty) {
+                                                        profileController
+                                                            .saveWorkExperience();
+                                                      } else {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                                const SnackBar(
+                                                                    content: Text(
+                                                                        'Please fill all the fields')));
+                                                      }
                                                     },
                                                     child: Container(
                                                       width: 150.w,
@@ -1507,44 +1496,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 children: [
                                                   InkWell(
                                                     onTap: () {
-
-
-
-                                                      if(
-                                           profileController.examDropDownValue.value!=""  &&     
-
-   profileController. gMatScroreController .text.isNotEmpty&&
-   profileController.listeningScoreController .text.isNotEmpty&&
-  profileController. neetScroreController .text.isNotEmpty&&
-  profileController. readingScroreController .text.isNotEmpty&&
-  profileController. ieltsScrorecontroller .text.isNotEmpty&&
-  profileController. writingScroreController .text.isNotEmpty&&
-  profileController. speakingScroreController .text.isNotEmpty&&
-  profileController. examDateController .text.isNotEmpty
-
-
-
-
-                                                      ){
-                                                         profileController
-                                                          .saveIeltsDetails();
-
-
-
-                                                      }else{
-
-                                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(
-                                                          'Please fill all the fields'
-                                                        )));
-
+                                                      if (profileController
+                                                                  .examDropDownValue.value !=
+                                                              "" &&
+                                                          profileController
+                                                              .gMatScroreController
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .listeningScoreController
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .neetScroreController
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .readingScroreController
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .ieltsScrorecontroller
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .writingScroreController
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .speakingScroreController
+                                                              .text
+                                                              .isNotEmpty &&
+                                                          profileController
+                                                              .examDateController
+                                                              .text
+                                                              .isNotEmpty) {
+                                                        profileController
+                                                            .saveIeltsDetails();
+                                                      } else {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(SnackBar(
+                                                                content: Text(
+                                                                    'Please fill all the fields')));
                                                       }
-
-
-
-
-
-
-                                                     
                                                     },
                                                     child: Container(
                                                       width: 150.w,
@@ -2035,18 +2030,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 InkWell(
                                   onTap: () async {
-
-                                    if(profileController.documentSelectedFileController.text.isNotEmpty&&profileController.documentDropDownValue.value!=''){
- await profileController.saveDocument();
-                                    }else{
-                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Please fill all the fields')));
+                                    if (profileController
+                                            .documentSelectedFileController
+                                            .text
+                                            .isNotEmpty &&
+                                        profileController
+                                                .documentDropDownValue.value !=
+                                            '') {
+                                      await profileController.saveDocument();
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                              content: Text(
+                                                  'Please fill all the fields')));
                                     }
-
-
-
-
-
-                                   
 
                                     // homeController.pageIndex.value=0;
 

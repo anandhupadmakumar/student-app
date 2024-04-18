@@ -1,4 +1,4 @@
-# student_app
+# trinity
 
 A new Flutter project.
 

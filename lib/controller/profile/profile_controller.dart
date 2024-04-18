@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:student_app/http/aws_upload.dart';
-import 'package:student_app/http/http_request.dart';
+import 'package:trinity/http/aws_upload.dart';
+import 'package:trinity/http/http_request.dart';
 
 import '../../http/http_urls.dart';
 
@@ -58,13 +58,12 @@ class ProfileController extends GetxController {
   RxInt workExperienceSlno = 0.obs;
   RxInt languageId = 0.obs;
   RxInt languageSlno = 0.obs;
-  RxDouble appbarWidth=180.00.obs;
-  RxDouble appbarHeight=180.00.obs;
-
+  RxDouble appbarWidth = 180.00.obs;
+  RxDouble appbarHeight = 180.00.obs;
 
   RxString examDropDownValue = ''.obs;
   RxString documentDropDownValue = ''.obs;
-   RxString profileGenderDropDownValue = ''.obs;
+  RxString profileGenderDropDownValue = ''.obs;
 
   RxBool isAddLanguage = false.obs;
   List qualificationDataList = [];
@@ -200,7 +199,7 @@ class ProfileController extends GetxController {
           studentEmailController.clear();
           studentDobController.clear();
 
-         await getStudentDetails();
+          await getStudentDetails();
         }
       }
     });
@@ -240,9 +239,7 @@ class ProfileController extends GetxController {
           studentFieldcontroller.clear();
           studentSpecificationController.clear();
 
-
-           await profileController.getQualificationDetails();
-
+          await profileController.getQualificationDetails();
         }
       }
     });
@@ -280,8 +277,7 @@ class ProfileController extends GetxController {
           wrokFromYearcontroller.clear();
           workToYearController.clear();
 
-
-           await profileController.getWorkExperienceDetails();
+          await profileController.getWorkExperienceDetails();
         }
       }
     });
@@ -377,9 +373,7 @@ class ProfileController extends GetxController {
           speakingScroreController.clear();
           examDateController.clear();
 
-
-
-           await profileController.getLanguageDetails();
+          await profileController.getLanguageDetails();
         }
       }
     });
@@ -454,14 +448,14 @@ class ProfileController extends GetxController {
 
     dynamic data;
 
-    int documentId= documentTypeDropDownList
-            .where((element) =>
-                element['Document_Name'] == documentDropDownValue.value)
-            .toList()[0]['Document_Id'];
+    int documentId = documentTypeDropDownList
+        .where((element) =>
+            element['Document_Name'] == documentDropDownValue.value)
+        .toList()[0]['Document_Id'];
 
     if (documentSelectedFileController.text.isNotEmpty &&
         documentSelectedFileController.text != '') {
-      data = await AwsUpload.uploadToAws(sendSelectedFile!,documentId);
+      data = await AwsUpload.uploadToAws(sendSelectedFile!, documentId);
     }
 
     print(data);
@@ -470,7 +464,7 @@ class ProfileController extends GetxController {
       isQuery: true,
       bodyData: {
         "Student_Id": studentId,
-        "Document_Id":documentId,
+        "Document_Id": documentId,
         "File_Name": documentSelectedFileController.text,
         "Image_Detail": data,
       },

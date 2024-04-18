@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:student_app/controller/location_controller.dart';
+import 'package:trinity/controller/location_controller.dart';
 
 class LocationScreen extends StatelessWidget {
   const LocationScreen(

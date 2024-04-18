@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:student_app/controller/home_controller.dart';
-import 'package:student_app/controller/profile/profile_controller.dart';
-import 'package:student_app/http/http_request.dart';
-import 'package:student_app/model/course_details_data_model.dart';
+import 'package:trinity/controller/home_controller.dart';
+import 'package:trinity/controller/profile/profile_controller.dart';
+import 'package:trinity/http/http_request.dart';
+import 'package:trinity/model/course_details_data_model.dart';
 
 import '../http/http_urls.dart';
 import '../model/login_model.dart';
@@ -21,9 +21,12 @@ class LoginController extends GetxController {
   LoginModel? loginData;
   LoginOtpModel? userData;
   RxBool isUserLogin = false.obs;
-  RxBool obsecureText= true.obs;
+  RxBool obsecureText = true.obs;
 
-  void userLogin({required String username, required String password,CourseDetailsModel? courseDetails}) async {
+  void userLogin(
+      {required String username,
+      required String password,
+      CourseDetailsModel? courseDetails}) async {
     await HttpRequest.httpGetRequest(
       bodyData: {
         'Email': username,
@@ -47,12 +50,12 @@ class LoginController extends GetxController {
           preferences.setInt(
               'trinity_student_id', value.data['0'][0]['Student_Id']);
 
-              loginController.isUserLogin.value=true;
-              if(courseDetails!=null){
-                homeController.checkIsCourseIsSelected(courseDetails.courseId);
-              }
+          loginController.isUserLogin.value = true;
+          if (courseDetails != null) {
+            homeController.checkIsCourseIsSelected(courseDetails.courseId);
+          }
 
-           profileController.   profileInitFunctions();
+          profileController.profileInitFunctions();
 
           Get.back();
         }
@@ -65,18 +68,11 @@ class LoginController extends GetxController {
     });
   }
 
-
-
-   logout() async{
-
-
-     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  logout() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     loginController.isUserLogin.value = false;
 
     sharedPreferences.clear();
     Get.back();
-
-  
-
   }
 }
