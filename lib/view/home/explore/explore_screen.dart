@@ -20,8 +20,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
   final HomeController homeController = Get.put(HomeController());
   @override
   void initState() {
-   
-   
     super.initState();
   }
 
@@ -33,19 +31,22 @@ class _ExploreScreenState extends State<ExploreScreen> {
           preferredSize: Size(profileController.appbarWidth.value.h,
               profileController.appbarHeight.value.h),
           child: Container(
-            height: profileController.appbarHeight.value,
-            // duration: Duration(milliseconds: 1000),
-
+              height: profileController.appbarHeight.value,
+              // duration: Duration(milliseconds: 1000),
 
               decoration: BoxDecoration(
-                  color: Colors.pink,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(50.r),
-                      bottomRight: Radius.circular(50.r),),),
+                color: Colors.pink,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(50.r),
+                  bottomRight: Radius.circular(50.r),
+                ),
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(height: 20.h,),
+                  SizedBox(
+                    height: 20.h,
+                  ),
                   Text(
                     'Student App',
                     style: TextStyle(
@@ -61,7 +62,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     onTap: () {
                       // showSearch(
                       //     context: context,
-                          // delegate: CustomSearchDelegate(searchList: []));
+                      // delegate: CustomSearchDelegate(searchList: []));
                     },
                     child: Container(
                       padding: const EdgeInsets.all(10),
@@ -84,130 +85,141 @@ class _ExploreScreenState extends State<ExploreScreen> {
                               SizedBox(
                                 width: 15.w,
                               ),
-                              Text('find courses'),
+                              const Text('find courses'),
                             ],
                           ),
+                          GetBuilder<HomeController>(builder: (searchData) {
+                            return Row(
+                              children: [
+                                IconButton(
+                                    onPressed: () async {
+                                      await homeController.getCourseSearchData(
+                                          pageStart: 0, pageEnd: 10);
 
-                          GetBuilder<HomeController>(
-                            builder: (searchData) {
-                              return Row(
-                                children: [
-                              
-                                    IconButton(
-                                      onPressed: () async{
-                                  await homeController.getCourseSearchData(pageStart: 0,pageEnd: 10);
-                              
-                                     showSearch(
-                              context: context,
-                              delegate: CustomSearchDelegate(searchList: searchData.searchResultList,queryString: 'anandhu'));
-                                      },
-                                      icon: const Icon(Icons.search)),
-                                      SizedBox(width: 10.w,),
-                                  IconButton(
-                                      onPressed: () {
-                                        if (profileController.appbarHeight.value ==
-                                            350) {
-                                          profileController.appbarHeight.value = 180;
-                                        } else {
-                                          profileController.appbarHeight.value = 350;
-                                        }
-                                      },
-                                      icon: Icon(Icons.format_align_center_rounded)),
-                                ],
-                              );
-                            }
-                          )
+                                      showSearch(
+                                          context: context,
+                                          delegate: CustomSearchDelegate(
+                                              searchList:
+                                                  searchData.searchResultList,
+                                              queryString: 'anandhu'));
+                                    },
+                                    icon: const Icon(Icons.search)),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                IconButton(
+                                    onPressed: () {
+                                      if (profileController
+                                              .appbarHeight.value ==
+                                          350) {
+                                        profileController.appbarHeight.value =
+                                            180;
+                                      } else {
+                                        profileController.appbarHeight.value =
+                                            350;
+                                      }
+                                    },
+                                    icon: const Icon(
+                                        Icons.format_align_center_rounded)),
+                              ],
+                            );
+                          })
                         ],
                       )),
                     ),
                   ),
                   Container(
-                    
                     // duration: Duration(milliseconds: 5000),
-                   
-                    
-                   
-                   
-                      child:   profileController.appbarHeight.value==350?Column(children: [
 
-                        SizedBox(height: 15.h,),
-                       GetBuilder<HomeController>(
-                         builder: (countryData) {
-                           return Container(
+                    child: profileController.appbarHeight.value == 350
+                        ? Expanded(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 15.h,
+                                ),
+                                GetBuilder<HomeController>(
+                                    builder: (countryData) {
+                                  return Expanded(
+                                    child: Container(
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: 15.w),
+                                      child: DropdownButtonFormField(
+                                          iconDisabledColor: Colors.grey,
+                                          iconEnabledColor: Colors.white,
+                                          menuMaxHeight: 400.h,
+                                          value: countryData
+                                                      .dropDownCountryValue
+                                                      .value ==
+                                                  ''
+                                              ? 'Select'
+                                              : countryData
+                                                  .dropDownCountryValue.value,
+                                          style: TextStyle(
+                                              fontSize: 12.sp,
+                                              height: 1,
+                                              color: Colors.white),
+                                          dropdownColor: Colors.pink,
+                                          decoration: InputDecoration(
+                                              isDense: true,
+                                              //  contentPadding: EdgeInsets.all(13),
+                                              // hintText: data.inspectionDropdownValue.value
+                                              //     .isEmpty? 'Location':'',
+                                              border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.r))),
+                                          onChanged: (value) {
+                                            if (value != null) {
+                                              countryData.dropDownCountryValue
+                                                  .value = value;
+                                            }
+                                          },
+                                          hint: Text(
+                                            'Select',
+                                            style: TextStyle(
+                                                fontSize: 12.sp,
+                                                color: Colors.white),
+                                          ),
+                                          items: countryData.dropDownCountryList
+                                              .map((e) => DropdownMenuItem(
+                                                    value: e['Country_Name']
+                                                        .toString(),
+                                                    child: Text(
+                                                      e['Country_Name']
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                          fontSize: 12.sp,
+                                                          color: Colors.white),
+                                                    ),
+                                                  ))
+                                              .toList()),
+                                    ),
+                                  );
+                                }),
+                                SizedBox(
+                                  height: 15.h,
+                                ),
+                                GetBuilder<HomeController>(
+                                    builder: (levelData) {
+                                  return Container(
                                     margin:
                                         EdgeInsets.symmetric(horizontal: 15.w),
                                     child: DropdownButtonFormField(
                                         iconDisabledColor: Colors.grey,
                                         iconEnabledColor: Colors.white,
                                         menuMaxHeight: 400.h,
-                                        value: countryData
-                                                    .dropDownCountryValue
-                                                    .value ==
-                                                ''
-                                            ? 'Select'
-                                            : countryData
-                                                .dropDownCountryValue.value,
-                                        style:
-                                            TextStyle(fontSize: 12.sp, height: 1,color: Colors.white),
-                                       
-                                       
-                                        dropdownColor: Colors.pink,
-                                       
-                                        decoration: InputDecoration(
-                                            isDense: true,
-                                            //  contentPadding: EdgeInsets.all(13),
-                                            // hintText: data.inspectionDropdownValue.value
-                                            //     .isEmpty? 'Location':'',
-                                            border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(5.r))),
-                                        onChanged: (value) {
-                                          if (value != null) {
-                                             countryData
-                                                .dropDownCountryValue
-                                                .value = value;
-                                          }
-                                        },
-                                        hint: Text(
-                                          'Select',
-                                          style: TextStyle(fontSize: 12.sp,color: Colors.white),
-                                        ),
-                                        items: countryData.dropDownCountryList
-                                            .map((e) => DropdownMenuItem(
-                                                  value: e['Country_Name'].toString(),
-                                                  child: Text(
-                                                    e['Country_Name'].toString(),
-                                                    style: TextStyle(
-                                                        fontSize: 12.sp,
-                                                        color: Colors.white),
-                                                  ),
-                                                ))
-                                            .toList()),
-                                  );
-                         }
-                       ),
-                        SizedBox(height: 15.h,),
-                       GetBuilder<HomeController>(
-                         builder: (levelData) {
-                           return Container(
-                                    margin:
-                                        EdgeInsets.symmetric(horizontal: 15.w),
-                                    child: DropdownButtonFormField(
-                                        iconDisabledColor: Colors.grey,
-                                        iconEnabledColor: Colors.white,
-                                          menuMaxHeight: 400.h,
                                         value: levelData
-                                                    .dropDownLevelValue
-                                                    .value ==
+                                                    .dropDownLevelValue.value ==
                                                 ''
                                             ? 'Select'
                                             : levelData
                                                 .dropDownLevelValue.value,
-                                        style:
-                                            TextStyle(fontSize: 12.sp, height: 1,color: Colors.white),
-                                        
-                                         dropdownColor: Colors.pink,
-                                        
+                                        style: TextStyle(
+                                            fontSize: 12.sp,
+                                            height: 1,
+                                            color: Colors.white),
+                                        dropdownColor: Colors.pink,
                                         decoration: InputDecoration(
                                             isDense: true,
                                             //  contentPadding: EdgeInsets.all(13),
@@ -215,23 +227,27 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                             //     .isEmpty? 'Location':'',
                                             border: OutlineInputBorder(
                                                 borderRadius:
-                                                    BorderRadius.circular(5.r))),
+                                                    BorderRadius.circular(
+                                                        5.r))),
                                         onChanged: (value) {
                                           if (value != null) {
-                                            levelData
-                                                .dropDownLevelValue
-                                                .value = value;
+                                            levelData.dropDownLevelValue.value =
+                                                value;
                                           }
                                         },
                                         hint: Text(
                                           'Select',
-                                          style: TextStyle(fontSize: 12.sp,color: Colors.white),
+                                          style: TextStyle(
+                                              fontSize: 12.sp,
+                                              color: Colors.white),
                                         ),
                                         items: levelData.dropDownLevelList
                                             .map((e) => DropdownMenuItem(
-                                                  value: e['Level_Detail_Name'].toString(),
+                                                  value: e['Level_Detail_Name']
+                                                      .toString(),
                                                   child: Text(
-                                                    e['Level_Detail_Name'].toString(),
+                                                    e['Level_Detail_Name']
+                                                        .toString(),
                                                     style: TextStyle(
                                                         fontSize: 12.sp,
                                                         color: Colors.white),
@@ -239,29 +255,30 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                                 ))
                                             .toList()),
                                   );
-                         }
-                       ),
-                        SizedBox(height: 15.h,),
-                   GetBuilder<HomeController>(
-                     builder: (intakeData) {
-                       return Container(
+                                }),
+                                SizedBox(
+                                  height: 15.h,
+                                ),
+                                GetBuilder<HomeController>(
+                                    builder: (intakeData) {
+                                  return Container(
                                     margin:
                                         EdgeInsets.symmetric(horizontal: 15.w),
                                     child: DropdownButtonFormField(
                                         iconDisabledColor: Colors.grey,
                                         iconEnabledColor: Colors.white,
-                                          menuMaxHeight: 400.h,
-                                        value: intakeData
-                                                    .dropDownIntakeValue
+                                        menuMaxHeight: 400.h,
+                                        value: intakeData.dropDownIntakeValue
                                                     .value ==
                                                 ''
                                             ? 'Select'
                                             : intakeData
                                                 .dropDownIntakeValue.value,
-                                        style:
-                                            TextStyle(fontSize: 12.sp, height: 1,color: Colors.white),
-                                       
-                                       dropdownColor: Colors.pink,
+                                        style: TextStyle(
+                                            fontSize: 12.sp,
+                                            height: 1,
+                                            color: Colors.white),
+                                        dropdownColor: Colors.pink,
                                         decoration: InputDecoration(
                                             isDense: true,
                                             //  contentPadding: EdgeInsets.all(13),
@@ -269,21 +286,24 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                             //     .isEmpty? 'Location':'',
                                             border: OutlineInputBorder(
                                                 borderRadius:
-                                                    BorderRadius.circular(5.r))),
+                                                    BorderRadius.circular(
+                                                        5.r))),
                                         onChanged: (value) {
                                           if (value != null) {
-                                            intakeData
-                                                .dropDownIntakeValue
+                                            intakeData.dropDownIntakeValue
                                                 .value = value;
                                           }
                                         },
                                         hint: Text(
                                           'Select',
-                                          style: TextStyle(fontSize: 12.sp,color: Colors.white),
+                                          style: TextStyle(
+                                              fontSize: 12.sp,
+                                              color: Colors.white),
                                         ),
                                         items: intakeData.dropDownIntakeList
                                             .map((e) => DropdownMenuItem(
-                                                  value: e['Intake_Name'].toString(),
+                                                  value: e['Intake_Name']
+                                                      .toString(),
                                                   child: Text(
                                                     e['Intake_Name'].toString(),
                                                     style: TextStyle(
@@ -293,24 +313,15 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                                 ))
                                             .toList()),
                                   );
-                     }
-                   ),
-                        SizedBox(height: 15.h,),
-                        
-                     
-                     
-                    
-                      
-                      
-                      
-                      
-                      
-                      
-                      ],):Container(),
-                    ),
-                 
-
-                 
+                                }),
+                                SizedBox(
+                                  height: 15.h,
+                                ),
+                              ],
+                            ),
+                          )
+                        : Container(),
+                  ),
                 ],
               )),
         ),
@@ -424,51 +435,44 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
   Container customDropdownHome() {
     return Container(
-                                margin:
-                                    EdgeInsets.symmetric(horizontal: 15.w),
-                                child: DropdownButtonFormField(
-                                    iconDisabledColor: Colors.grey,
-                                    iconEnabledColor: Colors.black,
-                                    // value: profileController
-                                    //             .profileGenderDropDownValue
-                                    //             .value ==
-                                    //         ''
-                                    //     ? 'Select'
-                                    //     : profileController
-                                    //         .profileGenderDropDownValue.value,
-                                    style:
-                                        TextStyle(fontSize: 12.sp, height: 1),
-                                    decoration: InputDecoration(
-                                        isDense: true,
-                                        //  contentPadding: EdgeInsets.all(13),
-                                        // hintText: data.inspectionDropdownValue.value
-                                        //     .isEmpty? 'Location':'',
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(5.r))),
-                                    onChanged: (value) {
-                                      if (value != null) {
-                                        profileController
-                                            .profileGenderDropDownValue
-                                            .value = value;
-                                      }
-                                    },
-                                    hint: Text(
-                                      'Select',
-                                      style: TextStyle(fontSize: 12.sp),
-                                    ),
-                                    items: homeController.dropDownCountryList
-                                        .map((e) => DropdownMenuItem(
-                                              value: e['Country_Name'].toString(),
-                                              child: Text(
-                                                e['Country_Name'].toString(),
-                                                style: TextStyle(
-                                                    fontSize: 12.sp,
-                                                    color: Colors.black),
-                                              ),
-                                            ))
-                                        .toList()),
-                              );
+      margin: EdgeInsets.symmetric(horizontal: 15.w),
+      child: DropdownButtonFormField(
+          iconDisabledColor: Colors.grey,
+          iconEnabledColor: Colors.black,
+          // value: profileController
+          //             .profileGenderDropDownValue
+          //             .value ==
+          //         ''
+          //     ? 'Select'
+          //     : profileController
+          //         .profileGenderDropDownValue.value,
+          style: TextStyle(fontSize: 12.sp, height: 1),
+          decoration: InputDecoration(
+              isDense: true,
+              //  contentPadding: EdgeInsets.all(13),
+              // hintText: data.inspectionDropdownValue.value
+              //     .isEmpty? 'Location':'',
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(5.r))),
+          onChanged: (value) {
+            if (value != null) {
+              profileController.profileGenderDropDownValue.value = value;
+            }
+          },
+          hint: Text(
+            'Select',
+            style: TextStyle(fontSize: 12.sp),
+          ),
+          items: homeController.dropDownCountryList
+              .map((e) => DropdownMenuItem(
+                    value: e['Country_Name'].toString(),
+                    child: Text(
+                      e['Country_Name'].toString(),
+                      style: TextStyle(fontSize: 12.sp, color: Colors.black),
+                    ),
+                  ))
+              .toList()),
+    );
   }
 
   SizedBox locationListViewWidget() {
@@ -546,12 +550,11 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                 courseName: universityData
                                         .universityCourseDataList[index]
                                         .courseName ??
-                                    '',courseId: universityData
+                                    '',
+                                courseId: universityData
                                         .universityCourseDataList[index]
                                         .courseId ??
-                                    0
-                                    
-                                    );
+                                    0);
                           } else {
                             // Get.to(() =>const  UniversityResultScreen());
                           }
