@@ -243,6 +243,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     controller:
                                         profileController.studentNameController,
                                     decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.symmetric(
+                                            horizontal: 10.h, vertical: 10.h),
                                         border: OutlineInputBorder(
                                             borderRadius:
                                                 BorderRadius.circular(5.r))),
@@ -273,6 +275,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           TextStyle(fontSize: 12.sp, height: 1),
                                       decoration: InputDecoration(
                                           isDense: true,
+                                          contentPadding: EdgeInsets.symmetric(
+                                              horizontal: 10.h, vertical: 10.h),
                                           //  contentPadding: EdgeInsets.all(13),
                                           // hintText: data.inspectionDropdownValue.value
                                           //     .isEmpty? 'Location':'',
@@ -328,6 +332,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     controller: profileController
                                         .studentAddressController,
                                     decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.symmetric(
+                                            horizontal: 10.h, vertical: 10.h),
                                         border: OutlineInputBorder(
                                             borderRadius:
                                                 BorderRadius.circular(5.r))),
@@ -348,6 +354,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         .studentContactNoController,
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.symmetric(
+                                            horizontal: 10.h, vertical: 10.h),
                                         border: OutlineInputBorder(
                                             borderRadius:
                                                 BorderRadius.circular(5.r))),
@@ -367,6 +375,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     controller: profileController
                                         .studentEmailController,
                                     decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.symmetric(
+                                            horizontal: 10.h, vertical: 10.h),
                                         border: OutlineInputBorder(
                                             borderRadius:
                                                 BorderRadius.circular(5.r))),
@@ -466,7 +476,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 leading: CircleAvatar(
                                   radius: 50.r,
                                   child: const Center(
-                                    child: Icon(Icons.person),
+                                    child: Icon(Icons.percent),
                                   ),
                                 ),
 
@@ -517,6 +527,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   controller: profileController
                                                       .studentClasscontroller,
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 10.h,
+                                                              vertical: 10.h),
                                                       border: OutlineInputBorder(
                                                           borderRadius:
                                                               BorderRadius
@@ -538,6 +552,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   controller: profileController
                                                       .studentFieldcontroller,
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 10.h,
+                                                              vertical: 10.h),
                                                       border: OutlineInputBorder(
                                                           borderRadius:
                                                               BorderRadius
@@ -559,6 +577,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   controller: profileController
                                                       .studentCollegecontroller,
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 10.h,
+                                                              vertical: 10.h),
                                                       border: OutlineInputBorder(
                                                           borderRadius:
                                                               BorderRadius
@@ -580,6 +602,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   controller: profileController
                                                       .studentSpecificationController,
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 10.h,
+                                                              vertical: 10.h),
                                                       border: OutlineInputBorder(
                                                           borderRadius:
                                                               BorderRadius
@@ -601,6 +627,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   controller: profileController
                                                       .studentFromYearcontroller,
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 10.h,
+                                                              vertical: 10.h),
                                                       border: OutlineInputBorder(
                                                           borderRadius:
                                                               BorderRadius
@@ -622,6 +652,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   controller: profileController
                                                       .studentToYearController,
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 10.h,
+                                                              vertical: 10.h),
                                                       border: OutlineInputBorder(
                                                           borderRadius:
                                                               BorderRadius
@@ -643,6 +677,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   controller: profileController
                                                       .studentPercentageController,
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 10.h,
+                                                              vertical: 10.h),
                                                       border: OutlineInputBorder(
                                                           borderRadius:
                                                               BorderRadius
@@ -819,6 +857,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   controller: profileController
                                                       .workCompanyNameController,
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 10.h,
+                                                              vertical: 10.h),
                                                       border: OutlineInputBorder(
                                                           borderRadius:
                                                               BorderRadius
@@ -840,6 +882,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   controller: profileController
                                                       .workDesignationController,
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 10.h,
+                                                              vertical: 10.h),
                                                       border: OutlineInputBorder(
                                                           borderRadius:
                                                               BorderRadius
@@ -861,6 +907,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   controller: profileController
                                                       .workSalaryController,
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 10.h,
+                                                              vertical: 10.h),
                                                       border: OutlineInputBorder(
                                                           borderRadius:
                                                               BorderRadius
@@ -882,6 +932,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   controller: profileController
                                                       .wrokFromYearcontroller,
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 10.h,
+                                                              vertical: 10.h),
                                                       border: OutlineInputBorder(
                                                           borderRadius:
                                                               BorderRadius
@@ -903,6 +957,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   controller: profileController
                                                       .workToYearController,
                                                   decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 10.h,
+                                                              vertical: 10.h),
                                                       border: OutlineInputBorder(
                                                           borderRadius:
                                                               BorderRadius
@@ -1292,7 +1350,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               leading: CircleAvatar(
                                 radius: 50.r,
                                 child: const Center(
-                                  child: Icon(Icons.person),
+                                  child: Icon(Icons.language),
                                 ),
                               ),
 
@@ -1353,15 +1411,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                         fontSize: 12.sp,
                                                         height: 1),
                                                     decoration: InputDecoration(
+                                                        contentPadding:
+                                                            EdgeInsets.symmetric(
+                                                                horizontal:
+                                                                    10.h,
+                                                                vertical: 12.h),
                                                         isDense: true,
                                                         //  contentPadding: EdgeInsets.all(13),
                                                         // hintText: data.inspectionDropdownValue.value
                                                         //     .isEmpty? 'Location':'',
                                                         border: OutlineInputBorder(
                                                             borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        5.r))),
+                                                                BorderRadius.circular(
+                                                                    5.r))),
                                                     onChanged: (value) {
                                                       languageData
                                                               .examDropDownValue
@@ -1376,8 +1438,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     ),
                                                     items: languageData
                                                         .ieltsDropDownList
-                                                        .map((e) =>
-                                                            DropdownMenuItem(
+                                                        .map((e) => DropdownMenuItem(
                                                               value: e[
                                                                   'Ielts_Type_Name'],
                                                               child: Text(
@@ -1449,6 +1510,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 controller: profileController
                                                     .gMatScroreController,
                                                 decoration: InputDecoration(
+                                                    contentPadding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 10.h,
+                                                            vertical: 10.h),
                                                     border: OutlineInputBorder(
                                                         borderRadius:
                                                             BorderRadius
@@ -1470,6 +1535,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 controller: profileController
                                                     .listeningScoreController,
                                                 decoration: InputDecoration(
+                                                    contentPadding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 10.h,
+                                                            vertical: 10.h),
                                                     border: OutlineInputBorder(
                                                         borderRadius:
                                                             BorderRadius
@@ -1491,6 +1560,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 controller: profileController
                                                     .neetScroreController,
                                                 decoration: InputDecoration(
+                                                    contentPadding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 10.h,
+                                                            vertical: 10.h),
                                                     border: OutlineInputBorder(
                                                         borderRadius:
                                                             BorderRadius
@@ -1512,6 +1585,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 controller: profileController
                                                     .readingScroreController,
                                                 decoration: InputDecoration(
+                                                    contentPadding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 10.h,
+                                                            vertical: 10.h),
                                                     border: OutlineInputBorder(
                                                         borderRadius:
                                                             BorderRadius
@@ -1533,6 +1610,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 controller: profileController
                                                     .ieltsScrorecontroller,
                                                 decoration: InputDecoration(
+                                                    contentPadding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 10.h,
+                                                            vertical: 10.h),
                                                     border: OutlineInputBorder(
                                                         borderRadius:
                                                             BorderRadius
@@ -1554,6 +1635,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 controller: profileController
                                                     .writingScroreController,
                                                 decoration: InputDecoration(
+                                                    contentPadding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 10.h,
+                                                            vertical: 10.h),
                                                     border: OutlineInputBorder(
                                                         borderRadius:
                                                             BorderRadius
@@ -1575,6 +1660,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 controller: profileController
                                                     .speakingScroreController,
                                                 decoration: InputDecoration(
+                                                    contentPadding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 10.h,
+                                                            vertical: 10.h),
                                                     border: OutlineInputBorder(
                                                         borderRadius:
                                                             BorderRadius
@@ -2105,7 +2194,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               leading: CircleAvatar(
                                 radius: 50.r,
                                 child: const Center(
-                                  child: Icon(Icons.person),
+                                  child:
+                                      Icon(Icons.dashboard_customize_outlined),
                                 ),
                               ),
                               title: const Text('Application'),
@@ -2304,7 +2394,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               leading: CircleAvatar(
                                 radius: 50.r,
                                 child: const Center(
-                                  child: Icon(Icons.person),
+                                  child: Icon(Icons.edit_document),
                                 ),
                               ),
                               title: const Text('Document'),
