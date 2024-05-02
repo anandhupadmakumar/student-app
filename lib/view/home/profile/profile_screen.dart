@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -233,6 +236,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: 10.h,
                                 ),
                                 Container(
+                                  height: 50.h,
                                   margin:
                                       EdgeInsets.symmetric(horizontal: 15.w),
                                   child: TextField(
@@ -253,6 +257,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
 
                                 Container(
+                                  height: 50.h,
                                   margin:
                                       EdgeInsets.symmetric(horizontal: 15.w),
                                   child: DropdownButtonFormField(
@@ -318,6 +323,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: 10.h,
                                 ),
                                 Container(
+                                  height: 50.h,
                                   margin:
                                       EdgeInsets.symmetric(horizontal: 15.w),
                                   child: TextField(
@@ -337,6 +343,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: 10.h,
                                 ),
                                 Container(
+                                  height: 50.h,
                                   margin:
                                       EdgeInsets.symmetric(horizontal: 15.w),
                                   child: TextField(
@@ -357,6 +364,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   height: 10.h,
                                 ),
                                 Container(
+                                  height: 50.h,
                                   margin:
                                       EdgeInsets.symmetric(horizontal: 15.w),
                                   child: TextField(
@@ -377,6 +385,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
 
                                 Container(
+                                  height: 50.h,
                                     margin:
                                         EdgeInsets.symmetric(horizontal: 15.w),
                                     child: datepickerWidget(
@@ -461,7 +470,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               leading: CircleAvatar(
                                 radius: 50.r,
                                 child: const Center(
-                                  child: Icon(Icons.person),
+                                  child: Icon(Icons.school_outlined),
                                 ),
                               ),
 
@@ -506,6 +515,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -527,6 +537,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -548,6 +559,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -569,6 +581,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -590,6 +603,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -611,6 +625,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -632,6 +647,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -806,6 +822,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -827,6 +844,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -848,6 +866,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -869,6 +888,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -890,6 +910,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -1012,7 +1033,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 margin: EdgeInsets.only(
                                                     right: 15.w),
                                                 padding: EdgeInsets.all(15.w),
-                                                width: 200.w,
+                                                width: 210.w,
                                                 decoration: BoxDecoration(
                                                     border: Border.all(),
                                                     color: Colors.white,
@@ -1027,138 +1048,139 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       children: [
                                                         Text(
                                                             'Company Name : ${workData.workExperienceDataList[index]['Company']}'),
-                                                        PopupMenuButton(
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    0),
-                                                            splashRadius: 2,
-                                                            onSelected:
-                                                                (index1) {
-                                                              if (index1 == 1) {
-                                                                profileController
-                                                                    .workCompanyNameController
-                                                                    .text = workData
-                                                                            .workExperienceDataList[index]
-                                                                        [
-                                                                        'Company'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .workDesignationController
-                                                                    .text = workData
-                                                                            .workExperienceDataList[index]
-                                                                        [
-                                                                        'Designation'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .workSalaryController
-                                                                    .text = workData
-                                                                            .workExperienceDataList[index]
-                                                                        [
-                                                                        'Salary'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .wrokFromYearcontroller
-                                                                    .text = workData
-                                                                            .workExperienceDataList[index]
-                                                                        [
-                                                                        'Ex_From'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .workToYearController
-                                                                    .text = workData
-                                                                            .workExperienceDataList[index]
-                                                                        [
-                                                                        'Ex_To'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .workExperienceSlno
-                                                                    .value = workData
-                                                                            .workExperienceDataList[index]
-                                                                        [
-                                                                        'Slno'] ??
-                                                                    0;
-
-                                                                profileController
-                                                                    .workExperienceSlno
-                                                                    .value = workData
-                                                                            .workExperienceDataList[index]
-                                                                        [
-                                                                        'Work_Experience_Id'] ??
-                                                                    0;
-                                                                profileController
-                                                                    .isAddWorkExperience
-                                                                    .value = true;
-                                                              } else if (index1 ==
-                                                                  2) {
-                                                                showDialog(
-                                                                  barrierDismissible:
-                                                                      false,
-                                                                  context: Get
-                                                                      .context!,
-                                                                  builder: (ctx) =>
-                                                                      AlertDialog(
-                                                                    title:
-                                                                        const Text(
-                                                                      'Warning',
-                                                                      style: TextStyle(
-                                                                          fontWeight:
-                                                                              FontWeight.w800),
-                                                                    ),
-                                                                    content:
-                                                                        const SingleChildScrollView(
-                                                                      child: Column(
-                                                                          crossAxisAlignment:
-                                                                              CrossAxisAlignment.start,
-                                                                          children: [
-                                                                            Text("Do you want to delete?"),
-                                                                          ]),
-                                                                    ),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        child:
-                                                                            const Text(
-                                                                          'Yes',
-                                                                          style:
-                                                                              TextStyle(fontWeight: FontWeight.w700),
-                                                                        ),
-                                                                        onPressed:
-                                                                            () async {
-                                                                          profileController.deleteWorkExperience(
-                                                                              workExperienceId: workData.workExperienceDataList[index]['Work_Experience_Id'] ?? 0,
-                                                                              dltIndex: index);
-                                                                          Get.back();
-                                                                        },
+                                                        Expanded(
+                                                          child: PopupMenuButton(
+                                                              padding:
+                                                                  EdgeInsets.all(0),
+                                                              splashRadius: 2,
+                                                              onSelected:
+                                                                  (index1) {
+                                                                if (index1 == 1) {
+                                                                  profileController
+                                                                      .workCompanyNameController
+                                                                      .text = workData
+                                                                              .workExperienceDataList[index]
+                                                                          [
+                                                                          'Company'] ??
+                                                                      '';
+                                                                  profileController
+                                                                      .workDesignationController
+                                                                      .text = workData
+                                                                              .workExperienceDataList[index]
+                                                                          [
+                                                                          'Designation'] ??
+                                                                      '';
+                                                                  profileController
+                                                                      .workSalaryController
+                                                                      .text = workData
+                                                                              .workExperienceDataList[index]
+                                                                          [
+                                                                          'Salary'] ??
+                                                                      '';
+                                                                  profileController
+                                                                      .wrokFromYearcontroller
+                                                                      .text = workData
+                                                                              .workExperienceDataList[index]
+                                                                          [
+                                                                          'Ex_From'] ??
+                                                                      '';
+                                                                  profileController
+                                                                      .workToYearController
+                                                                      .text = workData
+                                                                              .workExperienceDataList[index]
+                                                                          [
+                                                                          'Ex_To'] ??
+                                                                      '';
+                                                                  profileController
+                                                                      .workExperienceSlno
+                                                                      .value = workData
+                                                                              .workExperienceDataList[index]
+                                                                          [
+                                                                          'Slno'] ??
+                                                                      0;
+                                                          
+                                                                  profileController
+                                                                      .workExperienceSlno
+                                                                      .value = workData
+                                                                              .workExperienceDataList[index]
+                                                                          [
+                                                                          'Work_Experience_Id'] ??
+                                                                      0;
+                                                                  profileController
+                                                                      .isAddWorkExperience
+                                                                      .value = true;
+                                                                } else if (index1 ==
+                                                                    2) {
+                                                                  showDialog(
+                                                                    barrierDismissible:
+                                                                        false,
+                                                                    context: Get
+                                                                        .context!,
+                                                                    builder: (ctx) =>
+                                                                        AlertDialog(
+                                                                      title:
+                                                                          const Text(
+                                                                        'Warning',
+                                                                        style: TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.w800),
                                                                       ),
-                                                                      TextButton(
-                                                                        child: const Text(
-                                                                            'Cancel',
+                                                                      content:
+                                                                          const SingleChildScrollView(
+                                                                        child: Column(
+                                                                            crossAxisAlignment:
+                                                                                CrossAxisAlignment.start,
+                                                                            children: [
+                                                                              Text("Do you want to delete?"),
+                                                                            ]),
+                                                                      ),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          child:
+                                                                              const Text(
+                                                                            'Yes',
                                                                             style:
-                                                                                TextStyle(fontWeight: FontWeight.w700)),
-                                                                        onPressed:
-                                                                            () {
-                                                                          Get.back();
-                                                                        },
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                );
-                                                              }
-                                                            },
-                                                            itemBuilder:
-                                                                (context) {
-                                                              return [
-                                                                const PopupMenuItem<
-                                                                        int>(
-                                                                    value: 1,
-                                                                    child: Text(
-                                                                        'Edit')),
-                                                                const PopupMenuItem<
-                                                                        int>(
-                                                                    value: 2,
-                                                                    child: Text(
-                                                                        'Delete')),
-                                                              ];
-                                                            }),
+                                                                                TextStyle(fontWeight: FontWeight.w700),
+                                                                          ),
+                                                                          onPressed:
+                                                                              () async {
+                                                                            profileController.deleteWorkExperience(
+                                                                                workExperienceId: workData.workExperienceDataList[index]['Work_Experience_Id'] ?? 0,
+                                                                                dltIndex: index);
+                                                                            Get.back();
+                                                                          },
+                                                                        ),
+                                                                        TextButton(
+                                                                          child: const Text(
+                                                                              'Cancel',
+                                                                              style:
+                                                                                  TextStyle(fontWeight: FontWeight.w700)),
+                                                                          onPressed:
+                                                                              () {
+                                                                            Get.back();
+                                                                          },
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  );
+                                                                }
+                                                              },
+                                                              itemBuilder:
+                                                                  (context) {
+                                                                return [
+                                                                  const PopupMenuItem<
+                                                                          int>(
+                                                                      value: 1,
+                                                                      child: Text(
+                                                                          'Edit')),
+                                                                  const PopupMenuItem<
+                                                                          int>(
+                                                                      value: 2,
+                                                                      child: Text(
+                                                                          'Delete')),
+                                                                ];
+                                                              }),
+                                                        ),
                                                       ],
                                                     ),
                                                     SizedBox(
@@ -1178,6 +1200,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     );
                                   }),
                                 ),
+                                SizedBox(height: 15.h,)
                               ],
                             ),
                           ),
@@ -1194,7 +1217,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               leading: CircleAvatar(
                                 radius: 50.r,
                                 child: const Center(
-                                  child: Icon(Icons.person),
+                                  child: Icon(Icons.language_outlined),
                                 ),
                               ),
 
@@ -1237,6 +1260,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               GetBuilder<ProfileController>(
                                                   builder: (languageData) {
                                                 return Container(
+                                                  height: 50.h,
                                                   margin: EdgeInsets.symmetric(
                                                       horizontal: 15.w),
                                                   child:
@@ -1320,6 +1344,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               ),
 
                                               Container(
+                                                 height: 50.h,
                                                   margin: EdgeInsets.symmetric(
                                                       horizontal: 15.w),
                                                   child: datepickerWidget(
@@ -1348,6 +1373,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -1369,6 +1395,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -1390,6 +1417,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -1411,6 +1439,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -1432,6 +1461,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -1453,6 +1483,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -1474,6 +1505,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 10.h,
                                               ),
                                               Container(
+                                                 height: 50.h,
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 15.w),
                                                 child: TextField(
@@ -1600,7 +1632,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 SizedBox(
                                   width: Get.width,
-                                  height: 250.h,
+                                  height: 290.h,
                                   child: GetBuilder<ProfileController>(
                                       builder: (workData) {
                                     return ListView(
@@ -1612,7 +1644,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 margin: EdgeInsets.only(
                                                     right: 15.w),
                                                 padding: EdgeInsets.all(15.w),
-                                                width: 200.w,
+                                                width: 210.w,
                                                 decoration: BoxDecoration(
                                                     border: Border.all(),
                                                     color: Colors.white,
@@ -1627,6 +1659,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                       children: [
                                                         Text(
                                                             'Exam : ${workData.languageDetailsList[index]['Ielts_Type_Name']}'),
+                                                            Spacer(),
                                                         PopupMenuButton(
                                                             padding:
                                                                 EdgeInsets.all(
@@ -1813,6 +1846,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     );
                                   }),
                                 ),
+                                SizedBox(
+                                  height: 20.h,
+                                ),
                               ],
                             ),
                           ),
@@ -1828,7 +1864,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               leading: CircleAvatar(
                                 radius: 50.r,
                                 child: const Center(
-                                  child: Icon(Icons.person),
+                                  child: Icon(Icons.assignment_outlined),
                                 ),
                               ),
                               title: const Text('Application'),
@@ -1923,7 +1959,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               leading: CircleAvatar(
                                 radius: 50.r,
                                 child: const Center(
-                                  child: Icon(Icons.person),
+                                  child: Icon(Icons.description_outlined),
                                 ),
                               ),
                               title: const Text('Document'),
@@ -2250,7 +2286,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           (index) => Container(
                 margin: EdgeInsets.only(right: 15.w),
                 padding: EdgeInsets.all(15.w),
-                width: 200.w,
+                width: 210.w,
                 decoration: BoxDecoration(
                     border: Border.all(),
                     color: Colors.white,
@@ -2261,87 +2297,90 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Row(
                       children: [
                         Text('Class/Level : ${listData[index]['Credential']} '),
-                        PopupMenuButton(
-                            padding: EdgeInsets.all(0),
-                            splashRadius: 2,
-                            onSelected: (index1) {
-                              if (index1 == 1) {
-                                profileController.studentClasscontroller.text =
-                                    listData[index]['Credential'] ?? '';
-                                profileController.studentPercentageController
-                                    .text = listData[index]['MarkPer'] ?? '';
-                                profileController.studentCollegecontroller
-                                    .text = listData[index]['school'] ?? '';
-                                profileController.studentFromYearcontroller
-                                    .text = listData[index]['Fromyear'] ?? '';
-                                profileController.studentToYearController.text =
-                                    listData[index]['Toyear'] ?? '';
-                                profileController.studentFieldcontroller.text =
-                                    listData[index]['Field'] ?? '';
-                                profileController
-                                        .studentSpecificationController.text =
-                                    listData[index]['Backlog_History'] ?? '';
-                                profileController.isAddQualification.value =
-                                    true;
-                                profileController.qualificationId.value =
-                                    listData[index]['Qualification_Id'] ?? 0;
-                                profileController.qualificationSlno.value =
-                                    listData[index]['slno'] ?? 0;
-                              } else if (index1 == 2) {
-                                showDialog(
-                                  barrierDismissible: false,
-                                  context: Get.context!,
-                                  builder: (ctx) => AlertDialog(
-                                    title: const Text(
-                                      'Warning',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w800),
-                                    ),
-                                    content: const SingleChildScrollView(
-                                      child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text("Do you want to delete?"),
-                                          ]),
-                                    ),
-                                    actions: [
-                                      TextButton(
-                                        child: const Text(
-                                          'Yes',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        onPressed: () async {
-                                          profileController.deleteQualification(
-                                              qualificationId: listData[index]
-                                                      ['Qualification_Id'] ??
-                                                  0,
-                                              dltIndex: index);
-                                          Get.back();
-                                        },
+                        Spacer(),
+                        Expanded(
+                          child: PopupMenuButton(
+                              padding: EdgeInsets.all(0),
+                              splashRadius: 2,
+                              onSelected: (index1) {
+                                if (index1 == 1) {
+                                  profileController.studentClasscontroller.text =
+                                      listData[index]['Credential'] ?? '';
+                                  profileController.studentPercentageController
+                                      .text = listData[index]['MarkPer'] ?? '';
+                                  profileController.studentCollegecontroller
+                                      .text = listData[index]['school'] ?? '';
+                                  profileController.studentFromYearcontroller
+                                      .text = listData[index]['Fromyear'] ?? '';
+                                  profileController.studentToYearController.text =
+                                      listData[index]['Toyear'] ?? '';
+                                  profileController.studentFieldcontroller.text =
+                                      listData[index]['Field'] ?? '';
+                                  profileController
+                                          .studentSpecificationController.text =
+                                      listData[index]['Backlog_History'] ?? '';
+                                  profileController.isAddQualification.value =
+                                      true;
+                                  profileController.qualificationId.value =
+                                      listData[index]['Qualification_Id'] ?? 0;
+                                  profileController.qualificationSlno.value =
+                                      listData[index]['slno'] ?? 0;
+                                } else if (index1 == 2) {
+                                  showDialog(
+                                    barrierDismissible: false,
+                                    context: Get.context!,
+                                    builder: (ctx) => AlertDialog(
+                                      title: const Text(
+                                        'Warning',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w800),
                                       ),
-                                      TextButton(
-                                        child: const Text('Cancel',
+                                      content: const SingleChildScrollView(
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text("Do you want to delete?"),
+                                            ]),
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          child: const Text(
+                                            'Yes',
                                             style: TextStyle(
-                                                fontWeight: FontWeight.w700)),
-                                        onPressed: () {
-                                          Get.back();
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              }
-                            },
-                            itemBuilder: (context) {
-                              return [
-                                const PopupMenuItem<int>(
-                                    value: 1, child: Text('Edit')),
-                                const PopupMenuItem<int>(
-                                    value: 2, child: Text('Delete')),
-                              ];
-                            }),
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                          onPressed: () async {
+                                            profileController.deleteQualification(
+                                                qualificationId: listData[index]
+                                                        ['Qualification_Id'] ??
+                                                    0,
+                                                dltIndex: index);
+                                            Get.back();
+                                          },
+                                        ),
+                                        TextButton(
+                                          child: const Text('Cancel',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w700)),
+                                          onPressed: () {
+                                            Get.back();
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }
+                              },
+                              itemBuilder: (context) {
+                                return [
+                                  const PopupMenuItem<int>(
+                                      value: 1, child: Text('Edit')),
+                                  const PopupMenuItem<int>(
+                                      value: 2, child: Text('Delete')),
+                                ];
+                              }),
+                        ),
                       ],
                     ),
                     Text('Field : ${listData[index]['Field']} '),

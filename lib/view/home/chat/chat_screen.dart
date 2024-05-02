@@ -168,7 +168,7 @@ class ChatScreen extends StatelessWidget {
   }
 }
 
-PersistentBottomSheetController<dynamic> loginBottomSheetWidget(
+loginBottomSheetWidget(
     BuildContext context) {
   return showBottomSheet(
       context: context,

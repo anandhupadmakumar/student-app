@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,7 +35,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
           child: Container(
               height: profileController.appbarHeight.value,
               // duration: Duration(milliseconds: 1000),
-
+          
               decoration: BoxDecoration(
                 color: Colors.pink,
                 borderRadius: BorderRadius.only(
@@ -75,19 +77,10 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.search,
-                                color: Colors.grey,
-                                size: 18.sp,
-                              ),
-                              SizedBox(
-                                width: 15.w,
-                              ),
-                              Text('find courses'),
-                            ],
+                          SizedBox(
+                            width: 15.w,
                           ),
+                          Text('find courses'),
                           GetBuilder<HomeController>(builder: (searchData) {
                             return Row(
                               children: [
@@ -95,7 +88,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                     onPressed: () async {
                                       await homeController.getCourseSearchData(
                                           pageStart: 0, pageEnd: 10);
-
+                        
                                       showSearch(
                                           context: context,
                                           delegate: CustomSearchDelegate(
@@ -111,12 +104,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                     onPressed: () {
                                       if (profileController
                                               .appbarHeight.value ==
-                                          350) {
+                                          400) {
                                         profileController.appbarHeight.value =
                                             180;
                                       } else {
                                         profileController.appbarHeight.value =
-                                            350;
+                                            400;
                                       }
                                     },
                                     icon: Icon(
@@ -130,16 +123,17 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   ),
                   Container(
                     // duration: Duration(milliseconds: 5000),
-
-                    child: profileController.appbarHeight.value == 350
+                        
+                    child: profileController.appbarHeight.value == 400
                         ? Column(
                             children: [
                               SizedBox(
-                                height: 15.h,
+                                height: 14.h,
                               ),
                               GetBuilder<HomeController>(
                                   builder: (countryData) {
                                 return Container(
+                                  decoration: BoxDecoration(border: Border.all(color: const Color.fromARGB(255, 255, 255, 255))),
                                   margin:
                                       EdgeInsets.symmetric(horizontal: 15.w),
                                   child: DropdownButtonFormField(
@@ -196,6 +190,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                               ),
                               GetBuilder<HomeController>(builder: (levelData) {
                                 return Container(
+                                   decoration: BoxDecoration(border: Border.all(color: Colors.white)),
                                   margin:
                                       EdgeInsets.symmetric(horizontal: 15.w),
                                   child: DropdownButtonFormField(
@@ -252,6 +247,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                               ),
                               GetBuilder<HomeController>(builder: (intakeData) {
                                 return Container(
+                                   decoration: BoxDecoration(border: Border.all(color: Colors.white)),
                                   margin:
                                       EdgeInsets.symmetric(horizontal: 15.w),
                                   child: DropdownButtonFormField(
@@ -303,13 +299,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                           .toList()),
                                 );
                               }),
-                              SizedBox(
-                                height: 15.h,
-                              ),
+                              
                             ],
                           )
                         : Container(),
                   ),
+                  
                 ],
               )),
         ),
