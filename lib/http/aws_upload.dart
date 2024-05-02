@@ -1,20 +1,15 @@
 import 'dart:io';
 
-
 import 'package:aws_s3_upload/aws_s3_upload.dart';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart';
 
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AwsUpload {
-
-  static uploadToAws(FilePickerResult result,int documentId) async {
-
-
-     SharedPreferences preferences = await SharedPreferences.getInstance();
+  static uploadToAws(FilePickerResult result, int documentId) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
     final userId = preferences.getInt('trinity_student_id') ?? '';
     var s;
     FormData formData = FormData();

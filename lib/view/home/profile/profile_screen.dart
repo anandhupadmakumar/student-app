@@ -1,6 +1,7 @@
-
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -106,47 +107,49 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               height: 15.h,
                                             ),
                                             Obx(
-                                      ()=> TextFormField( 
-                                          obscureText: loginController.obsecureText.value,
-                                        controller: homeController.loginMobController,
-                                                                            
-                                                                            
-                                                                             
-                                                                            
-                                        decoration: InputDecoration(
-                                          hintText: 'Password',
-                                        
-                                          suffixIcon: IconButton(onPressed: (){
-
-                                            if(loginController.obsecureText.value==false){
- loginController.obsecureText.value=true;
-                                            }else{
-                                            loginController.obsecureText.value=false;
-
-
-                                            }
-                                        
-                                        
-                                        
-                                            
-                                          }, icon:    loginController.obsecureText.value==false? Icon(Icons.visibility,size: 18.sp,):Icon(Icons.visibility_off,size: 18.sp,)),
-                                        
-                                                              
-                                          
-                                          
-                                          
-                                          border: OutlineInputBorder(
-                                                              
-                                            borderRadius: BorderRadius.circular(20.r)
-                                                              
-                                                              
-                                                              
-                                          )),
-                                                                            
-                                                                            
-                                                                            
-                                                                            ),
-                                      ),
+                                              () => TextFormField(
+                                                obscureText: loginController
+                                                    .obsecureText.value,
+                                                controller: homeController
+                                                    .loginMobController,
+                                                decoration: InputDecoration(
+                                                    hintText: 'Password',
+                                                    suffixIcon: IconButton(
+                                                        onPressed: () {
+                                                          if (loginController
+                                                                  .obsecureText
+                                                                  .value ==
+                                                              false) {
+                                                            loginController
+                                                                .obsecureText
+                                                                .value = true;
+                                                          } else {
+                                                            loginController
+                                                                .obsecureText
+                                                                .value = false;
+                                                          }
+                                                        },
+                                                        icon: loginController
+                                                                    .obsecureText
+                                                                    .value ==
+                                                                false
+                                                            ? Icon(
+                                                                Icons
+                                                                    .visibility,
+                                                                size: 18.sp,
+                                                              )
+                                                            : Icon(
+                                                                Icons
+                                                                    .visibility_off,
+                                                                size: 18.sp,
+                                                              )),
+                                                    border: OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                    20.r))),
+                                              ),
+                                            ),
                                             SizedBox(
                                               height: 15.h,
                                             ),
@@ -205,6 +208,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   )
                 : Container(
                     padding: EdgeInsets.symmetric(horizontal: 15.w),
+                    // height: Get.height,
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
@@ -453,53 +457,54 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           ClipRRect(
                             borderRadius: BorderRadius.circular(20.r),
-                            child: ExpansionTile(
-                              // shape:OutlineInputBorder(),
-                              tilePadding: EdgeInsets.all(20.w),
-                              collapsedBackgroundColor: Colors.white,
+                            child: SizedBox(
+                              child: ExpansionTile(
+                                // shape:OutlineInputBorder(),
+                                tilePadding: EdgeInsets.all(20.w),
+                                collapsedBackgroundColor: Colors.white,
 
-                              leading: CircleAvatar(
-                                radius: 50.r,
-                                child: const Center(
-                                  child: Icon(Icons.person),
+                                leading: CircleAvatar(
+                                  radius: 50.r,
+                                  child: const Center(
+                                    child: Icon(Icons.person),
+                                  ),
                                 ),
-                              ),
 
-                              title: const Text('Qualification'),
+                                title: const Text('Qualification'),
 
-                              trailing:
-                                  const Icon(Icons.keyboard_arrow_down_rounded),
+                                trailing: const Icon(
+                                    Icons.keyboard_arrow_down_rounded),
 
-                              // backgroundColor: Colors.red,
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    profileController.isAddQualification.value =
-                                        true;
-                                  },
-                                  child: Container(
-                                    width: 200.w,
-                                    height: 40.h,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20.r),
-                                      color: Colors.purple,
-                                    ),
-                                    child: const Center(
-                                      child: Text(
-                                        'Add Qualification Details',
-                                        style: TextStyle(color: Colors.white),
+                                // backgroundColor: Colors.red,
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      profileController
+                                          .isAddQualification.value = true;
+                                    },
+                                    child: Container(
+                                      width: 200.w,
+                                      height: 40.h,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(20.r),
+                                        color: Colors.purple,
+                                      ),
+                                      child: const Center(
+                                        child: Text(
+                                          'Add Qualification Details',
+                                          style: TextStyle(color: Colors.white),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 20.h,
-                                ),
-                                Obx(
-                                  () => profileController
-                                          .isAddQualification.value
-                                      ? Container(
-                                          child: Column(
+                                  SizedBox(
+                                    height: 20.h,
+                                  ),
+                                  Obx(
+                                    () => profileController
+                                            .isAddQualification.value
+                                        ? Column(
                                             children: [
                                               const Text('Class/Level'),
                                               SizedBox(
@@ -686,8 +691,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                               .studentSpecificationController
                                                               .text
                                                               .isNotEmpty) {
-                                                                  profileController
-                                                          .saveQualificationDetails();
+                                                        profileController
+                                                            .saveQualificationDetails();
                                                         //  profileController.updateStudent();
                                                       } else {
                                                         ScaffoldMessenger.of(
@@ -697,8 +702,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                                     content: Text(
                                                                         'Please fill all the fields')));
                                                       }
-
-                                                    
                                                     },
                                                     child: Container(
                                                       width: 150.w,
@@ -753,55 +756,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 20.h,
                                               ),
                                             ],
-                                          ),
-                                        )
-                                      : Container(),
-                                ),
-                                SizedBox(
-                                  height: 20.h,
-                                ),
-                                SizedBox(
-                                  width: Get.width,
-                                  height: 250.h,
-                                  child: GetBuilder<ProfileController>(
-                                      builder: (qualificationData) {
-                                    return profiledataListWidget(
-                                        qualificationData,
-                                        profileController
-                                            .qualificationDataList);
-                                  }),
-                                ),
-                                SizedBox(
-                                  height: 20.h,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    profileController
-                                        .isAddWorkExperience.value = true;
-                                  },
-                                  child: Container(
-                                    width: 200.w,
-                                    height: 40.h,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20.r),
-                                      color: Colors.purple,
+                                          )
+                                        : Container(),
+                                  ),
+                                  SizedBox(
+                                    height: 20.h,
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: SizedBox(
+                                      height: Get.width > 615 ? 380.h : 280.h,
+                                      child: GetBuilder<ProfileController>(
+                                          builder: (qualificationData) {
+                                        return profiledataListWidget(
+                                          qualificationData,
+                                          profileController
+                                              .qualificationDataList,
+                                        );
+                                      }),
                                     ),
-                                    child: const Center(
-                                      child: Text(
-                                        'Add Work Experience',
-                                        style: TextStyle(color: Colors.white),
+                                  ),
+                                  SizedBox(
+                                    height: 20.h,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      profileController
+                                          .isAddWorkExperience.value = true;
+                                    },
+                                    child: Container(
+                                      width: 200.w,
+                                      height: 40.h,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(20.r),
+                                        color: Colors.purple,
+                                      ),
+                                      child: const Center(
+                                        child: Text(
+                                          'Add Work Experience',
+                                          style: TextStyle(color: Colors.white),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 20.h,
-                                ),
-                                Obx(
-                                  () => profileController
-                                          .isAddWorkExperience.value
-                                      ? Container(
-                                          child: Column(
+                                  SizedBox(
+                                    height: 20.h,
+                                  ),
+                                  Obx(
+                                    () => profileController
+                                            .isAddWorkExperience.value
+                                        ? Column(
                                             children: [
                                               const Text('Company Name'),
                                               SizedBox(
@@ -914,8 +919,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 children: [
                                                   InkWell(
                                                     onTap: () {
-
-
                                                       if (profileController.workCompanyNameController.text.isNotEmpty &&
                                                           profileController
                                                               .workDesignationController
@@ -932,24 +935,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                           profileController
                                                               .workToYearController
                                                               .text
-                                                              .isNotEmpty){
-                                                                 profileController
-                                                          .saveWorkExperience();
-
-                                                              }else{
-
-
-                                                                 ScaffoldMessenger.of(context)
-                                          .showSnackBar(const SnackBar(
-                                              content: Text(
-                                                  'Please fill all the fields')));
-
-                                                              }
-
-
-
-
-                                                     
+                                                              .isNotEmpty) {
+                                                        profileController
+                                                            .saveWorkExperience();
+                                                      } else {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                                const SnackBar(
+                                                                    content: Text(
+                                                                        'Please fill all the fields')));
+                                                      }
                                                     },
                                                     child: Container(
                                                       width: 150.w,
@@ -1004,192 +1000,283 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 height: 20.h,
                                               ),
                                             ],
-                                          ),
-                                        )
-                                      : Container(),
-                                ),
-                                SizedBox(
-                                  width: Get.width,
-                                  height: 200.h,
-                                  child: GetBuilder<ProfileController>(
-                                      builder: (workData) {
-                                    return ListView(
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.horizontal,
-                                      children: List.generate(
-                                          workData
-                                              .workExperienceDataList.length,
-                                          (index) => Container(
-                                                margin: EdgeInsets.only(
-                                                    right: 15.w),
-                                                padding: EdgeInsets.all(15.w),
-                                                width: 200.w,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(),
-                                                    color: Colors.white,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.r)),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Row(
-                                                      children: [
-                                                        Text(
-                                                            'Company Name : ${workData.workExperienceDataList[index]['Company']}'),
-                                                        PopupMenuButton(
+                                          )
+                                        : Container(),
+                                  ),
+                                  Column(
+                                    children: [
+                                      SizedBox(
+                                        width: Get.width,
+                                        height: Get.width > 615 ? 380.h : 280.h,
+                                        child: GetBuilder<ProfileController>(
+                                            builder: (workData) {
+                                          return Expanded(
+                                            child: ListView(
+                                              shrinkWrap: true,
+                                              scrollDirection: Axis.horizontal,
+                                              children: List.generate(
+                                                  workData
+                                                      .workExperienceDataList
+                                                      .length,
+                                                  (index) => Stack(
+                                                        children: [
+                                                          Container(
+                                                            margin:
+                                                                EdgeInsets.only(
+                                                                    right:
+                                                                        15.w),
                                                             padding:
                                                                 EdgeInsets.all(
-                                                                    0),
-                                                            splashRadius: 2,
-                                                            onSelected:
-                                                                (index1) {
-                                                              if (index1 == 1) {
-                                                                profileController
-                                                                    .workCompanyNameController
-                                                                    .text = workData
-                                                                            .workExperienceDataList[index]
-                                                                        [
-                                                                        'Company'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .workDesignationController
-                                                                    .text = workData
-                                                                            .workExperienceDataList[index]
-                                                                        [
-                                                                        'Designation'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .workSalaryController
-                                                                    .text = workData
-                                                                            .workExperienceDataList[index]
-                                                                        [
-                                                                        'Salary'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .wrokFromYearcontroller
-                                                                    .text = workData
-                                                                            .workExperienceDataList[index]
-                                                                        [
-                                                                        'Ex_From'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .workToYearController
-                                                                    .text = workData
-                                                                            .workExperienceDataList[index]
-                                                                        [
-                                                                        'Ex_To'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .workExperienceSlno
-                                                                    .value = workData
-                                                                            .workExperienceDataList[index]
-                                                                        [
-                                                                        'Slno'] ??
-                                                                    0;
-
-                                                                profileController
-                                                                    .workExperienceSlno
-                                                                    .value = workData
-                                                                            .workExperienceDataList[index]
-                                                                        [
-                                                                        'Work_Experience_Id'] ??
-                                                                    0;
-                                                                profileController
-                                                                    .isAddWorkExperience
-                                                                    .value = true;
-                                                              } else if (index1 ==
-                                                                  2) {
-                                                                showDialog(
-                                                                  barrierDismissible:
-                                                                      false,
-                                                                  context: Get
-                                                                      .context!,
-                                                                  builder: (ctx) =>
-                                                                      AlertDialog(
-                                                                    title:
-                                                                        const Text(
-                                                                      'Warning',
-                                                                      style: TextStyle(
-                                                                          fontWeight:
-                                                                              FontWeight.w800),
-                                                                    ),
-                                                                    content:
-                                                                        const SingleChildScrollView(
-                                                                      child: Column(
-                                                                          crossAxisAlignment:
-                                                                              CrossAxisAlignment.start,
-                                                                          children: [
-                                                                            Text("Do you want to delete?"),
-                                                                          ]),
-                                                                    ),
-                                                                    actions: [
-                                                                      TextButton(
+                                                                    15.h),
+                                                            width: 220.w,
+                                                            decoration: BoxDecoration(
+                                                                border: Border
+                                                                    .all(),
+                                                                color: Colors
+                                                                    .white,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20.r)),
+                                                            child: Column(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              children: [
+                                                                Row(
+                                                                  children: [
+                                                                    SizedBox(
+                                                                        width: 100
+                                                                            .w,
                                                                         child:
                                                                             const Text(
-                                                                          'Yes',
+                                                                          'Company Name',
                                                                           style:
-                                                                              TextStyle(fontWeight: FontWeight.w700),
-                                                                        ),
-                                                                        onPressed:
-                                                                            () async {
-                                                                          profileController.deleteWorkExperience(
-                                                                              workExperienceId: workData.workExperienceDataList[index]['Work_Experience_Id'] ?? 0,
-                                                                              dltIndex: index);
-                                                                          Get.back();
-                                                                        },
-                                                                      ),
-                                                                      TextButton(
-                                                                        child: const Text(
-                                                                            'Cancel',
-                                                                            style:
-                                                                                TextStyle(fontWeight: FontWeight.w700)),
-                                                                        onPressed:
-                                                                            () {
-                                                                          Get.back();
-                                                                        },
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                );
-                                                              }
-                                                            },
-                                                            itemBuilder:
-                                                                (context) {
-                                                              return [
-                                                                const PopupMenuItem<
-                                                                        int>(
-                                                                    value: 1,
-                                                                    child: Text(
-                                                                        'Edit')),
-                                                                const PopupMenuItem<
-                                                                        int>(
-                                                                    value: 2,
-                                                                    child: Text(
-                                                                        'Delete')),
-                                                              ];
-                                                            }),
-                                                      ],
-                                                    ),
-                                                    SizedBox(
-                                                      width: 50.w,
-                                                    ),
-                                                    Text(
-                                                        'Designation : ${workData.workExperienceDataList[index]['Designation']}'),
-                                                    Text(
-                                                        'Salary(Monthly) : ${workData.workExperienceDataList[index]['Salary']}'),
-                                                    Text(
-                                                        'From Year : ${workData.workExperienceDataList[index]['Ex_From']}'),
-                                                    Text(
-                                                        'To Year : ${workData.workExperienceDataList[index]['Ex_To']}'),
-                                                  ],
-                                                ),
-                                              )),
-                                    );
-                                  }),
-                                ),
-                              ],
+                                                                              TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                          ),
+                                                                        )),
+                                                                    const Text(
+                                                                        ' : '),
+                                                                    Expanded(
+                                                                      child: Text(
+                                                                          '${workData.workExperienceDataList[index]['Company']}'),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Row(
+                                                                  children: [
+                                                                    SizedBox(
+                                                                        width: 100
+                                                                            .w,
+                                                                        child:
+                                                                            const Text(
+                                                                          'Designation',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                          ),
+                                                                        )),
+                                                                    const Text(
+                                                                        ' : '),
+                                                                    Expanded(
+                                                                      child: Text(
+                                                                          '${workData.workExperienceDataList[index]['Designation']}'),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Row(
+                                                                  children: [
+                                                                    SizedBox(
+                                                                        width: 100
+                                                                            .w,
+                                                                        child:
+                                                                            const Text(
+                                                                          'Salary(Monthly)',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                          ),
+                                                                        )),
+                                                                    const Text(
+                                                                        ' : '),
+                                                                    Expanded(
+                                                                      child: Text(
+                                                                          '${workData.workExperienceDataList[index]['Salary']}'),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Row(
+                                                                  children: [
+                                                                    SizedBox(
+                                                                        width: 100
+                                                                            .w,
+                                                                        child:
+                                                                            const Text(
+                                                                          'From Year',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                          ),
+                                                                        )),
+                                                                    const Text(
+                                                                        ' : '),
+                                                                    Expanded(
+                                                                      child: Text(
+                                                                          '${workData.workExperienceDataList[index]['Ex_From']}'),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Row(
+                                                                  children: [
+                                                                    SizedBox(
+                                                                        width: 100
+                                                                            .w,
+                                                                        child:
+                                                                            const Text(
+                                                                          'To Year',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                          ),
+                                                                        )),
+                                                                    const Text(
+                                                                        ' : '),
+                                                                    Expanded(
+                                                                      child: Text(
+                                                                          '${workData.workExperienceDataList[index]['Ex_To']}'),
+                                                                    ),
+                                                                  ],
+                                                                )
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Positioned(
+                                                            right: 8.w,
+                                                            top: 4.h,
+                                                            child:
+                                                                PopupMenuButton(
+                                                                    splashRadius:
+                                                                        2,
+                                                                    onSelected:
+                                                                        (index1) {
+                                                                      if (index1 ==
+                                                                          1) {
+                                                                        profileController
+                                                                            .workCompanyNameController
+                                                                            .text = workData.workExperienceDataList[index]
+                                                                                ['Company'] ??
+                                                                            '';
+                                                                        profileController
+                                                                            .workDesignationController
+                                                                            .text = workData.workExperienceDataList[index]
+                                                                                ['Designation'] ??
+                                                                            '';
+                                                                        profileController
+                                                                            .workSalaryController
+                                                                            .text = workData.workExperienceDataList[index]
+                                                                                ['Salary'] ??
+                                                                            '';
+                                                                        profileController
+                                                                            .wrokFromYearcontroller
+                                                                            .text = workData.workExperienceDataList[index]
+                                                                                ['Ex_From'] ??
+                                                                            '';
+                                                                        profileController
+                                                                            .workToYearController
+                                                                            .text = workData.workExperienceDataList[index]
+                                                                                ['Ex_To'] ??
+                                                                            '';
+                                                                        profileController
+                                                                            .workExperienceSlno
+                                                                            .value = workData.workExperienceDataList[index]
+                                                                                ['Slno'] ??
+                                                                            0;
+
+                                                                        profileController
+                                                                            .workExperienceSlno
+                                                                            .value = workData.workExperienceDataList[index]
+                                                                                ['Work_Experience_Id'] ??
+                                                                            0;
+                                                                        profileController
+                                                                            .isAddWorkExperience
+                                                                            .value = true;
+                                                                      } else if (index1 ==
+                                                                          2) {
+                                                                        showDialog(
+                                                                          barrierDismissible:
+                                                                              false,
+                                                                          context:
+                                                                              Get.context!,
+                                                                          builder: (ctx) =>
+                                                                              AlertDialog(
+                                                                            title:
+                                                                                const Text(
+                                                                              'Warning',
+                                                                              style: TextStyle(fontWeight: FontWeight.w800),
+                                                                            ),
+                                                                            content:
+                                                                                const SingleChildScrollView(
+                                                                              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                                                                Text("Do you want to delete?"),
+                                                                              ]),
+                                                                            ),
+                                                                            actions: [
+                                                                              TextButton(
+                                                                                child: const Text(
+                                                                                  'Yes',
+                                                                                  style: TextStyle(fontWeight: FontWeight.w700),
+                                                                                ),
+                                                                                onPressed: () async {
+                                                                                  profileController.deleteWorkExperience(workExperienceId: workData.workExperienceDataList[index]['Work_Experience_Id'] ?? 0, dltIndex: index);
+                                                                                  Get.back();
+                                                                                },
+                                                                              ),
+                                                                              TextButton(
+                                                                                child: const Text('Cancel', style: TextStyle(fontWeight: FontWeight.w700)),
+                                                                                onPressed: () {
+                                                                                  Get.back();
+                                                                                },
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        );
+                                                                      }
+                                                                    },
+                                                                    itemBuilder:
+                                                                        (context) {
+                                                                      return [
+                                                                        const PopupMenuItem<int>(
+                                                                            value:
+                                                                                1,
+                                                                            child:
+                                                                                Text('Edit')),
+                                                                        const PopupMenuItem<int>(
+                                                                            value:
+                                                                                2,
+                                                                            child:
+                                                                                Text('Delete')),
+                                                                      ];
+                                                                    }),
+                                                          )
+                                                        ],
+                                                      )),
+                                            ),
+                                          );
+                                        }),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20.h,
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -1241,362 +1328,366 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 Obx(
                                   () => profileController.isAddLanguage.value
-                                      ? Container(
-                                          child: Column(
-                                            children: [
-                                              Text('Exam'),
-                                              GetBuilder<ProfileController>(
-                                                  builder: (languageData) {
-                                                return Container(
-                                                  margin: EdgeInsets.symmetric(
-                                                      horizontal: 15.w),
-                                                  child:
-                                                      DropdownButtonFormField(
-                                                          iconDisabledColor:
-                                                              Colors.grey,
-                                                          iconEnabledColor:
-                                                              Colors.black,
-                                                          value: languageData
-                                                                      .examDropDownValue
-                                                                      .value ==
-                                                                  ''
-                                                              ? 'Select'
-                                                              : languageData
-                                                                  .examDropDownValue
-                                                                  .value,
-                                                          style: TextStyle(
-                                                              fontSize: 12.sp,
-                                                              height: 1),
-                                                          decoration:
-                                                              InputDecoration(
-                                                                  isDense: true,
-                                                                  //  contentPadding: EdgeInsets.all(13),
-                                                                  // hintText: data.inspectionDropdownValue.value
-                                                                  //     .isEmpty? 'Location':'',
-                                                                  border: OutlineInputBorder(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(5
-                                                                              .r))),
-                                                          onChanged: (value) {
-                                                            languageData
+                                      ? Column(
+                                          children: [
+                                            const Text('Exam'),
+                                            GetBuilder<ProfileController>(
+                                                builder: (languageData) {
+                                              return Container(
+                                                margin: EdgeInsets.symmetric(
+                                                    horizontal: 15.w),
+                                                child: DropdownButtonFormField(
+                                                    iconDisabledColor:
+                                                        Colors.grey,
+                                                    iconEnabledColor:
+                                                        Colors.black,
+                                                    value: languageData
                                                                 .examDropDownValue
-                                                                .value = value
-                                                                    .toString() ??
-                                                                '';
-                                                          },
-                                                          hint: Text(
-                                                            'Exam',
-                                                            style: TextStyle(
-                                                                fontSize:
-                                                                    12.sp),
-                                                          ),
-                                                          items: languageData
-                                                              .ieltsDropDownList
-                                                              .map((e) =>
-                                                                  DropdownMenuItem(
-                                                                    value: e[
-                                                                        'Ielts_Type_Name'],
-                                                                    child: Text(
-                                                                      e['Ielts_Type_Name']
-                                                                          .toString(),
-                                                                      style: TextStyle(
-                                                                          fontSize: 12
-                                                                              .sp,
-                                                                          color:
-                                                                              Colors.black),
-                                                                    ),
-                                                                  ))
-                                                              .toList()),
-                                                );
-                                              }),
-                                              // SizedBox(
-                                              //   height: 10.h,
-                                              // ),
-                                              // Container(
-                                              //   margin:
-                                              //       EdgeInsets.symmetric(horizontal: 15.w),
-                                              //   child: TextField(
-                                              //     decoration: InputDecoration(
-                                              //         border: OutlineInputBorder(
-                                              //             borderRadius:
-                                              //                 BorderRadius.circular(5.r))),
-                                              //   ),
-                                              // ),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              const Text('Exam Date'),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-
-                                              Container(
-                                                  margin: EdgeInsets.symmetric(
-                                                      horizontal: 15.w),
-                                                  child: datepickerWidget(
-                                                      context: context,
-                                                      datePickController:
-                                                          profileController
-                                                              .examDateController,
-                                                      labelText: 'Select Date',
-                                                      titleText: '')),
-                                              // Container(
-                                              //   margin:
-                                              //       EdgeInsets.symmetric(horizontal: 15.w),
-                                              //   child: TextField(
-                                              //     controller: profileController.examDateController,
-                                              //     decoration: InputDecoration(
-                                              //         border: OutlineInputBorder(
-                                              //             borderRadius:
-                                              //                 BorderRadius.circular(5.r))),
-                                              //   ),
-                                              // ),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              const Text('GRE/GMAT Score'),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.symmetric(
-                                                    horizontal: 15.w),
-                                                child: TextField(
-                                                  controller: profileController
-                                                      .gMatScroreController,
-                                                  decoration: InputDecoration(
-                                                      border: OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      5.r))),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              const Text('Listening'),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.symmetric(
-                                                    horizontal: 15.w),
-                                                child: TextField(
-                                                  controller: profileController
-                                                      .listeningScoreController,
-                                                  decoration: InputDecoration(
-                                                      border: OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      5.r))),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              const Text('NEET Score'),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.symmetric(
-                                                    horizontal: 15.w),
-                                                child: TextField(
-                                                  controller: profileController
-                                                      .neetScroreController,
-                                                  decoration: InputDecoration(
-                                                      border: OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      5.r))),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              const Text('Reading'),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.symmetric(
-                                                    horizontal: 15.w),
-                                                child: TextField(
-                                                  controller: profileController
-                                                      .readingScroreController,
-                                                  decoration: InputDecoration(
-                                                      border: OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      5.r))),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              const Text('IELTS Score'),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.symmetric(
-                                                    horizontal: 15.w),
-                                                child: TextField(
-                                                  controller: profileController
-                                                      .ieltsScrorecontroller,
-                                                  decoration: InputDecoration(
-                                                      border: OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      5.r))),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              const Text('Writing'),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.symmetric(
-                                                    horizontal: 15.w),
-                                                child: TextField(
-                                                  controller: profileController
-                                                      .writingScroreController,
-                                                  decoration: InputDecoration(
-                                                      border: OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      5.r))),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              const Text('Speaking'),
-                                              SizedBox(
-                                                height: 10.h,
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.symmetric(
-                                                    horizontal: 15.w),
-                                                child: TextField(
-                                                  controller: profileController
-                                                      .speakingScroreController,
-                                                  decoration: InputDecoration(
-                                                      border: OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      5.r))),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 20.h,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  InkWell(
-                                                    onTap: () {
-
-
-
-                                                      if(
-                                           profileController.examDropDownValue.value!=""  &&     
-
-   profileController. gMatScroreController .text.isNotEmpty&&
-   profileController.listeningScoreController .text.isNotEmpty&&
-  profileController. neetScroreController .text.isNotEmpty&&
-  profileController. readingScroreController .text.isNotEmpty&&
-  profileController. ieltsScrorecontroller .text.isNotEmpty&&
-  profileController. writingScroreController .text.isNotEmpty&&
-  profileController. speakingScroreController .text.isNotEmpty&&
-  profileController. examDateController .text.isNotEmpty
-
-
-
-
-                                                      ){
-                                                         profileController
-                                                          .saveIeltsDetails();
-
-
-
-                                                      }else{
-
-                                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(
-                                                          'Please fill all the fields'
-                                                        )));
-
-                                                      }
-
-
-
-
-
-
-                                                     
+                                                                .value ==
+                                                            ''
+                                                        ? 'Select'
+                                                        : languageData
+                                                            .examDropDownValue
+                                                            .value,
+                                                    style: TextStyle(
+                                                        fontSize: 12.sp,
+                                                        height: 1),
+                                                    decoration: InputDecoration(
+                                                        isDense: true,
+                                                        //  contentPadding: EdgeInsets.all(13),
+                                                        // hintText: data.inspectionDropdownValue.value
+                                                        //     .isEmpty? 'Location':'',
+                                                        border: OutlineInputBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.r))),
+                                                    onChanged: (value) {
+                                                      languageData
+                                                              .examDropDownValue
+                                                              .value =
+                                                          value.toString() ??
+                                                              '';
                                                     },
-                                                    child: Container(
-                                                      width: 150.w,
-                                                      height: 40.h,
-                                                      decoration: BoxDecoration(
+                                                    hint: Text(
+                                                      'Exam',
+                                                      style: TextStyle(
+                                                          fontSize: 12.sp),
+                                                    ),
+                                                    items: languageData
+                                                        .ieltsDropDownList
+                                                        .map((e) =>
+                                                            DropdownMenuItem(
+                                                              value: e[
+                                                                  'Ielts_Type_Name'],
+                                                              child: Text(
+                                                                e['Ielts_Type_Name']
+                                                                    .toString(),
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        12.sp,
+                                                                    color: Colors
+                                                                        .black),
+                                                              ),
+                                                            ))
+                                                        .toList()),
+                                              );
+                                            }),
+                                            // SizedBox(
+                                            //   height: 10.h,
+                                            // ),
+                                            // Container(
+                                            //   margin:
+                                            //       EdgeInsets.symmetric(horizontal: 15.w),
+                                            //   child: TextField(
+                                            //     decoration: InputDecoration(
+                                            //         border: OutlineInputBorder(
+                                            //             borderRadius:
+                                            //                 BorderRadius.circular(5.r))),
+                                            //   ),
+                                            // ),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            const Text('Exam Date'),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+
+                                            Container(
+                                                margin: EdgeInsets.symmetric(
+                                                    horizontal: 15.w),
+                                                child: datepickerWidget(
+                                                    context: context,
+                                                    datePickController:
+                                                        profileController
+                                                            .examDateController,
+                                                    labelText: 'Select Date',
+                                                    titleText: '')),
+                                            // Container(
+                                            //   margin:
+                                            //       EdgeInsets.symmetric(horizontal: 15.w),
+                                            //   child: TextField(
+                                            //     controller: profileController.examDateController,
+                                            //     decoration: InputDecoration(
+                                            //         border: OutlineInputBorder(
+                                            //             borderRadius:
+                                            //                 BorderRadius.circular(5.r))),
+                                            //   ),
+                                            // ),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            const Text('GRE/GMAT Score'),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.symmetric(
+                                                  horizontal: 15.w),
+                                              child: TextField(
+                                                controller: profileController
+                                                    .gMatScroreController,
+                                                decoration: InputDecoration(
+                                                    border: OutlineInputBorder(
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(20.r),
-                                                        color: Colors.purple,
-                                                      ),
-                                                      child: const Center(
-                                                        child: Text(
-                                                          'Save',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.white),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 15.w,
-                                                  ),
-                                                  InkWell(
-                                                    onTap: () {
+                                                                .circular(
+                                                                    5.r))),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            const Text('Listening'),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.symmetric(
+                                                  horizontal: 15.w),
+                                              child: TextField(
+                                                controller: profileController
+                                                    .listeningScoreController,
+                                                decoration: InputDecoration(
+                                                    border: OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                    5.r))),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            const Text('NEET Score'),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.symmetric(
+                                                  horizontal: 15.w),
+                                              child: TextField(
+                                                controller: profileController
+                                                    .neetScroreController,
+                                                decoration: InputDecoration(
+                                                    border: OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                    5.r))),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            const Text('Reading'),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.symmetric(
+                                                  horizontal: 15.w),
+                                              child: TextField(
+                                                controller: profileController
+                                                    .readingScroreController,
+                                                decoration: InputDecoration(
+                                                    border: OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                    5.r))),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            const Text('IELTS Score'),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.symmetric(
+                                                  horizontal: 15.w),
+                                              child: TextField(
+                                                controller: profileController
+                                                    .ieltsScrorecontroller,
+                                                decoration: InputDecoration(
+                                                    border: OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                    5.r))),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            const Text('Writing'),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.symmetric(
+                                                  horizontal: 15.w),
+                                              child: TextField(
+                                                controller: profileController
+                                                    .writingScroreController,
+                                                decoration: InputDecoration(
+                                                    border: OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                    5.r))),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            const Text('Speaking'),
+                                            SizedBox(
+                                              height: 10.h,
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.symmetric(
+                                                  horizontal: 15.w),
+                                              child: TextField(
+                                                controller: profileController
+                                                    .speakingScroreController,
+                                                decoration: InputDecoration(
+                                                    border: OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                    5.r))),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 20.h,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                InkWell(
+                                                  onTap: () {
+                                                    if (profileController
+                                                                .examDropDownValue
+                                                                .value !=
+                                                            "" &&
+                                                        profileController
+                                                            .gMatScroreController
+                                                            .text
+                                                            .isNotEmpty &&
+                                                        profileController
+                                                            .listeningScoreController
+                                                            .text
+                                                            .isNotEmpty &&
+                                                        profileController
+                                                            .neetScroreController
+                                                            .text
+                                                            .isNotEmpty &&
+                                                        profileController
+                                                            .readingScroreController
+                                                            .text
+                                                            .isNotEmpty &&
+                                                        profileController
+                                                            .ieltsScrorecontroller
+                                                            .text
+                                                            .isNotEmpty &&
+                                                        profileController
+                                                            .writingScroreController
+                                                            .text
+                                                            .isNotEmpty &&
+                                                        profileController
+                                                            .speakingScroreController
+                                                            .text
+                                                            .isNotEmpty &&
+                                                        profileController
+                                                            .examDateController
+                                                            .text
+                                                            .isNotEmpty) {
                                                       profileController
-                                                          .isAddLanguage
-                                                          .value = false;
-                                                    },
-                                                    child: Container(
-                                                      width: 150.w,
-                                                      height: 40.h,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.r),
-                                                        color: Colors.purple,
-                                                      ),
-                                                      child: const Center(
-                                                        child: Text(
-                                                          'Close',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.white),
-                                                        ),
+                                                          .saveIeltsDetails();
+                                                    } else {
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                              const SnackBar(
+                                                                  content: Text(
+                                                                      'Please fill all the fields')));
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    width: 150.w,
+                                                    height: 40.h,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.r),
+                                                      color: Colors.purple,
+                                                    ),
+                                                    child: const Center(
+                                                      child: Text(
+                                                        'Save',
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.white),
                                                       ),
                                                     ),
                                                   ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
+                                                ),
+                                                SizedBox(
+                                                  width: 15.w,
+                                                ),
+                                                InkWell(
+                                                  onTap: () {
+                                                    profileController
+                                                        .isAddLanguage
+                                                        .value = false;
+                                                  },
+                                                  child: Container(
+                                                    width: 150.w,
+                                                    height: 40.h,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.r),
+                                                      color: Colors.purple,
+                                                    ),
+                                                    child: const Center(
+                                                      child: Text(
+                                                        'Close',
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.white),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
                                         )
                                       : Container(),
                                 ),
@@ -1605,215 +1696,396 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 SizedBox(
                                   width: Get.width,
-                                  height: 250.h,
+                                  height: Get.width > 615 ? 500.h : 350.h,
                                   child: GetBuilder<ProfileController>(
                                       builder: (workData) {
                                     return ListView(
                                       shrinkWrap: true,
                                       scrollDirection: Axis.horizontal,
+                                      physics: const ClampingScrollPhysics(),
                                       children: List.generate(
                                           workData.languageDetailsList.length,
-                                          (index) => Container(
-                                                margin: EdgeInsets.only(
-                                                    right: 15.w),
-                                                padding: EdgeInsets.all(15.w),
-                                                width: 200.w,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(),
-                                                    color: Colors.white,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.r)),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Row(
+                                          (index) => Stack(
+                                                children: [
+                                                  Container(
+                                                    margin: EdgeInsets.only(
+                                                        right: 15.w),
+                                                    padding:
+                                                        EdgeInsets.all(15.w),
+                                                    width: 250.w,
+                                                    decoration: BoxDecoration(
+                                                        border: Border.all(),
+                                                        color: Colors.white,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                    20.r)),
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
                                                       children: [
-                                                        Text(
-                                                            'Exam : ${workData.languageDetailsList[index]['Ielts_Type_Name']}'),
-                                                        PopupMenuButton(
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    0),
-                                                            splashRadius: 2,
-                                                            onSelected:
-                                                                (index1) {
-                                                              if (index1 == 1) {
-                                                                profileController
-                                                                    .gMatScroreController
-                                                                    .text = workData
-                                                                            .languageDetailsList[index]
-                                                                        [
-                                                                        'gre_score'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .listeningScoreController
-                                                                    .text = workData
-                                                                            .languageDetailsList[index]
-                                                                        [
-                                                                        'Listening'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .neetScroreController
-                                                                    .text = workData
-                                                                            .languageDetailsList[index]
-                                                                        [
-                                                                        'neet_score'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .readingScroreController
-                                                                    .text = workData
-                                                                            .languageDetailsList[index]
-                                                                        [
-                                                                        'Reading'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .ieltsScrorecontroller
-                                                                    .text = workData
-                                                                            .languageDetailsList[index]
-                                                                        [
-                                                                        'Description'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .writingScroreController
-                                                                    .text = workData
-                                                                            .languageDetailsList[index]
-                                                                        [
-                                                                        'Writing'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .speakingScroreController
-                                                                    .text = workData
-                                                                            .languageDetailsList[index]
-                                                                        [
-                                                                        'Speaking'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .examDateController
-                                                                    .text = workData
-                                                                            .languageDetailsList[index]
-                                                                        [
-                                                                        'Exam_Date'] ??
-                                                                    '';
-                                                                profileController
-                                                                    .isAddLanguage
-                                                                    .value = true;
-                                                                profileController
-                                                                    .languageId
-                                                                    .value = workData
-                                                                            .languageDetailsList[index]
-                                                                        [
-                                                                        'Ielts_Details_Id'] ??
-                                                                    0;
-                                                                profileController
-                                                                    .languageSlno
-                                                                    .value = workData
-                                                                            .languageDetailsList[index]
-                                                                        [
-                                                                        'Slno'] ??
-                                                                    0;
-                                                                profileController
-                                                                    .examDropDownValue
-                                                                    .value = workData
-                                                                            .languageDetailsList[index]
-                                                                        [
-                                                                        'Ielts_Type_Name'] ??
-                                                                    '';
-                                                              } else if (index1 ==
-                                                                  2) {
-                                                                showDialog(
-                                                                  barrierDismissible:
-                                                                      false,
-                                                                  context: Get
-                                                                      .context!,
-                                                                  builder: (ctx) =>
-                                                                      AlertDialog(
-                                                                    title:
-                                                                        const Text(
-                                                                      'Warning',
-                                                                      style: TextStyle(
-                                                                          fontWeight:
-                                                                              FontWeight.w800),
-                                                                    ),
-                                                                    content:
-                                                                        const SingleChildScrollView(
-                                                                      child: Column(
-                                                                          crossAxisAlignment:
-                                                                              CrossAxisAlignment.start,
-                                                                          children: [
-                                                                            Text("Do you want to delete?"),
-                                                                          ]),
-                                                                    ),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        child:
-                                                                            const Text(
-                                                                          'Yes',
-                                                                          style:
-                                                                              TextStyle(fontWeight: FontWeight.w700),
-                                                                        ),
-                                                                        onPressed:
-                                                                            () async {
-                                                                          profileController.deleteLanguage(
-                                                                              languageId: workData.languageDetailsList[index]['Ielts_Details_Id'] ?? 0,
-                                                                              dltIndex: index);
-                                                                          Get.back();
-                                                                        },
-                                                                      ),
-                                                                      TextButton(
-                                                                        child: const Text(
-                                                                            'Cancel',
-                                                                            style:
-                                                                                TextStyle(fontWeight: FontWeight.w700)),
-                                                                        onPressed:
-                                                                            () {
-                                                                          Get.back();
-                                                                        },
-                                                                      ),
-                                                                    ],
+                                                        Row(
+                                                          children: [
+                                                            SizedBox(
+                                                                width: 120.w,
+                                                                child:
+                                                                    const Text(
+                                                                  'Exam',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
                                                                   ),
-                                                                );
-                                                              }
-                                                            },
-                                                            itemBuilder:
-                                                                (context) {
-                                                              return [
-                                                                const PopupMenuItem<
-                                                                        int>(
-                                                                    value: 1,
-                                                                    child: Text(
-                                                                        'Edit')),
-                                                                const PopupMenuItem<
-                                                                        int>(
-                                                                    value: 2,
-                                                                    child: Text(
-                                                                        'Delete')),
-                                                              ];
-                                                            }),
+                                                                )),
+                                                            const Text(' : '),
+                                                            Expanded(
+                                                              child: Text(
+                                                                  '${workData.languageDetailsList[index]['Ielts_Type_Name']}'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            SizedBox(
+                                                                width: 120.w,
+                                                                child:
+                                                                    const Text(
+                                                                  'Exam Date',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                                )),
+                                                            const Text(' : '),
+                                                            Expanded(
+                                                              child: Text(
+                                                                  '${workData.languageDetailsList[index]['Exam_Date']}'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            SizedBox(
+                                                                width: 120.w,
+                                                                child:
+                                                                    const Text(
+                                                                  'GRE/GMAT Score',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                                )),
+                                                            const Text(' : '),
+                                                            Expanded(
+                                                              child: Text(
+                                                                  '${workData.languageDetailsList[index]['gre_score']}'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            SizedBox(
+                                                                width: 120.w,
+                                                                child:
+                                                                    const Text(
+                                                                  'NEET Score',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                                )),
+                                                            const Text(' : '),
+                                                            Expanded(
+                                                              child: Text(
+                                                                  '${workData.languageDetailsList[index]['neet_score']}'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            SizedBox(
+                                                                width: 120.w,
+                                                                child:
+                                                                    const Text(
+                                                                  'IELTS Score',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                                )),
+                                                            const Text(' : '),
+                                                            Expanded(
+                                                              child: Text(
+                                                                  '${workData.languageDetailsList[index]['Description']}'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            SizedBox(
+                                                                width: 120.w,
+                                                                child:
+                                                                    const Text(
+                                                                  'Listening',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                                )),
+                                                            const Text(' : '),
+                                                            Expanded(
+                                                              child: Text(
+                                                                  '${workData.languageDetailsList[index]['Listening']}'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            SizedBox(
+                                                                width: 120.w,
+                                                                child:
+                                                                    const Text(
+                                                                  'Reading',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                                )),
+                                                            const Text(' : '),
+                                                            Expanded(
+                                                              child: Text(
+                                                                  '${workData.languageDetailsList[index]['Reading']}'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            SizedBox(
+                                                                width: 120.w,
+                                                                child:
+                                                                    const Text(
+                                                                  'Writing',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                                )),
+                                                            const Text(' : '),
+                                                            Expanded(
+                                                              child: Text(
+                                                                  '${workData.languageDetailsList[index]['Writing']}'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            SizedBox(
+                                                                width: 120.w,
+                                                                child:
+                                                                    const Text(
+                                                                  'Speaking',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                  ),
+                                                                )),
+                                                            const Text(' : '),
+                                                            Expanded(
+                                                              child: Text(
+                                                                  '${workData.languageDetailsList[index]['Speaking']}'),
+                                                            ),
+                                                          ],
+                                                        ),
                                                       ],
                                                     ),
-                                                    SizedBox(
-                                                      width: 50.w,
-                                                    ),
-                                                    Text(
-                                                        'Exam Date : ${workData.languageDetailsList[index]['Exam_Date']}'),
-                                                    Text(
-                                                        'GRE/GMAT Score : ${workData.languageDetailsList[index]['gre_score'] ?? ''}'),
-                                                    Text(
-                                                        'NEET Score : ${workData.languageDetailsList[index]['neet_score']}'),
-                                                    Text(
-                                                        'IELTS Score : ${workData.languageDetailsList[index]['Description']}'),
-                                                    Text(
-                                                        'Listening : ${workData.languageDetailsList[index]['Listening']}'),
-                                                    Text(
-                                                        'Reading : ${workData.languageDetailsList[index]['Reading']}'),
-                                                    Text(
-                                                        'Writing : ${workData.languageDetailsList[index]['Writing']}'),
-                                                    Text(
-                                                        'Speaking : ${workData.languageDetailsList[index]['Speaking']}'),
-                                                  ],
-                                                ),
+                                                  ),
+                                                  Positioned(
+                                                    right: 8.w,
+                                                    top: 4.h,
+                                                    child: PopupMenuButton(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(0),
+                                                        splashRadius: 2,
+                                                        onSelected: (index1) {
+                                                          if (index1 == 1) {
+                                                            profileController
+                                                                .gMatScroreController
+                                                                .text = workData
+                                                                            .languageDetailsList[
+                                                                        index][
+                                                                    'gre_score'] ??
+                                                                '';
+                                                            profileController
+                                                                .listeningScoreController
+                                                                .text = workData
+                                                                            .languageDetailsList[
+                                                                        index][
+                                                                    'Listening'] ??
+                                                                '';
+                                                            profileController
+                                                                .neetScroreController
+                                                                .text = workData
+                                                                            .languageDetailsList[
+                                                                        index][
+                                                                    'neet_score'] ??
+                                                                '';
+                                                            profileController
+                                                                .readingScroreController
+                                                                .text = workData
+                                                                            .languageDetailsList[
+                                                                        index][
+                                                                    'Reading'] ??
+                                                                '';
+                                                            profileController
+                                                                .ieltsScrorecontroller
+                                                                .text = workData
+                                                                            .languageDetailsList[
+                                                                        index][
+                                                                    'Description'] ??
+                                                                '';
+                                                            profileController
+                                                                .writingScroreController
+                                                                .text = workData
+                                                                            .languageDetailsList[
+                                                                        index][
+                                                                    'Writing'] ??
+                                                                '';
+                                                            profileController
+                                                                .speakingScroreController
+                                                                .text = workData
+                                                                            .languageDetailsList[
+                                                                        index][
+                                                                    'Speaking'] ??
+                                                                '';
+                                                            profileController
+                                                                .examDateController
+                                                                .text = workData
+                                                                            .languageDetailsList[
+                                                                        index][
+                                                                    'Exam_Date'] ??
+                                                                '';
+                                                            profileController
+                                                                .isAddLanguage
+                                                                .value = true;
+                                                            profileController
+                                                                .languageId
+                                                                .value = workData
+                                                                            .languageDetailsList[
+                                                                        index][
+                                                                    'Ielts_Details_Id'] ??
+                                                                0;
+                                                            profileController
+                                                                .languageSlno
+                                                                .value = workData
+                                                                            .languageDetailsList[
+                                                                        index]
+                                                                    ['Slno'] ??
+                                                                0;
+                                                            profileController
+                                                                .examDropDownValue
+                                                                .value = workData
+                                                                            .languageDetailsList[
+                                                                        index][
+                                                                    'Ielts_Type_Name'] ??
+                                                                '';
+                                                          } else if (index1 ==
+                                                              2) {
+                                                            showDialog(
+                                                              barrierDismissible:
+                                                                  false,
+                                                              context:
+                                                                  Get.context!,
+                                                              builder: (ctx) =>
+                                                                  AlertDialog(
+                                                                title:
+                                                                    const Text(
+                                                                  'Warning',
+                                                                  style: TextStyle(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w800),
+                                                                ),
+                                                                content:
+                                                                    const SingleChildScrollView(
+                                                                  child: Column(
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        Text(
+                                                                            "Do you want to delete?"),
+                                                                      ]),
+                                                                ),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    child:
+                                                                        const Text(
+                                                                      'Yes',
+                                                                      style: TextStyle(
+                                                                          fontWeight:
+                                                                              FontWeight.w700),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () async {
+                                                                      profileController.deleteLanguage(
+                                                                          languageId: workData.languageDetailsList[index]['Ielts_Details_Id'] ??
+                                                                              0,
+                                                                          dltIndex:
+                                                                              index);
+                                                                      Get.back();
+                                                                    },
+                                                                  ),
+                                                                  TextButton(
+                                                                    child: const Text(
+                                                                        'Cancel',
+                                                                        style: TextStyle(
+                                                                            fontWeight:
+                                                                                FontWeight.w700)),
+                                                                    onPressed:
+                                                                        () {
+                                                                      Get.back();
+                                                                    },
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            );
+                                                          }
+                                                        },
+                                                        itemBuilder: (context) {
+                                                          return [
+                                                            const PopupMenuItem<
+                                                                    int>(
+                                                                value: 1,
+                                                                child: Text(
+                                                                    'Edit')),
+                                                            const PopupMenuItem<
+                                                                    int>(
+                                                                value: 2,
+                                                                child: Text(
+                                                                    'Delete')),
+                                                          ];
+                                                        }),
+                                                  )
+                                                ],
                                               )),
                                     );
                                   }),
@@ -1871,7 +2143,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 SizedBox(
                                   width: Get.width,
-                                  height: 230.h,
+                                  height: Get.width > 615 ? 450.h : 280.h,
                                   child: GetBuilder<ProfileController>(
                                       builder: (workData) {
                                     return ListView(
@@ -1883,8 +2155,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           (index) => Container(
                                                 margin: EdgeInsets.only(
                                                     right: 15.w),
-                                                padding: EdgeInsets.all(15.w),
-                                                width: 200.w,
+                                                padding: EdgeInsets.all(12.w),
+                                                width: 300.w,
                                                 decoration: BoxDecoration(
                                                     border: Border.all(),
                                                     color: Colors.white,
@@ -1894,26 +2166,130 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 child: Column(
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
                                                   children: [
-                                                    Text(
-                                                        'Course Name : ${workData.courseApplyApplicationList[index]['Course_Name']}'),
-                                                    SizedBox(
-                                                      width: 50.w,
+                                                    Row(
+                                                      // crossAxisAlignment:
+                                                      //     CrossAxisAlignment
+                                                      //         .start,
+                                                      children: [
+                                                        SizedBox(
+                                                          width: 100.w,
+                                                          child: const Text(
+                                                            'Course Name',
+                                                            style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        const Text(': '),
+                                                        Expanded(
+                                                          child: SizedBox(
+                                                            child: Text(
+                                                              '${workData.courseApplyApplicationList[index]['Course_Name']}',
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                    Text(
-                                                        'Country Name : ${workData.courseApplyApplicationList[index]['Country_Name']}'),
-                                                    Text(
-                                                        'University : ${workData.courseApplyApplicationList[index]['University_Name'] ?? ''}'),
-                                                    Text(
-                                                        'Status : ${workData.courseApplyApplicationList[index]['Application_Status_Name']}'),
-                                                    Text(
-                                                        'Remark : ${workData.courseApplyApplicationList[index]['Ex_To']}'),
+                                                    Row(
+                                                      children: [
+                                                        SizedBox(
+                                                          width: 100.w,
+                                                          child: const Text(
+                                                            'Country Name',
+                                                            style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        const Text(': '),
+                                                        Expanded(
+                                                          child: SizedBox(
+                                                            child: Text(
+                                                                '${workData.courseApplyApplicationList[index]['Country_Name']}'),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      // crossAxisAlignment:
+                                                      //     CrossAxisAlignment
+                                                      //         .start,
+                                                      children: [
+                                                        SizedBox(
+                                                          width: 100.w,
+                                                          child: const Text(
+                                                            'University',
+                                                            style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        const Text(': '),
+                                                        Expanded(
+                                                          child: SizedBox(
+                                                            child: Text(
+                                                                '${workData.courseApplyApplicationList[index]['University_Name'] ?? ''}'),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        SizedBox(
+                                                            width: 100.w,
+                                                            child: const Text(
+                                                              'Status',
+                                                              style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                            )),
+                                                        const Text(': '),
+                                                        Expanded(
+                                                          child: Text(
+                                                              '${workData.courseApplyApplicationList[index]['Application_Status_Name']}'),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        SizedBox(
+                                                            width: 100.w,
+                                                            child: const Text(
+                                                              'Remark',
+                                                              style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                            )),
+                                                        const Text(': '),
+                                                        Expanded(
+                                                          child: Text(
+                                                              '${workData.courseApplyApplicationList[index]['Ex_To']}'),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ],
                                                 ),
                                               )),
                                     );
                                   }),
                                 ),
+                                SizedBox(
+                                  height: 20.h,
+                                )
                               ],
                             ),
                           ),
@@ -2035,18 +2411,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 InkWell(
                                   onTap: () async {
-
-                                    if(profileController.documentSelectedFileController.text.isNotEmpty&&profileController.documentDropDownValue.value!=''){
- await profileController.saveDocument();
-                                    }else{
-                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Please fill all the fields')));
+                                    if (profileController
+                                            .documentSelectedFileController
+                                            .text
+                                            .isNotEmpty &&
+                                        profileController
+                                                .documentDropDownValue.value !=
+                                            '') {
+                                      await profileController.saveDocument();
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                              content: Text(
+                                                  'Please fill all the fields')));
                                     }
-
-
-
-
-
-                                   
 
                                     // homeController.pageIndex.value=0;
 
@@ -2085,11 +2463,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             .studentDocumentDetailsList.length,
                                         (index) => ListTile(
                                               minVerticalPadding: 10.h,
-                                              contentPadding: EdgeInsets.all(8),
+                                              contentPadding:
+                                                  const EdgeInsets.all(8),
                                               shape: OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                       color: Colors.black)),
                                               tileColor: Colors.white,
                                               title: Column(
@@ -2150,7 +2529,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                             BorderRadius
                                                                 .circular(
                                                                     10.r)),
-                                                    child: Center(
+                                                    child: const Center(
                                                         child: Text(
                                                       'view',
                                                       style: TextStyle(
@@ -2250,111 +2629,203 @@ class _ProfileScreenState extends State<ProfileScreen> {
       scrollDirection: Axis.horizontal,
       children: List.generate(
           listData.length,
-          (index) => Container(
-                margin: EdgeInsets.only(right: 15.w),
-                padding: EdgeInsets.all(15.w),
-                width: 200.w,
-                decoration: BoxDecoration(
-                    border: Border.all(),
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.r)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+          (index) => Stack(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(right: 15.w),
+                    padding: EdgeInsets.all(15.w),
+                    width: 220.w,
+                    decoration: BoxDecoration(
+                        border: Border.all(),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20.r)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Class/Level : ${listData[index]['Credential']} '),
-                        PopupMenuButton(
-                            padding: EdgeInsets.all(0),
-                            splashRadius: 2,
-                            onSelected: (index1) {
-                              if (index1 == 1) {
-                                profileController.studentClasscontroller.text =
-                                    listData[index]['Credential'] ?? '';
-                                profileController.studentPercentageController
-                                    .text = listData[index]['MarkPer'] ?? '';
-                                profileController.studentCollegecontroller
-                                    .text = listData[index]['school'] ?? '';
-                                profileController.studentFromYearcontroller
-                                    .text = listData[index]['Fromyear'] ?? '';
-                                profileController.studentToYearController.text =
-                                    listData[index]['Toyear'] ?? '';
-                                profileController.studentFieldcontroller.text =
-                                    listData[index]['Field'] ?? '';
-                                profileController
-                                        .studentSpecificationController.text =
-                                    listData[index]['Backlog_History'] ?? '';
-                                profileController.isAddQualification.value =
-                                    true;
-                                profileController.qualificationId.value =
-                                    listData[index]['Qualification_Id'] ?? 0;
-                                profileController.qualificationSlno.value =
-                                    listData[index]['slno'] ?? 0;
-                              } else if (index1 == 2) {
-                                showDialog(
-                                  barrierDismissible: false,
-                                  context: Get.context!,
-                                  builder: (ctx) => AlertDialog(
-                                    title: const Text(
-                                      'Warning',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w800),
-                                    ),
-                                    content: const SingleChildScrollView(
-                                      child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text("Do you want to delete?"),
-                                          ]),
-                                    ),
-                                    actions: [
-                                      TextButton(
-                                        child: const Text(
-                                          'Yes',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        onPressed: () async {
-                                          profileController.deleteQualification(
-                                              qualificationId: listData[index]
-                                                      ['Qualification_Id'] ??
-                                                  0,
-                                              dltIndex: index);
-                                          Get.back();
-                                        },
-                                      ),
-                                      TextButton(
-                                        child: const Text('Cancel',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w700)),
-                                        onPressed: () {
-                                          Get.back();
-                                        },
-                                      ),
-                                    ],
+                        Row(
+                          children: [
+                            SizedBox(
+                                width: 100.w,
+                                child: const Text(
+                                  'Class/Level',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
                                   ),
-                                );
-                              }
-                            },
-                            itemBuilder: (context) {
-                              return [
-                                const PopupMenuItem<int>(
-                                    value: 1, child: Text('Edit')),
-                                const PopupMenuItem<int>(
-                                    value: 2, child: Text('Delete')),
-                              ];
-                            }),
+                                )),
+                            const Text(': '),
+                            Expanded(
+                              child: Text('${listData[index]['Credential']}'),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                                width: 100.w,
+                                child: const Text(
+                                  'Field',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                )),
+                            const Text(': '),
+                            Expanded(
+                              child: Text('${listData[index]['Field']}'),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                                width: 100.w,
+                                child: const Text(
+                                  'Specification',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                )),
+                            const Text(': '),
+                            Expanded(
+                              child: Text('${listData[index]['school']}'),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                                width: 100.w,
+                                child: const Text(
+                                  'College',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                )),
+                            const Text(': '),
+                            Expanded(
+                              child:
+                                  Text('${listData[index]['Backlog_History']}'),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                                width: 100.w,
+                                child: const Text(
+                                  'From Year',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                )),
+                            const Text(': '),
+                            Expanded(
+                              child: Text('${listData[index]['Fromyear']}'),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                                width: 100.w,
+                                child: const Text(
+                                  'To Year',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                )),
+                            const Text(': '),
+                            Expanded(
+                              child: Text('${listData[index]['Toyear']}'),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
-                    Text('Field : ${listData[index]['Field']} '),
-                    Text('College : ${listData[index]['school']} '),
-                    Text(
-                        'Specification : ${listData[index]['Backlog_History']} '),
-                    Text('From Year : ${listData[index]['Fromyear']} '),
-                    Text('To Year : ${listData[index]['Toyear']} '),
-                  ],
-                ),
+                  ),
+                  Positioned(
+                    right: 8.w,
+                    top: 4.h,
+                    child: PopupMenuButton(
+                        splashRadius: 2,
+                        onSelected: (index1) {
+                          if (index1 == 1) {
+                            profileController.studentClasscontroller.text =
+                                listData[index]['Credential'] ?? '';
+                            profileController.studentPercentageController.text =
+                                listData[index]['MarkPer'] ?? '';
+                            profileController.studentCollegecontroller.text =
+                                listData[index]['school'] ?? '';
+                            profileController.studentFromYearcontroller.text =
+                                listData[index]['Fromyear'] ?? '';
+                            profileController.studentToYearController.text =
+                                listData[index]['Toyear'] ?? '';
+                            profileController.studentFieldcontroller.text =
+                                listData[index]['Field'] ?? '';
+                            profileController
+                                    .studentSpecificationController.text =
+                                listData[index]['Backlog_History'] ?? '';
+                            profileController.isAddQualification.value = true;
+                            profileController.qualificationId.value =
+                                listData[index]['Qualification_Id'] ?? 0;
+                            profileController.qualificationSlno.value =
+                                listData[index]['slno'] ?? 0;
+                          } else if (index1 == 2) {
+                            showDialog(
+                              barrierDismissible: false,
+                              context: Get.context!,
+                              builder: (ctx) => AlertDialog(
+                                title: const Text(
+                                  'Warning',
+                                  style: TextStyle(fontWeight: FontWeight.w800),
+                                ),
+                                content: const SingleChildScrollView(
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text("Do you want to delete?"),
+                                      ]),
+                                ),
+                                actions: [
+                                  TextButton(
+                                    child: const Text(
+                                      'Yes',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                    onPressed: () async {
+                                      profileController.deleteQualification(
+                                          qualificationId: listData[index]
+                                                  ['Qualification_Id'] ??
+                                              0,
+                                          dltIndex: index);
+                                      Get.back();
+                                    },
+                                  ),
+                                  TextButton(
+                                    child: const Text('Cancel',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700)),
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        },
+                        itemBuilder: (context) {
+                          return [
+                            const PopupMenuItem<int>(
+                                value: 1, child: Text('Edit')),
+                            const PopupMenuItem<int>(
+                                value: 2, child: Text('Delete')),
+                          ];
+                        }),
+                  )
+                ],
               )),
     );
   }
